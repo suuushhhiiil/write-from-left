@@ -11,6 +11,7 @@
   --color-background: #f7f2ea;
 
   --color-dark: #151515;
+  --color-dark-accent: #8d8d8d;
   --color-light: #ffffff;
 
   --color-test: #006aff;
@@ -84,9 +85,16 @@ html {
 }
 
 .variable-hero-text {
-  font-size: clamp(3rem, 4vw, 6rem);
+  font-size: clamp(3rem, 5vw, 6rem);
 }
 
+.btn {
+  @apply bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-all duration-300;
+}
+
+.btn-primary {
+  @apply bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-all duration-300;
+}
 /* .dark-theme {
   --color-background: #121212;
   --color-surface: #343a40;
