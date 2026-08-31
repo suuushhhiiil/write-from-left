@@ -76,6 +76,8 @@ html {
   font-size: clamp(1.5rem, 6vw, 6rem);
 }
 
+
+
 /* .dark-theme {
   --color-background: #121212;
   --color-surface: #343a40;
