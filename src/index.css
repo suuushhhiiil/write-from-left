@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-primary: #6f1118;
+  --color-dark: #35070b;
+  --color-secondary: #e6ded4;
+  --color-accent: #b49a68;
+
+  --color-background: #f7f2ea;
+
+  --color-text: #151515;
+  --color-light: #ffffff;
+
+  --color-test: #006aff;
+
+  /* Fonts */
+  --font-sans:
+    "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Spacing */
+  /* 4px */
+  --padding-xs: 0.25rem;
+  /* 8px */
+  --padding-sm: 0.5rem;
+  /* 12px */
+  --padding-tight: 0.75rem;
+  /* 16px */
+  --padding-md: 1rem;
+  /* 20px */
+  --padding-mid: 1.25rem;
+  /* 24px */
+  --padding-lg: 1.5rem;
+  /* 32px */
+  --padding-xl: 2rem;
+  /* 48px */
+  --padding-2xl: 3rem;
+  /* 64px */
+  --padding-3xl: 4rem;
+  /* 96px */
+  --padding-4xl: 6rem;
+
+  --text-h1: 2.25rem;
+  --text-h2: 1.875rem;
+  --text-h3: 1.325rem;
+  --text-h4: 1rem;
+  --text-content: 1rem;
+  --text-error: 1rem;
+  --text-xs: 0.75rem;
+
+  /* Sizes */
+  --height-input: 1.75rem;
+  --width-input: 1.75rem;
+  --height-checkbox: 1rem;
+  --width-checkbox: 1rem;
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+}
+
+.variable-hero-text {
+  font-size: clamp(1.5rem, 6vw, 6rem);
+}
+
+/* .dark-theme {
+  --color-background: #121212;
+  --color-surface: #343a40;
+  --color-border: #9ca3af;
+  --color-card: #252525;
+
+  --color-text: #f9fafb;
+  --color-hint: #9ca3af;
+  --color-highlight: #ffffff;
+
+  --color-primary: #006aff;
+  --color-primary-bg: #7fb1f6;
+  --color-primary-bg-10: #e4eaff;
+
+  --color-success: #2ccd67;
+  --color-success-bg: #286f28;
+  --color-success-bg-10: #003a00;
+
+  --color-warning: #facc15;
+  --color-warning-bg: #6e4c0d;
+  --color-warning-bg-10: #6e4c0d;
+
+  --color-danger: #ef4444;
+  --color-danger-bg: #af3333;
+  --color-danger-bg-10: #450000;
+
+  --color-accent: #495057;
+  --color-accent-bg: #595757;
+  --color-accent-bg-10: #2a2a2a;
+} */
