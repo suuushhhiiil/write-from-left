@@ -4,13 +4,13 @@
 @theme {
   /* Colors */
   --color-primary: #6f1118;
-  --color-dark: #35070b;
+  --color-primary-dark: #35070b;
   --color-secondary: #e6ded4;
   --color-accent: #b49a68;
 
   --color-background: #f7f2ea;
 
-  --color-text: #151515;
+  --color-dark: #151515;
   --color-light: #ffffff;
 
   --color-test: #006aff;
@@ -64,7 +64,7 @@
 
 body {
   background-color: var(--color-background);
-  color: var(--color-text);
+  color: var(--color-dark);
 }
 
 html {

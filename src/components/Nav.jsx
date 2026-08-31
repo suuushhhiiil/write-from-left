@@ -1,9 +1,40 @@
-import React from 'react'
-    
+import React, { useState } from 'react'
+import logo from '../images/nav/logo.png'
+import { Menu } from 'lucide-react'
+import { navItems } from '../assets/nav'
+import { Link } from 'react-router-dom'
+
 
 const Nav = () => {
+    const [isOpen, setIsOpen] = useState(false)
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen)
+    }
     return (
-        <div className="flex justify-between items-center p-4 ">
+        <div className="relative flex justify-between items-center p-4 lg:px-16 border-b border-secondary">
+            <div className="flex flex-col items-center gap-2">
+                <img src={logo} alt="Write-from-left" className="w-16 lg:w-20 object-contain hover:scale-105 transition-all duration-300" />
+            </div>
+            <ul className="items-center gap-4 hidden lg:flex text-sm">
+                {navItems.map((item) => (
+                    <Link key={item.to} to={item.to} className="text-sm cursor-pointer hover:text-primary transition-all duration-300">{item.label}</Link>
+                ))}
+            </ul>
+
+            <div onClick={toggleMenu} className="lg:hidden flex items-center gap-4 text-primary p-2 rounded-md hover:bg-secondary">
+                <Menu size={24} className="cursor-pointer " strokeWidth={2.5} />
+            </div>
+
+            {isOpen && <div className="lg:hidden w-full mt-2 pl-8 absolute top-full right-4">
+                <div className="bg-primary text-light rounded-md p-4 w-full">
+                    <ul className="flex flex-col items-end gap-4 text-2xl">
+                        {navItems.map((item) => (
+                            <Link key={item.to} to={item.to} className="text-2xl">{item.label}</Link>
+                        ))}
+                    </ul>
+                </div>
+            </div>}
 
         </div>
     )

@@ -4,7 +4,9 @@ import Nav from './components/Nav'
 function MainLayout() {
     return (
         <div className="min-h-screen bg-background">
-            <Nav />
+            <div className="sticky top-0 z-50">
+                <Nav />
+            </div>
             <Outlet />
         </div>
     )
