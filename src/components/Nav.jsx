@@ -12,7 +12,7 @@ const Nav = () => {
         setIsOpen(!isOpen)
     }
     return (
-        <div className="relative flex justify-between items-center p-4 lg:px-16 border-b border-secondary">
+        <div className="relative backdrop-blur-lg flex justify-between items-center p-4 lg:px-16 border-b border-secondary">
             <div className="flex flex-col items-center gap-2">
                 <img src={logo} alt="Write-from-left" className="w-16 lg:w-20 object-contain hover:scale-105 transition-all duration-300" />
             </div>
