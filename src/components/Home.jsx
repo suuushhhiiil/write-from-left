@@ -30,7 +30,7 @@ const Home = () => {
             </div>
 
             {/* First Draft */}
-            <div className="h-screen lg:grid lg:grid-cols-12 flex flex-col justify-between lg:gap-16 gap-6 lg:py-25 py-10">
+            <div className="h-screen lg:grid lg:grid-cols-12 flex flex-col justify-between lg:gap-16 gap-6 py-10">
                 <div className="lg:col-span-5 flex flex-col gap-12 items-start justify-center lg:h-full">
                     <div className="flex flex-col gap-2">
                         <p className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">What I am building</p>
@@ -46,7 +46,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="lg:col-span-7 flex items-center justify-center h-full">
+                <div className="lg:col-span-7 flex items-center justify-center h-full bg-test">
                     <img src={firstDraftImage} alt="First Draft" className="w-full h-full lg:h-2/3 object-cover rounded-xl" />
                 </div>
             </div>
