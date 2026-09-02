@@ -8,7 +8,7 @@ import homeContent from '../assets/home';
 const Home = () => {
     return (
         <section className="home">
-            <div className="lg:grid lg:grid-cols-12 h-[100vh] gap-8 flex flex-col items-center">
+            <div className="lg:grid lg:grid-cols-12 h-screen gap-8 flex flex-col items-center">
                 <div className="lg:col-span-6 flex flex-col lg:h-full justify-center gap-16 lg:py-20 pt-10">
                     <div className="">
                         <h1 className="font-script text-primary text-2xl">Hi, I'm</h1>
@@ -31,7 +31,7 @@ const Home = () => {
             </div>
 
             {/* First Draft */}
-            <div className="h-[100vh] lg:grid lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6 lg:py-10 pt-20 pb-4">
+            <div className="h-screen lg:grid lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6 lg:py-10 pt-20 pb-4">
                 <div className="lg:col-span-5 flex  flex-col lg:gap-24 gap-16 items-start justify-center lg:h-full">
                     <div className="flex flex-col gap-2">
                         <p className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">What I am building</p>
@@ -51,7 +51,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="h-[100vh] lg:grid lg:grid-cols-12 flex flex-col justify-between lg:gap-16 gap-6 lg:py-10 bg-primary-dark rounded-t-[4rem] lg:px-20 px-8">
+            <div className="h-screen lg:grid lg:grid-cols-12 flex flex-col justify-between lg:gap-16 gap-6 lg:py-10 bg-primary-dark rounded-t-[4rem] lg:px-20 px-8">
                 <div className="lg:col-span-5 flex flex-col gap-16 items-start justify-cente lg:h-full">
                     <p className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">What I Do</p>
                     <div className="flex flex-col gap-2">
