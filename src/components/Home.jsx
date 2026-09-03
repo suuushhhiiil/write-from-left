@@ -108,7 +108,9 @@ const Home = () => {
             {/* Let's Talk */}
             <div className='min-h-screen flex flex-col gap-4 lg:py-20 pt-20 pb-4 border-b border-secondary'>
                 <p className='text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider'>Let's Talk</p>
-                <h1>HAVE AN IDEA YOU’RE TRYING TO FIGURE OUT?</h1>
+                <div className="flex flex-col gap-2 lg:w-1/2">
+                    <h1 className='variable-hero-text text-5xl font-medium font-serif capitalize'>{homeContent.letsTalkSection.heading}</h1>
+                </div>
             </div>
         </section >
     )
