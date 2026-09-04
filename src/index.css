@@ -105,6 +105,13 @@ html {
   background-repeat: no-repeat;
 }
 
+.footer {
+  background: url("../src/images/home/talk-02.png") no-repeat right center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* .dark-theme {
   --color-background: #121212;
   --color-surface: #343a40;
