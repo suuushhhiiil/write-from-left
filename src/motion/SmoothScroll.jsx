@@ -19,8 +19,21 @@ const SmoothScroll = ({ children }) => {
 
         animationFrameId = requestAnimationFrame(raf);
 
+        const stopScroll = () => lenis.stop();
+        const startScroll = (event) => {
+            lenis.start();
+            const scrollY = event?.detail?.scrollY;
+            if (typeof scrollY === 'number') {
+                lenis.scrollTo(scrollY, { immediate: true });
+            }
+        };
+        window.addEventListener('lenis:stop', stopScroll);
+        window.addEventListener('lenis:start', startScroll);
+
         return () => {
             cancelAnimationFrame(animationFrameId);
+            window.removeEventListener('lenis:stop', stopScroll);
+            window.removeEventListener('lenis:start', startScroll);
             lenis.destroy();
         };
     }, []);

@@ -89,6 +89,42 @@ html {
   @apply text-primary border text-sm border-primary w-fit px-4 py-2 hover:bg-primary hover:text-white rounded-md transition-all duration-300;
 }
 
+html.dialog-open,
+html.dialog-open body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+html.dialog-open body {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.project-dialog {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.project-dialog-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.project-dialog-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.project-dialog::backdrop {
+  background: rgb(21 21 21 / 45%);
+  backdrop-filter: blur(8px);
+}
+
 .first-draft-section {
   background: url("../src/images/home/first-draft.png") no-repeat left center;
   background-size: cover;
