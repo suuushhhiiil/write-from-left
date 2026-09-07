@@ -27,8 +27,8 @@ const Products = () => {
     return (
         <section className="pb-12 p-4 flex flex-col gap-8">
             <div className="products-hero h-screen overflow-hidden rounded-[3rem]">
-                <div className="lg:px-20 px-8 bg-linear-to-t from-dark to-transparent w-full h-full flex flex-col gap-8 pt-12">
-                    <h1 className="lg:text-7xl text-5xl text-light font-serif lg:w-2/3">{productsContent.hero.title}</h1>
+                <div className="lg:px-20 px-8 w-full bg-dark/75 h-full flex flex-col justify-center items-center gap-8 pb-56">
+                    <h1 className="lg:text-7xl text-5xl text-center text-light font-serif lg:w-3/4">{productsContent.hero.title}</h1>
                     <Link to={productsContent.hero.cta.href} className="btn-primary">
                         {productsContent.hero.cta.label}
                     </Link>
@@ -36,11 +36,11 @@ const Products = () => {
             </div>
 
 
-            <div className="lg:px-20 px-4 lg:-mt-32 -mt-50 min-h-screen">
+            <div className="lg:px-20 px-4 -mt-50 min-h-screen">
                 <div className="bg-light rounded-2xl p-6 flex flex-col gap-8">
                     <div className="lg:grid lg:grid-cols-12 flex lg:grid-rows-4 flex-col lg:gap-2 gap-4">
                         <div className="lg:col-span-4 lg:row-span-4 flex flex-col justify-center gap-4">
-                            <h3 className="text-2xl font-semibold">{productsContent.hero.description[0]}</h3>
+                            <h3 className="text-2xl font-semibold leading-tight">{productsContent.hero.description[0]}</h3>
                             <div className="flex lg:flex-col items-start flex-wrap gap-1">
                                 <ul className="flex flex-col gap-2 list-disc px-6">
                                     {productsContent.hero.description.map((description, index) => (
@@ -83,13 +83,15 @@ const Products = () => {
                         <p className="text-dark-accent">{productsContent.philosophy.description}</p>
                         <p className="text-dark-accent">{productsContent.philosophy.closing}</p>
                     </div>
-                    <div className="lg:col-span-6 lg:row-span-4 flex flex-col gap-1 rounded-2xl p-8 pt-8">
+                    <div className="lg:col-span-6 lg:row-span-4 flex flex-col justify-center rounded-2xl p-8">
                         <h2 className="text-4xl font-semibold">{productsContent.contact.title}</h2>
-                        <p className="text-dark-accent">{productsContent.contact.description}</p>
-                        <p className="text-dark-accent">{productsContent.contact.statement}</p>
-                        <Link to={productsContent.contact.cta.href} className="btn-primary mt-2">
-                            {productsContent.contact.cta.label}
-                        </Link>
+                        <div className="flex flex-col">
+                            <p className="text-dark-accent text-lg">{productsContent.contact.description}</p>
+                            <p className="text-dark-accent text-lg">{productsContent.contact.statement}</p>
+                            <Link to={productsContent.contact.cta.href} className="btn-primary mt-2">
+                                {productsContent.contact.cta.label}
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
