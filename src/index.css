@@ -86,7 +86,7 @@ html {
   @apply bg-primary text-white text-sm w-fit px-4 py-2 rounded-md hover:bg-primary-dark cursor-pointer transition-all duration-300;
 }
 .btn-primary-invert {
-  @apply bg-light text-primary text-sm w-fit px-4 py-2 rounded-md hover:bg-secondary cursor-pointer transition-all duration-300;
+  @apply bg-light text-dark text-sm w-fit px-4 py-2 rounded-md hover:bg-secondary cursor-pointer transition-all duration-300;
 }
 
 .btn-secondary {

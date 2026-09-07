@@ -80,7 +80,7 @@ const ProjectCard = ({ project, onOpen }) => (
             </div>
 
             <div className="flex flex-col gap-2">
-                <h2 className="text-2xl leading-tight font-medium font-serif">
+                <h2 className="text-2xl leading-tight font-bold">
                     {project.title}
                 </h2>
                 <p className="text-lg leading-tight font-light text-dark-accent">
@@ -219,7 +219,7 @@ const ProjectDialog = ({ project, onClose }) => {
                                 )}
                             </div>
 
-                            <h2 id="project-dialog-title" className="text-3xl leading-tight font-medium font-serif lg:text-5xl">
+                            <h2 id="project-dialog-title" className="text-3xl leading-tight font-bold lg:text-5xl">
                                 {project.title}
                             </h2>
 
@@ -302,7 +302,7 @@ const Projects = () => {
     const closeDialog = useCallback(() => setSelectedProject(null), [])
 
     return (
-        <section className="projects pb-20">
+        <section className="projects pb-20 lg:px-20 px-4">
             <div className="lg:grid lg:grid-cols-12 flex flex-col items-start gap-6 pt-10 lg:pt-16 lg:gap-8">
                 <div className="lg:col-span-6 flex flex-col gap-2">
                     <h1 className="variable-hero-text text-5xl font-medium font-serif leading-none">
@@ -352,7 +352,7 @@ const Projects = () => {
             <div className="mt-20 rounded-3xl bg-primary p-6 text-background lg:p-12">
                 <div className="lg:grid lg:grid-cols-12 lg:items-end lg:gap-8">
                     <div className="lg:col-span-7 flex flex-col gap-2">
-                        <h2 className="text-4xl font-medium font-serif lg:text-5xl">
+                        <h2 className="text-4xl font-bold lg:text-5xl">
                             {projects.contact.title}
                         </h2>
                         <p className="text-xl leading-tight font-light text-secondary">

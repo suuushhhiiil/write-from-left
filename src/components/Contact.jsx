@@ -45,7 +45,7 @@ const Contact = () => {
     }
 
     return (
-        <section className="contact pb-20 pt-10 lg:pt-8">
+        <section className="contact pb-20 pt-10 lg:pt-8 lg:px-20 px-8">
             <div className="rounded-3xl bg-light p-4 lg:p-6">
                 <div className="grid items-stretch gap-6 lg:grid-cols-12 lg:gap-10">
                     <div className="relative min-h-[420px] overflow-hidden rounded-2xl lg:col-span-5 lg:min-h-[720px]">

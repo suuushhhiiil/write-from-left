@@ -14,8 +14,8 @@ import { useEffect } from 'react';
 gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
     return (
-        <section className="lg:px-20 px-8">
-            <div className="lg:grid lg:grid-cols-12 h-screen gap-8 flex flex-col items-center ">
+        <section className="">
+            <div className="lg:px-20 px-4 lg:grid lg:grid-cols-12 h-screen gap-8 flex flex-col items-center ">
                 <div className="lg:col-span-6 flex flex-col lg:h-full justify-center gap-16 lg:py-20 pt-10">
                     <div className="">
                         <h1 className="font-script text-primary text-2xl">Hi, I'm</h1>
@@ -38,7 +38,7 @@ const Home = () => {
             </div>
 
             {/* What I am building */}
-            <div className="h-screen lg:grid border-b border-secondary lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6  py-20">
+            <div className="h-screen lg:px-20 px-4 lg:grid border-b border-secondary lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6  py-20">
                 <div className="lg:col-span-5 flex  flex-col lg:gap-24 items-start justify-center lg:h-full">
                     <div className="flex flex-col gap-4">
                         <p className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">What I am building</p>
@@ -59,7 +59,7 @@ const Home = () => {
             </div>
 
             {/* What I Do */}
-            <div className="flex flex-col gap-2 py-20  border-b border-secondary">
+            <div className="lg:px-20 px-4 flex flex-col gap-2 py-20  border-b border-secondary">
                 <h3 className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">{homeContent.whatIDoSection.title}</h3>
 
                 <div className="lg:grid lg:grid-cols-12 flex flex-col gap-4 mt-4 items-start">
@@ -92,28 +92,29 @@ const Home = () => {
             </div>
 
             {/* Proof */}
-            <div className="mt-20 flex flex-col p-6 gap-4 pt-20 border-b border-secondary bg-primary text-background  rounded-3xl">
-                <h3 className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">{homeContent.experienceSection.title}</h3>
+            <div className="lg:px-20 px-4 mt-20">
+                <div className="flex flex-col p-4 gap-4 pt-20 border-b border-secondary bg-primary text-background rounded-3xl">
+                    <h3 className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">{homeContent.experienceSection.title}</h3>
 
-                <h1 className='text-5xl font-medium font-serif capitalize '>{homeContent.experienceSection.heading}</h1>
-                <div className="">
-                    <p className="text-xl leading-tight font-light text-secondary">{homeContent.experienceSection.description}</p>
-                </div>
+                    <h1 className='text-5xl font-medium font-serif capitalize '>{homeContent.experienceSection.heading}</h1>
+                    <div className="">
+                        <p className="text-xl leading-tight font-light text-secondary">{homeContent.experienceSection.description}</p>
+                    </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
-                    {homeContent.experienceSection.items.map((item, index) => (
-                        <div key={index} className="flex flex-col gap-2 rounded-xl p-6 bg-secondary h-64 relative overflow-hidden">
-                            <h3 className="text-5xl font-semibold text-primary leading-none">{item.title}</h3>
-                            <p className="text-lg text-dark-accent leading-tight">{item.description}</p>
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
+                        {homeContent.experienceSection.items.map((item, index) => (
+                            <div key={index} className="flex flex-col gap-2 rounded-xl p-6 bg-secondary h-64 relative overflow-hidden">
+                                <h3 className="text-5xl font-semibold text-primary leading-none">{item.title}</h3>
+                                <p className="text-lg text-dark-accent leading-tight">{item.description}</p>
 
-                            <img src={item.image} alt={item.title} className="object-cover w-full h-full rounded-2xl absolute -rotate-12 top-[45%] left-[30%] shadow-2xl shadow-dark z-0" />
-                        </div>
-                    ))}
+                                <img src={item.image} alt={item.title} className="object-cover w-full h-full rounded-2xl absolute -rotate-12 top-[45%] left-[30%] shadow-2xl shadow-dark z-0" />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
-
             {/* Let's Talk */}
-            <div className='h-screen relative flex flex-col items-center justify-center gap-4 pt-20 pb-8'>
+            <div className='lg:px-20 px-4 h-screen relative flex flex-col items-center justify-center gap-4 pt-20 pb-8'>
                 <div className='lg:grid lg:grid-cols-12 flex flex-col gap-4 '>
                     <div className='lg:col-span-3'>
                         <p className='text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider'>Let's Talk</p>
