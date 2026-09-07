@@ -2,15 +2,20 @@ import React from 'react'
 import heroImage from '../images/home/hero.png'
 import firstDraftImage from '../images/home/first-draft.png'
 import letsTalkImage from '../images/home/talk-01.png'
-
-import { Link } from 'react-router-dom';
 import homeContent from '../assets/home';
+import { Link } from 'react-router-dom';
 import { Handshake } from 'lucide-react';
 
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect } from 'react';
+
+
+gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
     return (
-        <section className="home">
-            <div className="lg:grid lg:grid-cols-12 h-screen gap-8 flex flex-col items-center">
+        <section className="lg:px-20 px-8">
+            <div className="lg:grid lg:grid-cols-12 h-screen gap-8 flex flex-col items-center ">
                 <div className="lg:col-span-6 flex flex-col lg:h-full justify-center gap-16 lg:py-20 pt-10">
                     <div className="">
                         <h1 className="font-script text-primary text-2xl">Hi, I'm</h1>
@@ -22,7 +27,7 @@ const Home = () => {
 
                     <div className="flex flex-col gap-2">
                         <p className='lg:text-2xl text-xl font-light leading-none'>I believe your life is the <span className="italic text-primary">biggest</span> project you'll ever manage.</p>
-                        <p className='text-xl font-serif mt-2 italic text-accent'>So, What are you building?</p>
+                        <p className='text-2xl font-serif mt-2 italic text-accent'>So, What are you building?</p>
                         <Link to="/projects" className="btn-primary mt-1">Work With Me</Link>
                     </div>
                 </div>
@@ -33,8 +38,8 @@ const Home = () => {
             </div>
 
             {/* What I am building */}
-            <div className="h-screen lg:grid border-b border-secondary lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6 lg:py-20 pt-20 pb-4">
-                <div className="lg:col-span-5 flex  flex-col lg:gap-24 gap-16 items-start justify-center lg:h-full">
+            <div className="h-screen lg:grid border-b border-secondary lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6  py-20">
+                <div className="lg:col-span-5 flex  flex-col lg:gap-24 items-start justify-center lg:h-full">
                     <div className="flex flex-col gap-4">
                         <p className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">What I am building</p>
                         <div className="flex flex-col gap-2">
@@ -43,18 +48,18 @@ const Home = () => {
                             <p className="text-xl leading-tight font-light mt-2">A focused writing meetup built around time, accountability and making real progress on the thing you’ve been meaning to write.</p>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 mt-16">
                         <p className="text-xl font-serif italic text-accent">Write your book & make your author dreams come true! </p>
                         <Link to="/projects" className="btn-secondary">Join the Next Meetup <span className="">→</span></Link>
                     </div>
                 </div>
                 <div className="lg:col-span-7 flex items-center justify-center h-full">
-                    <img src={firstDraftImage} alt="First Draft" className="w-full h-full lg:h-2/3 object-cover rounded-3xl" />
+                    <img src={firstDraftImage} alt="First Draft" className="w-full h-full object-cover rounded-3xl shadow-2xl" />
                 </div>
             </div>
 
             {/* What I Do */}
-            <div className="min-h-screen flex flex-col gap-2 lg:py-20 pt-20 pb-4 border-b border-secondary">
+            <div className="flex flex-col gap-2 py-20  border-b border-secondary">
                 <h3 className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">{homeContent.whatIDoSection.title}</h3>
 
                 <div className="lg:grid lg:grid-cols-12 flex flex-col gap-4 mt-4 items-start">
@@ -122,7 +127,7 @@ const Home = () => {
                         <Link to="/contact" className="btn-primary">{homeContent.letsTalkSection.buttonText}{" "}<span className="">→</span></Link>
 
                     </div>
-                    <div className='lg:-col-start-7 lg:col-span-6 lg:row-span-4 lg:mt-0 mt-16'>
+                    <div className='lg:-col-start-7 lg:col-span-6 lg:row-start-1 lg:row-span-3 lg:mt-0 mt-16'>
                         <img src={letsTalkImage} alt="Let's Talk" className="w-full h-full object-cover rounded-3xl shadow-2xl" />
                     </div>
                 </div>

@@ -7,7 +7,7 @@ function MainLayout() {
             <div className="sticky top-0 z-50">
                 <Nav />
             </div>
-            <main className="lg:px-20 px-8">
+            <main className="">
                 <Outlet />
             </main>
         </div>

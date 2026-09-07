@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
 @import "tailwindcss";
 
 @theme {
@@ -82,11 +83,14 @@ html {
 }
 
 .btn-primary {
-  @apply bg-primary text-white text-sm w-fit px-4 py-2 rounded-md hover:bg-primary-dark transition-all duration-300;
+  @apply bg-primary text-white text-sm w-fit px-4 py-2 rounded-md hover:bg-primary-dark cursor-pointer transition-all duration-300;
+}
+.btn-primary-invert {
+  @apply bg-light text-primary text-sm w-fit px-4 py-2 rounded-md hover:bg-secondary cursor-pointer transition-all duration-300;
 }
 
 .btn-secondary {
-  @apply text-primary border text-sm border-primary w-fit px-4 py-2 hover:bg-primary hover:text-white rounded-md transition-all duration-300;
+  @apply text-primary border text-sm border-primary w-fit px-4 py-2 hover:bg-primary hover:text-white rounded-md cursor-pointer transition-all duration-300;
 }
 
 html.dialog-open,
@@ -145,6 +149,13 @@ html.dialog-open body {
   background: url("../src/images/home/talk-02.png") no-repeat right center;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+.products-hero {
+  background: url("../src/images/products/hero.png") no-repeat center center;
+  background-size: cover;
+  background-position: top left;
   background-repeat: no-repeat;
 }
 
