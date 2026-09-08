@@ -12,7 +12,7 @@ const Home = () => {
     // homeMotion();
 
     return (
-        <section className="">
+        <section className="pb-8">
             <div className="hero-container lg:px-20 px-4 lg:grid lg:grid-cols-12 h-screen gap-8 flex flex-col items-center">
                 <div className="lg:col-span-6 flex flex-col lg:h-full justify-center gap-16 lg:py-20 pt-10">
                     <div className="">
@@ -112,7 +112,7 @@ const Home = () => {
                 </div>
             </div>
             {/* Let's Talk */}
-            <div className='lg:px-20 px-4 h-screen relative flex flex-col items-center justify-center gap-4 pt-20 pb-8'>
+            <div className='lg:px-20 px-4 h-screen relative flex flex-col items-center justify-center gap-4 pt-20'>
                 <div className='lg:grid lg:grid-cols-12 flex flex-col gap-4 '>
                     <div className='lg:col-span-3'>
                         <p className='text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider'>Let's Talk</p>
