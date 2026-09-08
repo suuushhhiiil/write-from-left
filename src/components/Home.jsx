@@ -5,29 +5,27 @@ import letsTalkImage from '../images/home/talk-01.png'
 import homeContent from '../assets/home';
 import { Link } from 'react-router-dom';
 import { Handshake } from 'lucide-react';
+import homeMotion from '../motion/home';
 
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect } from 'react';
-
-
-gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
+
+    // homeMotion();
+
     return (
         <section className="">
-            <div className="lg:px-20 px-4 lg:grid lg:grid-cols-12 h-screen gap-8 flex flex-col items-center ">
+            <div className="hero-container lg:px-20 px-4 lg:grid lg:grid-cols-12 h-screen gap-8 flex flex-col items-center">
                 <div className="lg:col-span-6 flex flex-col lg:h-full justify-center gap-16 lg:py-20 pt-10">
                     <div className="">
                         <h1 className="font-script text-primary text-2xl">Hi, I'm</h1>
                         <div className="flex flex-col items-start gap-4 ">
-                            <h1 className="variable-hero-text text-6xl font-medium font-serif leading-none lg:text-nowrap">Khushboo Sangwan,</h1>
-                            <p className="text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md">Creative Project Manager & Content Strategist.</p>
+                            <h1 className="variable-hero-text hero-name text-6xl font-medium font-serif leading-none lg:text-nowrap">Khushboo Sangwan,</h1>
+                            <p className="hero-role text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md">Creative Project Manager & Content Strategist.</p>
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-2">
-                        <p className='lg:text-2xl text-xl font-light leading-none'>I believe your life is the <span className="italic text-primary">biggest</span> project you'll ever manage.</p>
-                        <p className='text-2xl font-serif mt-2 italic text-accent'>So, What are you building?</p>
+                        <p className='hero-description text-xl font-light leading-none'>I believe your life is the <span className="italic text-primary font-medium">biggest</span> project you'll ever manage.</p>
+                        <p className='hero-description text-xl font-serif mt-2 italic text-accent'>So, What are you building?</p>
                         <Link to="/projects" className="btn-primary mt-1">Work With Me</Link>
                     </div>
                 </div>
@@ -54,7 +52,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="lg:col-span-7 flex items-center justify-center h-full">
-                    <img src={firstDraftImage} alt="First Draft" className="w-full h-full object-cover rounded-3xl shadow-2xl" />
+                    <img src={firstDraftImage} alt="First Draft" className="w-full h-full object-cover rounded-xl" />
                 </div>
             </div>
 
@@ -129,7 +127,7 @@ const Home = () => {
 
                     </div>
                     <div className='lg:-col-start-7 lg:col-span-6 lg:row-start-1 lg:row-span-3 lg:mt-0 mt-16'>
-                        <img src={letsTalkImage} alt="Let's Talk" className="w-full h-full object-cover rounded-3xl shadow-2xl" />
+                        <img src={letsTalkImage} alt="Let's Talk" className="w-full h-full object-cover rounded-xl" />
                     </div>
                 </div>
             </div>

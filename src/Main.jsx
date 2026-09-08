@@ -8,6 +8,7 @@ import SmoothScroll from './motion/SmoothScroll.jsx'
 import Projects from './components/Projects.jsx'
 import Contact from './components/Contact.jsx'
 import Products from './components/Products.jsx'
+import About from './components/About.jsx'
 
 
 
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/about" element={<About />} />
           </Route>
         </Routes>
       </BrowserRouter>

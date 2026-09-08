@@ -25,10 +25,10 @@ const ComingSoon = (product) => {
 
 const Products = () => {
     return (
-        <section className="pb-12 pt-4 flex flex-col gap-8 ">
-            <div className="products-hero h-[75vh] overflow-hidden lg:rounded-[3rem] rounded-2xl mx-4">
-                <div className="lg:px-20 px-8 w-full bg-dark/50 h-full flex flex-col justify-center items-center gap-8">
-                    <h1 className="lg:text-7xl text-5xl text-center text-light font-serif lg:w-3/4">{productsContent.hero.title}</h1>
+        <section className="py-4 flex flex-col gap-8 ">
+            <div className="products-hero h-[80vh] overflow-hidden rounded-3xl lg:mx-20 mx-4 flex flex-col justify-end  items-center p-4">
+                <div className="backdrop-blur-xs flex flex-col justify-center items-center gap-8 p-4 rounded-2xl bg-light/50">
+                    <h1 className="lg:text-7xl text-5xl text-center text-liht font-serif">{productsContent.hero.title}</h1>
                     <Link to={productsContent.hero.cta.href} className="btn-primary">
                         {productsContent.hero.cta.label}
                     </Link>
@@ -36,7 +36,7 @@ const Products = () => {
             </div>
 
 
-            <div className="lg:px-20 px-4 h-screen">
+            <div className="lg:px-20 px-4 h-scren">
                 <div className="bg-primary-dark overflow-hidden rounded-2xl relative h-full p-4 flex flex-col justify-between gap-8 mt-4 lg:mt-0">
                     <div className="flex flex-col justify-between gap-6 lg:w-[70%]">
                         <h1 className="text-4xl text-light font-semibold">{productsContent.digitalProducts.title}</h1>
@@ -76,24 +76,22 @@ const Products = () => {
                     ))}
                 </div>
             </div>
-            <div className="lg:px-20 p-4">
-                <div className="lg:grid lg:grid-cols-12 flex flex-col border border-primary rounded-2xl overflow-hidden">
-                    <div className="lg:col-span-6 lg:row-span-4 flex flex-col gap-1 bg-primary p-8 pt-8 text-light/50">
-                        <h2 className="text-4xl font-semibold text-light">{productsContent.philosophy.title}</h2>
-                        <p className=" mt-3">{productsContent.philosophy.opening}</p>
-                        <p className="">{productsContent.philosophy.statement}</p>
-                        <p className="">{productsContent.philosophy.description}</p>
-                        <p className="">{productsContent.philosophy.closing}</p>
-                    </div>
-                    <div className="lg:col-span-6 lg:row-span-4 flex flex-col justify-between gap-4 rounded-2xl p-12">
-                        <h2 className="text-4xl font-semibold">{productsContent.contact.title}</h2>
-                        <div className="flex flex-col">
-                            <p className="text-dark-accent leading-tight text-lg">{productsContent.contact.description}</p>
-                            <p className="text-dark-accent leading-tight text-lg">{productsContent.contact.statement}</p>
-                            <Link to={productsContent.contact.cta.href} className="btn-primary mt-2">
-                                {productsContent.contact.cta.label}
-                            </Link>
-                        </div>
+            <div className="lg:grid lg:grid-cols-12 flex flex-col border border-primary overflow-hidden lg:mx-20 mx-4 rounded-2xl">
+                <div className="lg:col-span-6 lg:row-span-4 flex flex-col gap-1 bg-primary p-8 pt-8 text-light/60">
+                    <h2 className="text-4xl font-semibold text-light">{productsContent.philosophy.title}</h2>
+                    <p className=" mt-3">{productsContent.philosophy.opening}</p>
+                    <p className="">{productsContent.philosophy.statement}</p>
+                    <p className="">{productsContent.philosophy.description}</p>
+                    <p className="">{productsContent.philosophy.closing}</p>
+                </div>
+                <div className="lg:col-span-6 lg:row-span-4 flex flex-col justify-around gap-4 rounded-2xl p-12">
+                    <h2 className="text-4xl font-semibold">{productsContent.contact.title}</h2>
+                    <div className="flex flex-col">
+                        <p className="text-dark-accent leading-tight text-lg">{productsContent.contact.description}</p>
+                        <p className="text-dark-accent leading-tight text-lg">{productsContent.contact.statement}</p>
+                        <Link to={productsContent.contact.cta.href} className="btn-primary mt-2">
+                            {productsContent.contact.cta.label}
+                        </Link>
                     </div>
                 </div>
             </div>
