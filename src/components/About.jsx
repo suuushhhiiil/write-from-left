@@ -20,7 +20,7 @@ const About = () => {
                 </div>
 
                 <div className="lg:col-span-6 lg:col-start-1 lg:row-span-9 lg:row-start-4 h-full gap-2 flex flex-col rounded-xl overflow-hidden lg:mt-0 mt-8">
-                    <img src={aboutImage} alt="about" className="w-full h-full object-cover" />
+                    <img loading="lazy" src={aboutImage} alt="about" className="w-full h-full object-cover" />
                 </div>
 
                 <div className="lg:-col-start-6 lg:col-span-4 lg:row-start-8 lg:row-span-4 flex flex-col ustify-center gap-4 lg:mt-0 mt-8  ">
@@ -35,7 +35,7 @@ const About = () => {
 
             <hr className="mt-10 border-secondary mx-20" />
 
-            <div className="lg:px-20 px-8 pt-20">
+            <div className="lg:px-20 px-4 pt-20">
                 <div className="lg:h-screen lg:grid lg:grid-cols-12 lg:grid-rows-10 flex flex-col lg:gap-4 gap-8">
                     <div className="lg:col-start-1 lg:col-span-5 lg:row-start-4 lg:row-span-2 gap-2 flex flex-col">
                         <h1 className="lg:text-5xl text-4xl font-semibold capitalize">{aboutContent.aboutMe.title}</h1>
@@ -49,14 +49,15 @@ const About = () => {
                     </div>
 
                     <div className="relative lg:col-start-7 lg:col-span-6 lg:row-start-2 lg:row-span-8 gap-2 flex flex-col mt-8 lg:mt-0">
-                        <img src={aboutMeImage} alt="about" className="w-full h-full object-cover rounded-xl" />
-                        <p className="lg:block hidden absolute top-[30%] left-0 lg:text-sm text-xs leading-tight translate-[-50%] w-[40%] bg-secondary font-medium shadow-xl p-4 rounded-xl">{`"${aboutContent.aboutMe.closing}"`}</p>
+                        <img loading="lazy" src={aboutMeImage} alt="about" className="w-full h-full object-cover rounded-xl" />
+                        <p className="lg:block hidden absolute lg:top-[30%] top-[80%] lg:left-0 left-[75%] lg:text-sm text-xs leading-tight translate-[-50%] w-[40%] bg-secondary font-medium shadow-xl p-4 rounded-xl">{`"${aboutContent.aboutMe.closing}"`}</p>
                     </div>
                 </div>
             </div>
 
             <div className="lg:px-20 px-8 pt-20">
                 <div className="lg:h-screen lg:grid lg:grid-cols-12 lg:grid-rows-10 flex flex-col gap-4">
+
                 </div>
             </div>
 

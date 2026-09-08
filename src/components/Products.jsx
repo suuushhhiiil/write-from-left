@@ -10,7 +10,7 @@ const ComingSoon = (product) => {
     return (
         <div className="flex flex-col min-w-1/3 rounded-xl overflow-hidden border border-secondary bg-light p-4">
             <div className="relative">
-                <img src={image} alt={product.type} className="w-full h-full object-cover rounded-lg" />
+                <img loading="lazy" src={image} alt={product.type} className="w-full h-full object-cover rounded-lg" />
                 <p className="text-xs text-dark w-fit bg-secondary px-2 py-1 rounded-full text-nowrap whitespace-nowrap absolute bottom-2 right-2">{product.status}</p>
             </div>
             <div className="flex flex-col gap-1 pt-4">
@@ -49,7 +49,7 @@ const Products = () => {
                     <Link to={productsContent.digitalProducts.cta.href} className="btn-primary-invert mt-2">
                         {productsContent.digitalProducts.cta.label}
                     </Link>
-                    <img src={digitalProductsImage} alt={productsContent.digitalProducts.title} className="w-full h-full object-cover rounded-lg" />
+                    <img loading="lazy" src={digitalProductsImage} alt={productsContent.digitalProducts.title} className="w-full h-full object-cover rounded-lg" />
                 </div>
                 {/* <div className="bg-light rounded-2xl p-4 flex flex-col gap-8">
                     <div className="lg:grid lg:grid-cols-12 flex lg:grid-rows-4 flex-col lg:gap-2 gap-4">
@@ -76,22 +76,25 @@ const Products = () => {
                     ))}
                 </div>
             </div>
-            <div className="lg:grid lg:grid-cols-12 flex flex-col border border-primary overflow-hidden lg:mx-20 mx-4 rounded-2xl">
-                <div className="lg:col-span-6 lg:row-span-4 flex flex-col gap-1 bg-primary p-8 pt-8 text-light/60">
-                    <h2 className="text-4xl font-semibold text-light">{productsContent.philosophy.title}</h2>
-                    <p className=" mt-3">{productsContent.philosophy.opening}</p>
-                    <p className="">{productsContent.philosophy.statement}</p>
-                    <p className="">{productsContent.philosophy.description}</p>
-                    <p className="">{productsContent.philosophy.closing}</p>
-                </div>
-                <div className="lg:col-span-6 lg:row-span-4 flex flex-col justify-around gap-4 rounded-2xl p-12">
-                    <h2 className="text-4xl font-semibold">{productsContent.contact.title}</h2>
-                    <div className="flex flex-col">
-                        <p className="text-dark-accent leading-tight text-lg">{productsContent.contact.description}</p>
-                        <p className="text-dark-accent leading-tight text-lg">{productsContent.contact.statement}</p>
-                        <Link to={productsContent.contact.cta.href} className="btn-primary mt-2">
-                            {productsContent.contact.cta.label}
-                        </Link>
+
+            <div className="lg:px-20 px-4 py-12">
+                <div className="lg:grid lg:grid-cols-12 flex flex-col border border-primary overflow-hidden rounded-2xl">
+                    <div className="lg:col-span-6 lg:row-span-4 flex flex-col gap-1 bg-primary p-8 pt-8 text-light/60">
+                        <h2 className="text-4xl font-semibold text-light">{productsContent.philosophy.title}</h2>
+                        <p className=" mt-3">{productsContent.philosophy.opening}</p>
+                        <p className="">{productsContent.philosophy.statement}</p>
+                        <p className="">{productsContent.philosophy.description}</p>
+                        <p className="">{productsContent.philosophy.closing}</p>
+                    </div>
+                    <div className="lg:col-span-6 lg:row-span-4 flex flex-col justify-around gap-4 rounded-2xl p-12">
+                        <h2 className="text-4xl font-semibold">{productsContent.contact.title}</h2>
+                        <div className="flex flex-col">
+                            <p className="text-dark-accent leading-tight text-lg">{productsContent.contact.description}</p>
+                            <p className="text-dark-accent leading-tight text-lg">{productsContent.contact.statement}</p>
+                            <Link to={productsContent.contact.cta.href} className="btn-primary mt-2">
+                                {productsContent.contact.cta.label}
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
