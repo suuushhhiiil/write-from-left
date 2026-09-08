@@ -41,7 +41,7 @@ const ProjectMedia = ({ project, className = '' }) => {
 
     if (image) {
         return (
-            <img loading="lazy"
+            <img
                 src={image}
                 alt={project.title}
                 className={`h-full w-full object-cover ${className}`}

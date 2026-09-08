@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import logo from '../images/nav/logo.png'
 import { Menu } from 'lucide-react'
 import { navItems } from '../assets/nav'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 
 const Nav = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const location = useLocation()
+    const isActive = (page) => location.pathname.includes(page)
 
     const navRef = useRef(null)
     const toggleMenu = () => {
@@ -32,7 +34,7 @@ const Nav = () => {
             </div>
             <ul className="items-center gap-4 hidden lg:flex text-sm">
                 {navItems.map((item) => (
-                    <Link key={item.to} to={item.to} className="text-sm cursor-pointer hover:text-primary transition-all duration-300">{item.label}</Link>
+                    <Link key={item.to} to={item.to} className={`text-sm cursor-pointer hover:text-primary transition-all duration-300 ${isActive(item.to) ? 'text-primary font-bold' : 'text-dark'}`}>{item.label}</Link>
                 ))}
             </ul>
 

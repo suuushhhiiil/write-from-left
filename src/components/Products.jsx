@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const ComingSoon = (product) => {
     const image = product.type.toLowerCase() === 'courses' ? coursesImage : journalsImage;
     return (
-        <div className="flex flex-col min-w-1/3 rounded-xl overflow-hidden border border-secondary bg-light p-4">
+        <div className="flex flex-col min-w-1/3 rounded-xl overflow-hidden border border-secondary bg-secondary p-4">
             <div className="relative">
                 <img loading="lazy" src={image} alt={product.type} className="w-full h-full object-cover rounded-lg" />
                 <p className="text-xs text-dark w-fit bg-secondary px-2 py-1 rounded-full text-nowrap whitespace-nowrap absolute bottom-2 right-2">{product.status}</p>
