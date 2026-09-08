@@ -49,7 +49,7 @@ const Contact = () => {
             <div className="rounded-3xl bg-light p-4 lg:p-6">
                 <div className="grid items-stretch gap-6 lg:grid-cols-12 lg:gap-10">
                     <div className="relative min-h-[420px] overflow-hidden rounded-2xl lg:col-span-5 lg:min-h-[720px]">
-                        <img
+                        <img loading="lazy"
                             src={heroImage}
                             alt={hero.title}
                             className="absolute inset-0 h-full w-full object-cover object-center"
@@ -111,8 +111,8 @@ const Contact = () => {
                                                         <label
                                                             key={option}
                                                             className={`cursor-pointer rounded-full border px-3 py-2 text-sm transition-colors duration-300 ${selected
-                                                                    ? 'border-primary bg-primary text-light'
-                                                                    : 'border-secondary bg-background text-dark hover:border-primary/40'
+                                                                ? 'border-primary bg-primary text-light'
+                                                                : 'border-secondary bg-background text-dark hover:border-primary/40'
                                                                 }`}
                                                         >
                                                             <input

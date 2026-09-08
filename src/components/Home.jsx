@@ -31,7 +31,7 @@ const Home = () => {
                 </div>
 
                 <div className="lg:col-span-6 border-b border-secondary">
-                    <img src={heroImage} alt="Hero" className="lg:w-full object-cover" />
+                    <img loading="lazy" src={heroImage} alt="Hero" className="lg:w-full object-cover" />
                 </div>
             </div>
 
@@ -52,7 +52,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="lg:col-span-7 flex items-center justify-center h-full">
-                    <img src={firstDraftImage} alt="First Draft" className="w-full h-full object-cover rounded-xl" />
+                    <img loading="lazy" src={firstDraftImage} alt="First Draft" className="w-full h-full object-cover rounded-xl" />
                 </div>
             </div>
 
@@ -105,7 +105,7 @@ const Home = () => {
                                 <h3 className="text-5xl font-semibold text-primary leading-none">{item.title}</h3>
                                 <p className="text-lg text-dark-accent leading-tight">{item.description}</p>
 
-                                <img src={item.image} alt={item.title} className="object-cover w-full h-full rounded-2xl absolute -rotate-12 top-[45%] left-[30%] shadow-2xl shadow-dark z-0" />
+                                <img loading="lazy" src={item.image} alt={item.title} className="object-cover w-full h-full rounded-2xl absolute -rotate-12 top-[45%] left-[30%] shadow-2xl shadow-dark z-0" />
                             </div>
                         ))}
                     </div>
@@ -127,7 +127,7 @@ const Home = () => {
 
                     </div>
                     <div className='lg:-col-start-7 lg:col-span-6 lg:row-start-1 lg:row-span-3 lg:mt-0 mt-16'>
-                        <img src={letsTalkImage} alt="Let's Talk" className="w-full h-full object-cover rounded-xl" />
+                        <img loading="lazy" src={letsTalkImage} alt="Let's Talk" className="w-full h-full object-cover rounded-xl" />
                     </div>
                 </div>
             </div>
