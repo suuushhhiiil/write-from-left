@@ -1,0 +1,46 @@
+import { Link } from 'react-router-dom'
+import logo from '../images/nav/logo.png'
+import { InstagramIcon, LinkedInIcon, TikTokIcon } from '../assets/icons'
+
+const socialLinks = [
+    { name: 'TikTok', href: 'https://www.tiktok.com/@writefromleft', Icon: TikTokIcon },
+    { name: 'Instagram', href: 'https://www.instagram.com/writefromleft', Icon: InstagramIcon },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/khushboo-sangwan', Icon: LinkedInIcon },
+]
+
+const Footer = () => {
+    return (
+        <footer className="border-t border-secondary bg-secondary px-8 py-4 lg:px-20">
+            <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-3">
+                <Link to="/" className="flex items-center justify-center gap-3 lg:justify-start">
+                    <span className="text-lg font-medium">Write From Left</span>
+                </Link>
+
+                <nav aria-label="Social media" className="flex items-center justify-center gap-2">
+                    {socialLinks.map(({ name, href, Icon }) => (
+                        <a
+                            key={name}
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={name}
+                            className="inline-flex size-9 items-center justify-center rounded-md text-dark transition-colors duration-300 hover:bg-background hover:text-primary"
+                        >
+                            <Icon size={16} />
+                        </a>
+                    ))}
+                </nav>
+
+                <div className="flex items-center justify-center gap-3 text-xs text-dark-accent lg:justify-end">
+                    <p>© 2026 All rights reserved.</p>
+                    <span aria-hidden="true" className="h-3 w-px bg-dark/20" />
+                    <Link to="/privacy-policy" className="transition-colors duration-300 hover:text-primary">
+                        Privacy Policy
+                    </Link>
+                </div>
+            </div>
+        </footer>
+    )
+}
+
+export default Footer
