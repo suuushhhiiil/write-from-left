@@ -9,7 +9,7 @@ import Projects from './components/Projects.jsx'
 import Contact from './components/Contact.jsx'
 import Products from './components/Products.jsx'
 import About from './components/About.jsx'
-
+import WorkWithMe from './components/WorkWithMe.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -23,6 +23,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/contact" element={<Contact />} />
             <Route path="/products" element={<Products />} />
             <Route path="/about" element={<About />} />
+            <Route path="/work-with-me" element={<WorkWithMe />} />
           </Route>
         </Routes>
       </BrowserRouter>

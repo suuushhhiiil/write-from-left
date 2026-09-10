@@ -36,8 +36,11 @@ const Nav = () => {
             </div>
             <ul className="items-center gap-4 hidden lg:flex text-sm">
                 {navItems.map((item) => (
-                    <Link key={item.to} to={item.to} className={`text-sm cursor-pointer hover:text-primary transition-all duration-300 ${isActive(item.to) ? 'text-primary font-bold' : 'text-dark'}`}>{item.label}</Link>
+                    item.type === "button" ?
+                        <Link key={item.to} to={item.to} className={`btn-primary`}>{item.label}</Link> :
+                        <Link key={item.to} to={item.to} className={`text-sm cursor-pointer hover:text-primary transition-all duration-300 ${isActive(item.to) ? 'text-primary font-bold' : 'text-dark'}`}>{item.label}</Link>
                 ))}
+
             </ul>
 
             <div onClick={toggleMenu} className="lg:hidden flex items-center gap-4 text-primary p-2 rounded-md hover:bg-secondary">

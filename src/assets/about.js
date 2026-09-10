@@ -45,62 +45,37 @@ const aboutContent = {
   },
 
   childhood: {
-    title: "BEFORE ALL OF THIS, I WANTED TO BE A MODEL.",
+    title: "before all of this, i wanted to be a model.",
 
     image: {
       src: "/images/about/childhood-photo.webp",
       alt: "Childhood photo",
     },
 
-    paragraphs: [
-      "I was cute.",
-
-      "I had the confidence.",
-
-      "I even had the portfolio.",
-
-      "The two missing front teeth were clearly part of the look.",
-    ],
+    paragraph:
+      "I was cute. I had the confidence. I even had the portfolio. The two missing front teeth were clearly part of the look.",
 
     closing: "I was ready.",
   },
 
   writing: {
-    title: "THEN I FELL IN LOVE WITH WRITING.",
+    title: "then i fell in love with writing.",
 
-    paragraphs: [
-      "I started writing when I was around twelve.",
+    paragraph:
+      "I started writing when I was around twelve. My first poem was terrible. I had discovered that if two words rhymed, they could probably become a poem.",
 
-      "My first poem was terrible.",
-
-      "I had discovered that if two words rhymed, they could probably become a poem.",
-    ],
-
-    poem: ["Days.", "Heys.", "Ways.", "Trays."],
+    poem: "Days. Heys. Ways. Trays.",
 
     poemClosing: "You get the idea.",
 
-    closing: [
-      "But I kept writing.",
-
-      "Writing became a way to create, think, explore ideas and sometimes just get the thoughts out of my head.",
-
-      "I still write for all of those reasons.",
-    ],
+    closing: "But I kept writing.",
   },
 
   projectManagement: {
-    title: "AND THEN CAME PROJECT MANAGEMENT.",
+    title: "and then came project management.",
 
-    paragraphs: [
-      "I didn’t fall in love with project management because of spreadsheets.",
-
-      "I fell in love with what happens between an idea and reality.",
-
-      "An idea is exciting.",
-
-      "Then someone has to figure out what happens next.",
-    ],
+    paragraph:
+      "I didn’t fall in love with project management because of spreadsheets. I fell in love with what happens between an idea and reality. An idea is exciting. Then someone has to figure out what happens next.",
 
     questions: [
       "What comes first?",
@@ -129,7 +104,7 @@ const aboutContent = {
   },
 
   learning: {
-    title: "I LIKE LEARNING THINGS I DON’T KNOW YET.",
+    title: "i like learning things i don’t know yet.",
 
     things: [
       "New tools.",
@@ -153,7 +128,7 @@ const aboutContent = {
   },
 
   whyWriteFromLeft: {
-    title: "WHY WRITE FROM LEFT?",
+    title: "why write from left?",
 
     paragraphs: [
       "Because I wanted to build something that felt like me.",
@@ -174,7 +149,7 @@ const aboutContent = {
   },
 
   outsideWork: {
-    title: "AND OUTSIDE OF WORK?",
+    title: "and outside of work?",
 
     paragraphs: [
       "I’m usually learning something, making something, writing something or planning my next little project.",

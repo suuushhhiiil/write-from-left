@@ -302,7 +302,7 @@ const Projects = () => {
     const closeDialog = useCallback(() => setSelectedProject(null), [])
 
     return (
-        <section className="projects pb-20 lg:px-20 px-4">
+        <section className="projects pb-20 lg:px-20 px-8">
             <div className="lg:grid lg:grid-cols-12 flex flex-col items-start gap-6 pt-10 lg:pt-16 lg:gap-8">
                 <div className="lg:col-span-6 flex flex-col gap-2">
                     <h1 className="variable-hero-text text-5xl font-medium font-serif leading-none">
@@ -316,7 +316,7 @@ const Projects = () => {
                     <p className="text-2xl font-serif italic text-accent leading-tight font-light">
                         {projects.hero.description}
                     </p>
-                    <p className="text- leading-tight font-light text-dark-accent mt-4">
+                    <p className="leading-tight font-light mt-4">
                         {projects.hero.intro}
                     </p>
                 </div>

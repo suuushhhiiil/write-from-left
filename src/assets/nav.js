@@ -4,4 +4,5 @@ export const navItems = [
   { to: "/blogs", label: "Blogs" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
+  { to: "/work-with-me", label: "Work With Me", type: "button" },
 ];
