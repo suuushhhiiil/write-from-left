@@ -28,10 +28,10 @@ const Nav = () => {
     }, [])
 
     return (
-        <div ref={navRef} className="relative backdrop-blur-lg flex justify-between items-center p-4 lg:px-20">
+        <div ref={navRef} className="relative backdrop-blur-lg flex justify-between items-center py-4 px-8 lg:px-20">
             <div className="flex flex-col items-center gap-2">
                 <Link to="/">
-                    <img loading="lazy" src={logo} alt="Write-from-left" className="w-16 lg:w-20 object-contain hover:scale-105 transition-all duration-300 cursor-pointer" />
+                    <img loading="lazy" src={logo} alt="Write-from-left" className="w-20 lg:w-28 object-contain hover:scale-105 transition-all duration-300 cursor-pointer" />
                 </Link>
             </div>
             <ul className="items-center gap-4 hidden lg:flex text-sm">
