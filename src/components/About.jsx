@@ -14,7 +14,7 @@ const About = () => {
             <div className="h-screen lg:grid lg:grid-cols-12 lg:grid-rows-12 flex flex-col lg:items-start px-8 lg:px-20 pt-10">
                 <div className="lg:col-span-6 lg:row-span-2 lg:row-start-1 gap-2 flex flex-col">
                     <p className="hero-tagline text-xl text-primary leading-none">{aboutContent.hero.tagline}</p>
-                    <h1 className="hero-title variable-hero-text text-5xl font-medium font-serif leading-none capitalize">{aboutContent.hero.title}</h1>
+                    <h1 className="hero-title variable-hero-text text-5xl font-medium font-display leading-none capitalize">{aboutContent.hero.title}</h1>
                 </div>
 
                 <div className="lg:-col-start-6 lg:col-span-5 lg:row-span-2 lg:row-start-5 flex flex-col gap-2 lg:mt-0 mt-4">
@@ -31,7 +31,7 @@ const About = () => {
                             <li key={index} className="philosophy-item text-lg text-nowrap flex items-center gap-2 leading-tight text-dark font-medium"><span><item.Icon size={18} strokeWidth={2} className="text-primary" /></span>{item.title}</li>
                         ))}
                     </ul>
-                    <p className="hero-closing text-primary text-xl font-serif leading-tight italic text-center">{aboutContent.hero.closing}</p>
+                    <p className="hero-closing text-primary text-xl font-display leading-tight italic text-center">{aboutContent.hero.closing}</p>
                 </div>
             </div>
 
@@ -62,35 +62,39 @@ const About = () => {
             <hr className="mt-10 border-secondary mx-20" />
 
             <div className="lg:px-20 px-8 py-20">
-                <div className="lg:grid lg:grid-cols-12 lg:grid-rows-32 flex flex-col gap-8 lg:gap-4">
+                <div className="lg:grid lg:grid-cols-12 lg:grid-rows-25 flex flex-col gap-8 lg:gap-4">
 
-                    <div className="lg:col-start-5 lg:col-span-4 lg:row-start-2 lg:row-span-5 gap-2 flex flex-col justify-center border border-secondary lg:p-8 p-4 bg-secondary rounded-xl">
-                        <div className="flex flex-col gap-2">
+                    {/* Childhood */}
+                    <div className="lg:col-start-5 lg:col-span-4 lg:row-start-2 lg:row-end-4 h-fit flex flex-col gap-2 justify-center border border-secondary lg:p-8 p-4 bg-secondary rounded-xl">
+                        <div className="flex flex-col gap-2 ">
                             <h2 className="text-2xl font-semibold capitalize">{aboutContent.childhood.title}</h2>
                             <p className="text-lg leading-tight">{aboutContent.childhood.paragraph}</p>
                             <p className="text-lg leading-tight italic font-bold">{aboutContent.childhood.closing}</p>
                         </div>
                     </div>
 
-                    <div className="lg:col-start-1 lg:col-span-4 lg:row-start-1 lg:row-span-32 gap-2 flex flex-col">
+                    {/* Childhood Image */}
+                    <div className="lg:col-start-1 lg:col-span-4 lg:row-start-1 lg:row-span-25 flex flex-col gap-2">
                         <div className="w-full lg:sticky lg:top-28 flex flex-col items-center justify-start gap-4">
                             <img loading="lazy" src={childhoodImage} alt={aboutContent.childhood.image.alt} className="object-cover rounded-xl" />
                         </div>
                     </div>
 
 
-                    <div className="lg:col-start-9 lg:col-span-4 lg:row-start-7 lg:row-span-5 gap-2 flex flex-col justify-center border border-secondary lg:p-8 p-4 bg-secondary rounded-xl">
-                        <div className="flex flex-col gap-2">
+                    {/* Writing */}
+                    <div className="lg:col-start-9 lg:col-span-4 lg:row-start-4 lg:row-span-7 h-fit flex flex-col gap-2 justify-center border border-secondary lg:p-8 p-4 bg-secondary rounded-xl">
+                        <div className="flex flex-col gap-2 ">
                             <h2 className="text-2xl font-semibold capitalize">{aboutContent.writing.title}</h2>
                             <p className="text-lg leading-tight">{aboutContent.writing.paragraph}</p>
-                            <p className="font-serif text-xl italic text-accent leading-tight">{aboutContent.writing.poem}</p>
+                            <p className="font-display text-xl italic text-accent leading-tight">{aboutContent.writing.poem}</p>
                             <p className="text-lg leading-tight italic">{aboutContent.writing.poemClosing}</p>
                             <p className="text-lg leading-tight italic font-bold">{aboutContent.writing.closing}</p>
                         </div>
                     </div>
 
-                    <div className="lg:col-start-5 lg:col-span-4 lg:row-start-12 lg:row-span-5 gap-2 flex flex-col justify-center border border-secondary lg:p-8 p-4 bg-secondary rounded-xl">
-                        <div className="flex flex-col gap-2">
+                    {/* Project Management */}
+                    <div className="lg:col-start-5 lg:col-span-4 lg:row-start-7 lg:row-end-12 h-fit flex flex-col gap-2 justify-center border border-secondary lg:p-8 p-4 bg-secondary rounded-xl">
+                        <div className="flex flex-col gap-2 ">
                             <h2 className="text-2xl font-semibold capitalize">{aboutContent.projectManagement.title}</h2>
                             <p className="text-lg leading-tight">{aboutContent.projectManagement.paragraph}</p>
                             <ul className="flex flex-col gap-1">
@@ -99,7 +103,7 @@ const About = () => {
                                 ))}
                             </ul>
                             <p className="text-lg leading-tight italic font-bold">{aboutContent.projectManagement.closing}</p>
-                            <p className="font-serif text-xl italic text-accent leading-tight mt-2">{aboutContent.projectManagement.connection}</p>
+                            <p className="font-display text-xl italic text-accent leading-tight mt-2">{aboutContent.projectManagement.connection}</p>
                             {aboutContent.projectManagement.combination.map((item) => (
                                 <p key={item.title} className="text-lg leading-tight">{item.title}</p>
                             ))}
@@ -107,7 +111,8 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className="lg:col-start-9 lg:col-span-4 lg:row-start-17 lg:row-span-5 gap-2 flex flex-col justify-center border border-secondary lg:p-8 p-4 bg-secondary rounded-xl">
+                    {/* Learning */}
+                    <div className="lg:col-start-9 lg:col-span-4 lg:row-start-13 lg:row-end-17 h-fit flex flex-col gap-2 justify-center border border-secondary lg:p-8 p-4 bg-secondary rounded-xl">
                         <div className="flex flex-col gap-2">
                             <h2 className="text-2xl font-semibold capitalize">{aboutContent.learning.title}</h2>
                             {aboutContent.learning.paragraphs.map((paragraph) => (
@@ -123,8 +128,9 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className="lg:col-start-5 lg:col-span-4 lg:row-start-22 lg:row-span-5 gap-2 flex flex-col justify-center border border-secondary lg:p-8 p-4 bg-secondary rounded-xl">
-                        <div className="flex flex-col gap-2">
+                    {/* Why Write From Left */}
+                    <div className="lg:col-start-5 lg:col-span-4 lg:row-start-17 lg:row-end-21 h-fit flex flex-col gap-2 justify-center border border-secondary lg:p-8 p-4 bg-secondary rounded-xl">
+                        <div className="flex flex-col gap-2 ">
                             <h2 className="text-2xl font-semibold capitalize">{aboutContent.whyWriteFromLeft.title}</h2>
                             <p className="text-lg leading-tight">{aboutContent.whyWriteFromLeft.paragraphs[0]}</p>
                             <ul className="flex flex-col gap-1">
@@ -133,13 +139,14 @@ const About = () => {
                                 ))}
                             </ul>
                             <p className="text-lg leading-tight">{aboutContent.whyWriteFromLeft.description}</p>
-                            <p className="font-serif text-xl italic leading-tight text-accent">{aboutContent.whyWriteFromLeft.closing}</p>
+                            <p className="font-display text-xl italic leading-tight text-accent">{aboutContent.whyWriteFromLeft.closing}</p>
                             <p className="text-lg leading-tight italic font-bold">{aboutContent.whyWriteFromLeft.statement}</p>
                         </div>
                     </div>
 
-                    <div className="lg:col-start-9 lg:col-span-4 lg:row-start-27 lg:row-span-5 gap-2 flex flex-col justify-center border border-secondary lg:p-8 p-4 bg-secondary rounded-xl">
-                        <div className="flex flex-col gap-2">
+                    {/* Outside Work */}
+                    <div className="lg:col-start-9 lg:col-span-4 lg:row-start-21 lg:row-end-25 h-fit flex flex-col gap-2 justify-center border border-secondary lg:p-8 p-4 bg-secondary rounded-xl">
+                        <div className="flex flex-col gap-2 ">
                             <h2 className="text-2xl font-semibold capitalize">{aboutContent.outsideWork.title}</h2>
                             {aboutContent.outsideWork.paragraphs.map((paragraph) => (
                                 <p key={paragraph} className="text-lg leading-tight">{paragraph}</p>

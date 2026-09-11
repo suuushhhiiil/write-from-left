@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import logo from '../images/nav/logo.png'
+import logo from '../images/nav/logo-full.png'
 import { Menu } from 'lucide-react'
 import { navItems } from '../assets/nav'
 import { Link, useLocation } from 'react-router-dom'
@@ -35,10 +35,9 @@ const Nav = () => {
                 </Link>
             </div>
             <ul className="items-center gap-4 hidden lg:flex text-sm">
+                <Link to="/" className={`text-sm cursor-pointer hover:text-primary transition-all duration-300 ${location.pathname === "/" ? 'text-primary font-bold' : 'text-dark'}`}>Home</Link>
                 {navItems.map((item) => (
-                    item.type === "button" ?
-                        <Link key={item.to} to={item.to} className={`btn-primary`}>{item.label}</Link> :
-                        <Link key={item.to} to={item.to} className={`text-sm cursor-pointer hover:text-primary transition-all duration-300 ${isActive(item.to) ? 'text-primary font-bold' : 'text-dark'}`}>{item.label}</Link>
+                    <Link key={item.to} to={item.to} className={`text-sm cursor-pointer hover:text-primary transition-all duration-300 ${isActive(item.to) ? 'text-primary font-bold' : 'text-dark'}`}>{item.label}</Link>
                 ))}
 
             </ul>

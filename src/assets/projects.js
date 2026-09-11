@@ -181,7 +181,7 @@ const projectsContent = {
   },
 
   contact: {
-    title: "HAVE A PROJECT OF YOUR OWN?",
+    title: "let’s talk about your project",
 
     paragraphs: [
       "You don’t need a finished brief.",

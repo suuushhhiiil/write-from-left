@@ -5,6 +5,17 @@ import {
   Pencil,
   UsersIcon,
 } from "lucide-react";
+import Notion from '../images/work-with-me/notion.webp';
+import Asana from '../images/work-with-me/asana.webp';
+import Trello from '../images/work-with-me/trello.webp';
+import Monday from '../images/work-with-me/monday.com.webp';
+import GoogleWorkspace from '../images/work-with-me/google-workspace.webp';
+import Canva from '../images/work-with-me/canva.svg';
+import Adobe from '../images/work-with-me/adobe.webp';
+import Slack from '../images/work-with-me/slack.webp';
+import Zoom from '../images/work-with-me/zoom.webp';
+import GoogleMeet from '../images/work-with-me/google-meet.webp';
+import Gmail from '../images/work-with-me/gmail.webp';
 
 const workWithMeContent = {
   hero: {
@@ -21,6 +32,16 @@ const workWithMeContent = {
   services: {
     title: "what I bring to the table",
 
+    skills: [
+      "Planning",
+      "Scope",
+      "Timelines",
+      "Deliverables",
+      "Progress",
+      "Risks",
+      "Documentation",
+    ],
+
     items: [
       {
         id: "project-management",
@@ -33,16 +54,6 @@ const workWithMeContent = {
         content: [
           "We start with the goal, work out what needs to happen, set the priorities and give everything a place on the timeline.",
           "A project needs somewhere to go.",
-        ],
-
-        skills: [
-          "Planning",
-          "Scope",
-          "Timelines",
-          "Deliverables",
-          "Progress",
-          "Risks",
-          "Documentation",
         ],
       },
 
@@ -88,14 +99,11 @@ const workWithMeContent = {
         heading:
           "Before we write anything, let’s work out what needs to be said.",
 
-        questions: [
+        content: [
+          "Those questions shape the message, the content and where it belongs.",
           "Who are we talking to?",
           "What do they need to understand?",
           "What do we want them to do?",
-        ],
-
-        content: [
-          "Those questions shape the message, the content and where it belongs.",
         ],
       },
 
@@ -149,9 +157,8 @@ const workWithMeContent = {
         id: "coordinate",
         title: "coordinate",
 
-        description: "The work starts moving.",
-
         content: [
+          "The work starts moving.",
           "Tasks get assigned.",
           "Questions get answered.",
           "Feedback gets collected.",
@@ -206,18 +213,21 @@ const workWithMeContent = {
         title: "project management",
 
         tools: ["Notion", "Asana", "Trello", "Monday.com"],
+        icons: [Notion, Asana, Trello, Monday],
       },
 
       {
         title: "content & creative",
 
-        tools: ["Google Workspace", "Canva", "Adobe", "AI-assisted tools"],
+        tools: ["Google Workspace", "Canva", "Adobe"],
+        icons: [GoogleWorkspace, Canva, Adobe],
       },
 
       {
         title: "communication",
 
         tools: ["Slack", "Zoom", "Google Meet", "Email"],
+        icons: [Slack, Zoom, GoogleMeet, Gmail],
       },
     ],
 

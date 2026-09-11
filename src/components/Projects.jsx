@@ -51,7 +51,7 @@ const ProjectMedia = ({ project, className = '' }) => {
 
     return (
         <div className={`flex h-full w-full items-end bg-linear-to-br from-secondary via-secondary to-background p-6 ${className}`}>
-            <span className="font-serif text-6xl leading-none text-accent/50">{project.number}</span>
+            <span className="font-display text-6xl leading-none text-accent/50">{project.number}</span>
         </div>
     )
 }
@@ -224,7 +224,7 @@ const ProjectDialog = ({ project, onClose }) => {
                             </h2>
 
                             {project.tagline && (
-                                <p className="font-serif text-xl italic text-accent">
+                                <p className="font-display text-xl italic text-accent">
                                     {project.tagline}
                                 </p>
                             )}
@@ -305,7 +305,7 @@ const Projects = () => {
         <section className="projects pb-20 lg:px-20 px-8">
             <div className="lg:grid lg:grid-cols-12 flex flex-col items-start gap-6 pt-10 lg:pt-16 lg:gap-8">
                 <div className="lg:col-span-6 flex flex-col gap-2">
-                    <h1 className="variable-hero-text text-5xl font-medium font-serif leading-none">
+                    <h1 className="variable-hero-text text-5xl font-semibold font-display leading-none">
                         {projects.hero.title}
                     </h1>
                 </div>
@@ -313,7 +313,7 @@ const Projects = () => {
                     <p className="text-2xl ">
                         {projects.hero.heading}
                     </p>
-                    <p className="text-2xl font-serif italic text-accent leading-tight font-light">
+                    <p className="text-2xl font-display italic text-accent leading-tight font-light">
                         {projects.hero.description}
                     </p>
                     <p className="leading-tight font-light mt-4">
@@ -352,13 +352,13 @@ const Projects = () => {
             <div className="mt-20 rounded-3xl bg-primary p-6 text-background lg:p-12">
                 <div className="lg:grid lg:grid-cols-12 lg:items-end lg:gap-8">
                     <div className="lg:col-span-7 flex flex-col gap-2">
-                        <h2 className="text-4xl font-bold lg:text-5xl">
+                        <h2 className="text-4xl font-bold lg:text-5xl capitalize">
                             {projects.contact.title}
                         </h2>
                         <p className="text-xl leading-tight font-light text-secondary">
                             {projects.contact.paragraphs.join(' ')}
                         </p>
-                        <p className="font-serif text-xl italic text-accent mt-8">
+                        <p className="font-display text-xl italic text-accent mt-8">
                             {projects.contact.statement}
                         </p>
                         <Link to="/contact" className="w-fit rounded-md bg-background px-4 py-2 text-sm text-primary transition-all duration-300 hover:bg-secondary">

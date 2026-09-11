@@ -28,7 +28,7 @@ const Products = () => {
         <section className="py-4 flex flex-col gap-8 ">
             <div className="products-hero h-[80vh] overflow-hidden rounded-3xl lg:mx-20 mx-4 flex flex-col justify-end  items-center p-4">
                 <div className="backdrop-blur-xs flex flex-col justify-center items-center gap-8 p-4 rounded-2xl bg-light/50">
-                    <h1 className="lg:text-7xl text-5xl text-center text-liht font-serif">{productsContent.hero.title}</h1>
+                    <h1 className="lg:text-7xl text-5xl text-center font-semibold font-display">{productsContent.hero.title}</h1>
                     <Link to={productsContent.hero.cta.href} className="btn-primary">
                         {productsContent.hero.cta.label}
                     </Link>
@@ -46,26 +46,12 @@ const Products = () => {
                             <li className="text-light">{productsContent.digitalProducts.description[2]}</li>
                         </ul>
                     </div>
-                    <Link to={productsContent.digitalProducts.cta.href} className="btn-primary-invert mt-2">
+                    <Link to={productsContent.digitalProducts.cta.href} target="_blank" rel="noopener noreferrer" className="btn-primary-invert mt-2">
                         {productsContent.digitalProducts.cta.label}
                     </Link>
                     <img loading="lazy" src={digitalProductsImage} alt={productsContent.digitalProducts.title} className="w-full h-full object-cover rounded-lg" />
                 </div>
-                {/* <div className="bg-light rounded-2xl p-4 flex flex-col gap-8">
-                    <div className="lg:grid lg:grid-cols-12 flex lg:grid-rows-4 flex-col lg:gap-2 gap-4">
-                        <div className="lg:col-span-4 lg:row-span-4 flex flex-col justify-center gap-4">
-                            <h3 className="text-2xl font-semibold leading-tight">{productsContent.hero.description[0]}</h3>
-                            <div className="flex lg:flex-col items-start flex-wrap gap-1">
-                                <ul className="flex flex-col gap-2 list-disc px-6">
-                                    {productsContent.hero.description.map((description, index) => (
-                                        index !== 0 && <li key={index} className="text-dark">{description}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <hr className="border-secondary" />
-                </div> */}
+
             </div>
             <hr className="border-secondary lg:mx-20 mx-4" />
             <div className="flex flex-col gap-4 lg:px-20 px-4" id="collection">

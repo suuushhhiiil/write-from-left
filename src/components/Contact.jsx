@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { Coffee } from 'lucide-react'
 import contactContent from '../assets/contact'
-import heroImage from '../images/home/hero.png'
+import heroImage from '../images/contact/hero.png'
 
 const { hero, coffee, form, email } = contactContent
 
@@ -48,23 +48,23 @@ const Contact = () => {
         <section className="contact pb-20 pt-10 lg:pt-8 lg:px-20 px-4">
             <div className="rounded-3xl bg-light p-4 lg:p-6">
                 <div className="grid items-stretch gap-6 lg:grid-cols-12 lg:gap-10">
-                    <div className="relative min-h-[420px] overflow-hidden rounded-2xl lg:col-span-5 lg:min-h-[720px]">
+                    <div className="relative min-h-105 overflow-hidden rounded-2xl lg:col-span-5 lg:min-h-180">
                         <img loading="lazy"
                             src={heroImage}
                             alt={hero.title}
                             className="absolute inset-0 h-full w-full object-cover object-center"
                         />
-                        <div className="absolute inset-0 bg-linear-to-t from-dark via-dark/45 to-dark/25" />
+                        <div className="absolute inset-0 bg-linear-to-b from-transparent  to-dark" />
 
-                        <div className="relative z-10 flex h-full min-h-[420px] flex-col justify-between p-6 text-light lg:min-h-[720px] lg:p-10">
-                            <h1 className="max-w-[14ch] font-serif text-4xl leading-none font-medium lg:text-5xl">
+                        <div className="relative z-10 flex h-full min-h-105 flex-col justify-between p-6 text-light lg:min-h-180 lg:p-10">
+                            <h1 className="max-w-[14ch] font-display text-4xl leading-none font-medium lg:text-5xl">
                                 {hero.title}
                             </h1>
 
                             <div className="flex max-w-md flex-col gap-3">
                                 <p className="text-lg leading-tight font-light text-secondary">
                                     {hero.description} {""}
-                                    <span className="font-serif text-lg leading-tight italic text-accent">{hero.intro}</span></p>
+                                    <span className="font-display text-lg leading-tight italic text-accent">{hero.intro}</span></p>
                                 <p className="text-sm leading-tight font-light text-secondary/90">
                                     {hero.closing}
                                 </p>
@@ -79,7 +79,7 @@ const Contact = () => {
                             </span>
 
                             <div className="flex flex-col gap-2">
-                                <h2 className="font-serif text-4xl leading-none font-medium lg:text-5xl">
+                                <h2 className="font-display text-4xl leading-none font-medium lg:text-5xl">
                                     {coffee.title}
                                 </h2>
 

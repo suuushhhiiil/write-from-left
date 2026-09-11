@@ -3,17 +3,17 @@ import logo from '../images/nav/logo.png'
 import { InstagramIcon, LinkedInIcon, TikTokIcon } from '../assets/icons'
 
 const socialLinks = [
-    { name: 'TikTok', href: 'https://www.tiktok.com/@writefromleft', Icon: TikTokIcon },
-    { name: 'Instagram', href: 'https://www.instagram.com/writefromleft', Icon: InstagramIcon },
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/khushboo-sangwan', Icon: LinkedInIcon },
+    { name: 'TikTok', href: 'https://www.tiktok.com/@khushbooks', Icon: TikTokIcon },
+    // { name: 'Instagram', href: 'https://www.instagram.com/writefromleft', Icon: InstagramIcon },
+    { name: 'LinkedIn', href: ' https://www.linkedin.com/in/khushboo-sangwan', Icon: LinkedInIcon },
 ]
 
 const Footer = () => {
     return (
-        <footer className="border-t border-secondary bg-secondary px-8 py-4 lg:px-20">
+        <footer className="border-t bg-primary px-8 py-4 lg:px-20">
             <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-3">
                 <Link to="/" className="flex items-center justify-center gap-3 lg:justify-start">
-                    <span className="text-lg font-medium">Write From Left</span>
+                    <span className="text-lg font-medium text-light">Write From Left</span>
                 </Link>
 
                 <nav aria-label="Social media" className="flex items-center justify-center gap-2">
@@ -24,16 +24,16 @@ const Footer = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={name}
-                            className="inline-flex size-9 items-center justify-center rounded-md text-dark transition-colors duration-300 hover:bg-background hover:text-primary"
+                            className="inline-flex size-9 items-center justify-center rounded-md text-light transition-colors duration-300 hover:bg-secondary hover:text-primary"
                         >
                             <Icon size={16} />
                         </a>
                     ))}
                 </nav>
 
-                <div className="flex items-center justify-center gap-3 text-xs text-dark-accent lg:justify-end">
+                <div className="flex items-center justify-center gap-3 text-xs text-secondary lg:justify-end">
                     <p>© 2026 All rights reserved.</p>
-                    <span aria-hidden="true" className="h-3 w-px bg-dark/20" />
+                    <span aria-hidden="true" className="h-3 w-px bg-secondary" />
                     <Link to="/privacy-policy" className="transition-colors duration-300 hover:text-primary">
                         Privacy Policy
                     </Link>

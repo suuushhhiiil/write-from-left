@@ -35,7 +35,7 @@ const productsContent = {
 
     cta: {
       label: "SHOP DIGITAL PRODUCTS",
-      href: "/shop",
+      href: "https://msha.ke/khushboosangwan",
     },
   },
 
@@ -82,7 +82,7 @@ const productsContent = {
   },
 
   contact: {
-    title: "BUILDING SOMETHING?",
+    title: "building something?",
 
     description: "You don’t have to figure everything out alone.",
 
