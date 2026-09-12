@@ -49,7 +49,7 @@ const Nav = () => {
 
             {isOpen && <div className="lg:hidden w-full mt-2 pl-8 absolute top-full right-4">
                 <div className="bg-primary text-light rounded-md p-4 w-full">
-                    <ul className="flex flex-col items-end gap-4 text-2xl">
+                    <ul className="flex flex-col items-center gap-4 text-2xl">
                         <Link to="/" className="text-2xl" onClick={toggleMenu}>Home</Link>
                         {navItems.map((item) => (
                             <Link key={item.to} to={item.to} className="text-2xl" onClick={toggleMenu}>{item.label}</Link>
