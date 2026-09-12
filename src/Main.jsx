@@ -1,23 +1,21 @@
-import { StrictMode } from 'react'
+import { lazy, StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './index.css'
 import MainLayout from './MainLayout.jsx'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { lazy } from 'react'
+import SmoothScroll from './motion/SmoothScroll.jsx'
 
 const Home = lazy(() => import('./components/Home.jsx'))
-const SmoothScroll = lazy(() => import('./motion/SmoothScroll.jsx'))
 const Projects = lazy(() => import('./components/Projects.jsx'))
 const Contact = lazy(() => import('./components/Contact.jsx'))
 const Products = lazy(() => import('./components/Products.jsx'))
 const About = lazy(() => import('./components/About.jsx'))
 const WorkWithMe = lazy(() => import('./components/WorkWithMe.jsx'))
 
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <SmoothScroll>
-      <BrowserRouter>
+    <BrowserRouter>
+      <SmoothScroll>
         <Routes>
           <Route element={<MainLayout />} >
             <Route path="/" element={<Home />} />
@@ -28,7 +26,26 @@ createRoot(document.getElementById('root')).render(
             <Route path="/work-with-me" element={<WorkWithMe />} />
           </Route>
         </Routes>
-      </BrowserRouter>
-    </SmoothScroll>
+      </SmoothScroll>
+    </BrowserRouter>
+  </StrictMode>
+);
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter>
+      <SmoothScroll>
+        <Routes>
+          <Route element={<MainLayout />} >
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/work-with-me" element={<WorkWithMe />} />
+          </Route>
+        </Routes>
+      </SmoothScroll>
+    </BrowserRouter>
   </StrictMode>
 );
