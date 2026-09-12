@@ -3,13 +3,15 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import MainLayout from './MainLayout.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from './components/Home.jsx'
-import SmoothScroll from './motion/SmoothScroll.jsx'
-import Projects from './components/Projects.jsx'
-import Contact from './components/Contact.jsx'
-import Products from './components/Products.jsx'
-import About from './components/About.jsx'
-import WorkWithMe from './components/WorkWithMe.jsx'
+import { lazy } from 'react'
+
+const Home = lazy(() => import('./components/Home.jsx'))
+const SmoothScroll = lazy(() => import('./motion/SmoothScroll.jsx'))
+const Projects = lazy(() => import('./components/Projects.jsx'))
+const Contact = lazy(() => import('./components/Contact.jsx'))
+const Products = lazy(() => import('./components/Products.jsx'))
+const About = lazy(() => import('./components/About.jsx'))
+const WorkWithMe = lazy(() => import('./components/WorkWithMe.jsx'))
 
 
 createRoot(document.getElementById('root')).render(

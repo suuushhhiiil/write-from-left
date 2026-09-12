@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react'
 import { Coffee } from 'lucide-react'
 import contactContent from '../assets/contact'
 import heroImage from '../images/contact/hero.png'
+import OptimizedImage from './common/OptimizedImage'
 
 const { hero, coffee, form, email } = contactContent
 
@@ -49,9 +50,10 @@ const Contact = () => {
             <div className="rounded-3xl bg-light p-4 lg:p-6">
                 <div className="grid items-stretch gap-6 lg:grid-cols-12 lg:gap-10">
                     <div className="relative min-h-105 overflow-hidden rounded-2xl lg:col-span-5 lg:min-h-180">
-                        <img loading="lazy"
+                        <OptimizedImage
                             src={heroImage}
                             alt={hero.title}
+                            priority
                             className="absolute inset-0 h-full w-full object-cover object-center"
                         />
                         <div className="absolute inset-0 bg-linear-to-b from-transparent  to-dark" />

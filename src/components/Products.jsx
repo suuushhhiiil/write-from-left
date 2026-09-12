@@ -1,16 +1,18 @@
 import React from 'react'
 import productsContent from '../assets/products.js'
-import coursesImage from '../images/products/courses.png'
-import journalsImage from '../images/products/journals.png'
-import digitalProductsImage from '../images/products/digital-products.png'
+import coursesImage from '../images/products/courses.webp'
+import journalsImage from '../images/products/journals.webp'
+import digitalProductsImage from '../images/products/digital-products.webp'
+import productsHeroImage from '../images/products/hero.webp'
 import { Link } from 'react-router-dom';
+import OptimizedImage from './common/OptimizedImage'
 
 const ComingSoon = (product) => {
     const image = product.type.toLowerCase() === 'courses' ? coursesImage : journalsImage;
     return (
-        <div className="flex flex-col min-w-1/3 rounded-xl overflow-hidden border border-secondary bg-secondary p-4">
-            <div className="relative">
-                <img loading="lazy" src={image} alt={product.type} className="w-full h-full object-cover rounded-lg" />
+        <div className="flex flex-col w-full rounded-xl overflow-hidden border border-secondary bg-secondary p-4">
+            <div className="h-full relative">
+                <OptimizedImage src={image} alt={product.type} className="h-full object-cover rounded-lg" />
                 <p className="text-xs text-dark w-fit bg-secondary px-2 py-1 rounded-full text-nowrap whitespace-nowrap absolute bottom-2 right-2">{product.status}</p>
             </div>
             <div className="flex flex-col gap-1 pt-4">
@@ -26,8 +28,14 @@ const ComingSoon = (product) => {
 const Products = () => {
     return (
         <section className="py-4 flex flex-col gap-8 ">
-            <div className="products-hero h-[80vh] overflow-hidden rounded-3xl lg:mx-20 mx-4 flex flex-col justify-end  items-center p-4">
-                <div className="backdrop-blur-xs flex flex-col justify-center items-center gap-8 p-4 rounded-2xl bg-light/50">
+            <div className="relative h-[80vh] overflow-hidden rounded-3xl lg:mx-20 mx-4 flex flex-col justify-end items-center p-4">
+                <OptimizedImage
+                    src={productsHeroImage}
+                    alt={productsContent.hero.title}
+                    priority
+                    className="absolute inset-0 h-full w-full object-cover object-left"
+                />
+                <div className="relative z-10 backdrop-blur-xs flex flex-col justify-center items-center gap-8 p-4 rounded-2xl bg-light/50">
                     <h1 className="lg:text-7xl text-5xl text-center font-semibold font-display">{productsContent.hero.title}</h1>
                     <Link to={productsContent.hero.cta.href} className="btn-primary">
                         {productsContent.hero.cta.label}
@@ -49,7 +57,7 @@ const Products = () => {
                     <Link to={productsContent.digitalProducts.cta.href} target="_blank" rel="noopener noreferrer" className="btn-primary-invert mt-2">
                         {productsContent.digitalProducts.cta.label}
                     </Link>
-                    <img loading="lazy" src={digitalProductsImage} alt={productsContent.digitalProducts.title} className="w-full h-full object-cover rounded-lg" />
+                    <OptimizedImage src={digitalProductsImage} alt={productsContent.digitalProducts.title} className="aspect-video object-cover rounded-lg w-full h-full" />
                 </div>
 
             </div>

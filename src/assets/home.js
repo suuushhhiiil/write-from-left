@@ -6,9 +6,9 @@ import {
   RocketIcon,
 } from "lucide-react";
 
-import experience01 from "../images/home/experience-01.png";
-import experience02 from "../images/home/experience-02.png";
-import experience03 from "../images/home/experience-03.png";
+import experience01 from "../images/home/experience-01.webp";
+import experience02 from "../images/home/experience-02.webp";
+import experience03 from "../images/home/experience-03.webp";
 
 const homeContent = {
   whatIDoSection: {

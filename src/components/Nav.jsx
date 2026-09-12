@@ -3,6 +3,7 @@ import logo from '../images/nav/logo-full.png'
 import { Menu } from 'lucide-react'
 import { navItems } from '../assets/nav'
 import { Link, useLocation } from 'react-router-dom'
+import OptimizedImage from './common/OptimizedImage'
 
 
 const Nav = () => {
@@ -31,7 +32,7 @@ const Nav = () => {
         <div ref={navRef} className="relative backdrop-blur-lg flex justify-between items-center py-4 px-8 lg:px-20">
             <div className="flex flex-col items-center gap-2">
                 <Link to="/">
-                    <img loading="lazy" src={logo} alt="Write-from-left" className="w-20 lg:w-28 object-contain hover:scale-105 transition-all duration-300 cursor-pointer" />
+                    <OptimizedImage src={logo} alt="Write-from-left" priority className="w-20 lg:w-28 object-contain hover:scale-105 transition-all duration-300 cursor-pointer" />
                 </Link>
             </div>
             <ul className="items-center gap-4 hidden lg:flex text-sm">
@@ -49,6 +50,7 @@ const Nav = () => {
             {isOpen && <div className="lg:hidden w-full mt-2 pl-8 absolute top-full right-4">
                 <div className="bg-primary text-light rounded-md p-4 w-full">
                     <ul className="flex flex-col items-end gap-4 text-2xl">
+                        <Link to="/" className="text-2xl" onClick={toggleMenu}>Home</Link>
                         {navItems.map((item) => (
                             <Link key={item.to} to={item.to} className="text-2xl" onClick={toggleMenu}>{item.label}</Link>
                         ))}

@@ -1,15 +1,16 @@
 import React from 'react'
-import heroImage from '../images/home/hero.png'
-import firstDraftImage from '../images/home/first-draft.png'
-import letsTalkImage from '../images/home/talk-01.png'
+import heroImage from '../images/home/hero.webp'
+import firstDraftImage from '../images/home/first-draft.webp'
+import letsTalkImage from '../images/home/talk-01.webp'
+import whatIDoCardImage from '../images/home/what-i-do-card.webp'
 import homeContent from '../assets/home';
 import { Link } from 'react-router-dom';
-import { Handshake } from 'lucide-react';
 import homeMotion from '../motion/home';
+import OptimizedImage from './common/OptimizedImage';
 
 const Home = () => {
 
-    homeMotion();
+    // homeMotion();
 
     return (
         <section className="pb-8">
@@ -31,12 +32,14 @@ const Home = () => {
                 </div>
 
                 <div className="lg:col-span-6 border-b border-secondary">
-                    <img loading="lazy" src={heroImage} alt="Hero" className="lg:w-full object-cover" />
+                    <OptimizedImage src={heroImage} alt="Hero" priority className="lg:w-full object-cover" />
                 </div>
             </div>
 
+            <hr className="border-secondary mx-20" />
+
             {/* What I am building */}
-            <div className="h-screen lg:px-20 px-8 lg:grid border-b border-secondary lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6  py-20">
+            <div className="h-screen lg:px-20 px-8 lg:grid lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6  py-20">
                 <div className="lg:col-span-5 flex  flex-col lg:gap-24 items-start justify-center lg:h-full">
                     <div className="flex flex-col gap-4">
                         <p className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">What I am building</p>
@@ -53,12 +56,13 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="lg:col-span-7 flex items-center justify-center h-full">
-                    <img loading="lazy" src={firstDraftImage} alt="First Draft" className="w-full h-full object-cover rounded-xl" />
+                    <OptimizedImage src={firstDraftImage} alt="First Draft" className="w-full h-full aspect-video object-cover rounded-xl" />
                 </div>
             </div>
+            <hr className="border-secondary mx-20" />
 
             {/* What I Do */}
-            <div className="lg:px-20 px-8 flex flex-col gap-2 py-20  border-b border-secondary">
+            <div className="lg:px-20 px-8 flex flex-col gap-2 py-20">
                 <h3 className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">{homeContent.whatIDoSection.title}</h3>
 
                 <div className="lg:grid lg:grid-cols-12 flex flex-col gap-4 mt-4 items-start">
@@ -76,7 +80,8 @@ const Home = () => {
                         <Link to="/projects" className="btn-primary mt-4">{homeContent.whatIDoSection.hero.buttonText}<span className="">→</span></Link>
                     </div>
 
-                    <div className="what-i-do-card lg:col-span-3 rounded-2xl lg:mt-16 lg:h-64 h-128 w-full" >
+                    <div className="lg:col-span-3 rounded-2xl lg:mt-16 lg:h-64 h-128 w-full overflow-hidden">
+                        <OptimizedImage src={whatIDoCardImage} alt="" className="h-full w-full object-cover object-bottom-left" />
                     </div>
                     {homeContent.whatIDoSection.expertise.items.map((item, index) => (
                         <div key={index} className={`lg:col-span-3 flex w-full flex-col gap-2 rounded-2xl p-6 bg-secondary h-64  ${index === 0 ? 'lg:mt-16' : ''}`}>
@@ -89,6 +94,8 @@ const Home = () => {
                     ))}
                 </div>
             </div>
+
+            <hr className="border-secondary mx-20" />
 
             {/* Proof */}
             <div className="lg:px-20 px-8 mt-20">
@@ -106,7 +113,7 @@ const Home = () => {
                                 <h3 className="text-5xl font-semibold text-primary leading-none">{item.title}</h3>
                                 <p className="text-lg text-dark-accent leading-tight">{item.description}</p>
 
-                                <img loading="lazy" src={item.image} alt={item.title} className="object-cover w-full h-full rounded-2xl absolute -rotate-12 top-[45%] left-[30%] shadow-2xl shadow-dark z-0" />
+                                <OptimizedImage src={item.image} alt={item.title} className="object-cover w-full h-full rounded-2xl absolute -rotate-12 top-[45%] left-[30%] shadow-2xl shadow-dark z-0" />
                             </div>
                         ))}
                     </div>
@@ -114,7 +121,7 @@ const Home = () => {
             </div>
             <hr className="border-secondary mx-20 mt-10" />
             {/* Let's Talk */}
-            <div className='lg:px-20 px-8 relative flex flex-col items-center justify-center gap-4 pt-20'>
+            <div className='lg:px-20 px-8 relative flex flex-col items-center justify-center gap-4 py-20'>
                 <div className='lg:grid lg:grid-cols-12 flex flex-col gap-4 '>
                     <div className='lg:col-span-3'>
                         <p className='text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider'>Let's Talk</p>
@@ -129,7 +136,7 @@ const Home = () => {
 
                     </div>
                     <div className='lg:-col-start-7 lg:col-span-6 lg:row-start-1 lg:row-span-3 lg:mt-0 mt-16'>
-                        <img loading="lazy" src={letsTalkImage} alt="Let's Talk" className="w-full h-full object-cover rounded-xl" />
+                        <OptimizedImage src={letsTalkImage} alt="Let's Talk" className="w-full h-full object-cover rounded-xl" />
                     </div>
                 </div>
             </div>

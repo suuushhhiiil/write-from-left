@@ -130,31 +130,10 @@ html.dialog-open body {
 }
 
 .first-draft-section {
-  background: url("../src/images/home/first-draft.png") no-repeat left center;
+  background: url("../src/images/home/first-draft.webp") no-repeat left center;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
-}
-
-.what-i-do-card {
-  background: url("../src/images/home/what-i-do-card.png") no-repeat left center;
-  background-size: cover;
-  background-position: bottom left;
-  background-repeat: no-repeat;
-}
-
-.footer {
-  background: url("../src/images/home/talk-02.png") no-repeat right center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.products-hero {
-  background: url("../src/images/products/hero.png") no-repeat center center;
-  background-size: cover;
-  background-position: top left;
-  background-repeat: no-repeat;
 }

@@ -3,6 +3,7 @@ import workWithMeContent from '../assets/workWithMe.js'
 import workWithMeImage from '../images/work-with-me/hero.webp'
 import { ArrowDownRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import OptimizedImage from './common/OptimizedImage'
 
 const WorkWithMe = () => {
     return (
@@ -21,7 +22,7 @@ const WorkWithMe = () => {
                     </div>
 
                     <div className='lg:col-start-1 lg:col-span-12 lg:row-start-5 lg:row-span-6 rounded-xl overflow-hidden'>
-                        <img src={workWithMeImage} alt={workWithMeContent.hero.title} className="w-full h-full object-cover" />
+                        <OptimizedImage src={workWithMeImage} alt={workWithMeContent.hero.title} priority className="w-full h-full object-cover" />
                     </div>
                 </div>
             </div>

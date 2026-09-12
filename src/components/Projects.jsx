@@ -2,10 +2,11 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, X } from 'lucide-react'
 import projects from '../assets/projects'
-import firstDraftImage from '../images/home/first-draft.png'
-import project01 from '../images/projects/01.png'
-import project02 from '../images/projects/02.png'
-import project03 from '../images/projects/03.png'
+import firstDraftImage from '../images/home/first-draft.webp'
+import project01 from '../images/projects/01.webp'
+import project02 from '../images/projects/02.webp'
+import project03 from '../images/projects/03.webp'
+import OptimizedImage from './common/OptimizedImage'
 
 const projectImages = {
     current: firstDraftImage,
@@ -36,14 +37,15 @@ const projectCards = [
     })),
 ]
 
-const ProjectMedia = ({ project, className = '' }) => {
+const ProjectMedia = ({ project, className = '', priority = false }) => {
     const image = projectImages[project.imageKey]
 
     if (image) {
         return (
-            <img
+            <OptimizedImage
                 src={image}
                 alt={project.title}
+                priority={priority}
                 className={`h-full w-full object-cover ${className}`}
             />
         )
@@ -196,7 +198,7 @@ const ProjectDialog = ({ project, onClose }) => {
                     </div>
 
                     <div className={`relative overflow-hidden bg-secondary ${image ? 'aspect-[16/8]' : 'aspect-[16/7]'}`}>
-                        <ProjectMedia project={project} />
+                        <ProjectMedia project={project} priority />
                         {project.status && (
                             <span className="absolute bottom-4 left-4 rounded-md bg-background/90 px-2 py-1 text-[10px] font-medium tracking-widest text-primary uppercase lg:bottom-6 lg:left-6">
                                 {project.status}
