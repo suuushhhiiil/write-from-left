@@ -3,6 +3,7 @@ import aboutContent from '../assets/about.js'
 import aboutMotion from '../motion/about.js'
 import aboutImage from '../images/about/hero.webp'
 import aboutMeImage from '../images/about/me.webp'
+import childhoodImage from '../images/about/childhood.webp'
 import { Link } from 'react-router-dom'
 import OptimizedImage from './common/OptimizedImage.jsx'
 
@@ -65,7 +66,7 @@ const About = () => {
                 <div className="lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col gap-8 lg:gap-4">
                     <div className="lg:col-start-2 lg:col-span-4 lg:row-start-1 lg:row-end-9 flex flex-col gap-2">
                         <div className="w-full flex flex-col items-center justify-start gap-4">
-                            <OptimizedImage src={aboutContent.aboutMe.childhood.image.src} alt={aboutContent.aboutMe.childhood.image.alt} className="object-cover rounded-xl" />
+                            <OptimizedImage src={childhoodImage} alt="childhood" className="object-cover rounded-xl" />
                         </div>
                     </div>
                     <div className="lg:col-start-7 lg:col-span-5 lg:row-start-1 lg:row-end-9 flex flex-col justify-center gap-4">
