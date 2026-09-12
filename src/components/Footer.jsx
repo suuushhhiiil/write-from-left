@@ -34,7 +34,7 @@ const Footer = () => {
                 <div className="flex items-center justify-center gap-3 text-xs text-secondary lg:justify-end">
                     <p>© 2026 All rights reserved.</p>
                     <span aria-hidden="true" className="h-3 w-px bg-secondary" />
-                    <Link to="/privacy-policy" className="transition-colors duration-300 hover:text-primary">
+                    <Link to="/privacy-policy" className="transition-colors duration-300 hover:text-light">
                         Privacy Policy
                     </Link>
                 </div>

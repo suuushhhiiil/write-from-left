@@ -10,7 +10,7 @@ const homeMotion = () => {
     const heroNameSplit = SplitText.create(
       document.querySelector(".hero-name"),
       {
-        type: "chars",
+        type: "words",
       },
     );
 
@@ -31,25 +31,25 @@ const homeMotion = () => {
     gsap.from(heroNameSplit.chars, {
       opacity: 0,
       x: 20,
-      duration: 0.6,
+      duration: 0.8,
       ease: "back.out(1.7)",
-      stagger: 0.03,
+      stagger: 0.08,
     });
 
     gsap.from(heroRoleSplit.words, {
       opacity: 0,
       x: 50,
-      duration: 0.6,
+      duration: 0.8,
       ease: "back.out(1.7)",
-      stagger: 0.03,
+      stagger: 0.08,
     });
       
     gsap.from(heroDescriptionSplit.words, {
       opacity: 0,
       x: 50,
-      duration: 0.6,
+      duration: 0.8,
       ease: "back.out(1.7)",
-      stagger: 0.03,
+      stagger: 0.08,
     });
   }, []);
 };

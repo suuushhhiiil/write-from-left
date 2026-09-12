@@ -35,7 +35,7 @@ const productsContent = {
 
     cta: {
       label: "SHOP DIGITAL PRODUCTS",
-      href: "https://msha.ke/khushboosangwan",
+      href: "https://beacons.ai/khushables",
     },
   },
 

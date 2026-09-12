@@ -73,7 +73,7 @@ const Products = () => {
                         <p className="">{productsContent.philosophy.closing}</p>
                     </div>
                     <div className="lg:col-span-6 lg:row-span-4 flex flex-col justify-around gap-4 rounded-2xl p-12">
-                        <h2 className="text-4xl font-semibold">{productsContent.contact.title}</h2>
+                        <h2 className="text-4xl font-semibold capitalize">{productsContent.contact.title}</h2>
                         <div className="flex flex-col">
                             <p className="text-dark-accent leading-tight text-lg">{productsContent.contact.description}</p>
                             <p className="text-dark-accent leading-tight text-lg">{productsContent.contact.statement}</p>

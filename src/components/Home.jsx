@@ -9,7 +9,7 @@ import homeMotion from '../motion/home';
 
 const Home = () => {
 
-    // homeMotion();
+    homeMotion();
 
     return (
         <section className="pb-8">

@@ -4,7 +4,7 @@ const aboutContent = {
   hero: {
     title: "write from left",
 
-    tagline: "Be different. Be rare. Be you.",
+    tagline: "Be different. Be rare.",
 
     paragraph:
       "Write From Left started with something simple. I’m left-handed. Growing up in a mostly right-handed world meant doing little things differently. Writing included. Eventually, I stopped seeing “different” as something to work around.I started seeing it as a way of thinking.",
