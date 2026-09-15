@@ -23,9 +23,6 @@ const aboutMotion = () => {
       },
     );
     const heroParagraph = document.querySelector(".hero-paragraph");
-
-    const heroImage = document.querySelector(".hero-image");
-
     const philosophyItems = document.querySelectorAll(".philosophy-item");
 
     tl.from(heroTitleSplit.words, {
@@ -46,24 +43,6 @@ const aboutMotion = () => {
       ease: "back.out(1.7)",
       stagger: 0.03,
     });
-
-
-
-    gsap.fromTo(
-      heroImage,
-      {
-        opacity: 0,
-        scale: 0.9,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "back.out(1.7)",
-      },
-    );
 
     gsap.fromTo(
       heroParagraph,
