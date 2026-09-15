@@ -30,22 +30,3 @@ createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </StrictMode>
 );
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <SmoothScroll>
-        <Routes>
-          <Route element={<MainLayout />} >
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/work-with-me" element={<WorkWithMe />} />
-          </Route>
-        </Routes>
-      </SmoothScroll>
-    </BrowserRouter>
-  </StrictMode>
-);

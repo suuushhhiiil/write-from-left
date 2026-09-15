@@ -22,19 +22,17 @@ const aboutMotion = () => {
         type: "words",
       },
     );
-    const heroParagraphSplit = SplitText.create(
-      document.querySelector(".hero-paragraph"),
-      {
-        type: "lines",
-      },
-    );
+    const heroParagraph = document.querySelector(".hero-paragraph");
+
+    const heroImage = document.querySelector(".hero-image");
 
     const philosophyItems = document.querySelectorAll(".philosophy-item");
 
     tl.from(heroTitleSplit.words, {
       opacity: 0,
       //   x: -50,
-      y: -50,
+      y: 50,
+      rotate: 10,
       duration: 0.8,
       ease: "back.out(1.7)",
       stagger: 0.03,
@@ -42,20 +40,46 @@ const aboutMotion = () => {
 
     tl.from(heroTaglineSplit.words, {
       opacity: 0,
-      y: -20,
+      y: 20,
+      rotate: 10,
       duration: 0.6,
       ease: "back.out(1.7)",
       stagger: 0.03,
     });
 
-    gsap.from(heroParagraphSplit.lines, {
-      opacity: 0,
-      y: 50,
-      color: "#151515",
-      duration: 0.7,
-      ease: "back.out(1.7)",
-      stagger: 0.02,
-    });
+
+
+    gsap.fromTo(
+      heroImage,
+      {
+        opacity: 0,
+        scale: 0.9,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+      },
+    );
+
+    gsap.fromTo(
+      heroParagraph,
+      {
+        opacity: 0,
+        y: 50
+      },
+      {
+        opacity: 1,
+        color: "#151515",
+        y: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+        stagger: 0.03,
+      },
+    );
   });
 };
 
