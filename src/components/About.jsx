@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon, FileQuestionIcon } from 'lucide-react'
 import aboutContent from '../assets/about.js'
-import aboutMotion from '../motion/about.js'
+import aboutMotion from '../motion/about'
 import aboutImage from '../images/about/hero.webp'
 import aboutMeImage from '../images/about/me.webp'
 import childhoodImage from '../images/about/childhood.webp'
