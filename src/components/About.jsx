@@ -12,7 +12,7 @@ const About = () => {
 
     return (
         <section className="">
-            <div className="lg:h-screen lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col lg:items-start px-8 lg:px-20 py-10">
+            <div className="lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col lg:items-start px-8 lg:px-20 py-10">
                 <div className="lg:col-span-6 lg:row-span-2 lg:row-start-1 gap-2 flex flex-col">
                     <p className="hero-tagline text-xl text-primary leading-none">{aboutContent.hero.tagline}</p>
                     <h1 className="hero-title variable-hero-text text-5xl font-medium font-display leading-none capitalize overflow-hidden">{aboutContent.hero.title}</h1>
