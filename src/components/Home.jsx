@@ -25,18 +25,18 @@ const Home = () => {
                     <div className="">
                         <p className="hero-greet font-script text-primary text-2xl">Hi, I'm</p>
                         <div className="flex flex-col items-start gap-6 ">
-                            <div className="pb-2 overflow-hidden">
+                            <div className="pb-2">
                                 <h1 className="variable-hero-text hero-name text-6xl font-semibold font-display lg:text-nowrap">Khushboo Sangwan,</h1>
                             </div>
                             <div className="overflow-hidden">
-                                <p className="hero-role text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md overflow-hidden">Creative Project Manager & Content Strategist.</p>
+                                <p className="hero-role text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md">Creative Project Manager & Content Strategist.</p>
                             </div>
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-2 ">
-                        <p className='hero-description text-xl font-light overflow-hidden'>I believe your life is the <span className="hero-description italic text-primary font-medium">biggest</span> project you'll ever manage.</p>
-                        <p className='hero-question text-xl font-display mt-2 italic text-accent overflow-hidden'>So, What are you building?</p>
+                        <p className='hero-description text-xl font-light'>I believe your life is the <span className="hero-description italic text-primary font-medium">biggest</span> project you'll ever manage.</p>
+                        <p className='hero-question text-xl font-display mt-2 italic text-accent'>So, What are you building?</p>
                         <Link to="/work-with-me" className="btn-primary hero-cta">Work With Me</Link>
                     </div>
                 </div>
@@ -49,24 +49,26 @@ const Home = () => {
             <hr className="border-secondary mx-20" />
 
             {/* What I am building */}
-            <div className="h-screen lg:px-20 px-8 lg:grid lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6  py-20">
-                <div className="lg:col-span-5 flex  flex-col lg:gap-24 items-start justify-center lg:h-full">
-                    <div className="flex flex-col gap-4">
-                        <p className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">What I am building</p>
-                        <div className="flex flex-col gap-2">
-                            <h1 className="text-5xl font-semibold font-display capitalize">first draft</h1>
-                            <h2 className="font-semibold text-primary text-xs tracking-widest uppercase ">Founder · Creative Project Manager</h2>
-                            <p className="text-xl leading-tight font-light mt-2">A focused writing meetup built around time, accountability and making real progress on the thing you’ve been meaning to write.</p>
+            <div className="first-draft-section lg:py-10">
+                <div className="first-draft-container h-screen lg:px-20 px-8 lg:grid lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6  py-20">
+                    <div className="lg:col-span-5 flex  flex-col lg:gap-24 items-start justify-center lg:h-full">
+                        <div className="flex flex-col gap-4">
+                            <p className="first-draft-title text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">What I am building</p>
+                            <div className="flex flex-col gap-2">
+                                <h1 className="first-draft-heading text-5xl font-semibold font-display capitalize">first draft</h1>
+                                <h2 className="first-draft-subheading font-semibold text-primary text-xs tracking-widest uppercase ">Founder · Creative Project Manager</h2>
+                                <p className="first-draft-description text-xl leading-tight font-light mt-2">A focused writing meetup built around time, accountability and making real progress on the thing you’ve been meaning to write.</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-col gap-2 mt-16">
+                            <p className="first-draft-closure text-xl font-display italic text-accent">Write your book & make your author dreams come true! </p>
+                            <Link to="https://meetup.com/first-draft-berlin-writing-group-writing-meetup"
+                                target="_blank" rel="noopener noreferrer" className="first-draft-button btn-primary">Join the Next Meetup <span className="">→</span></Link>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-2 mt-16">
-                        <p className="text-xl font-display italic text-accent">Write your book & make your author dreams come true! </p>
-                        <Link to="https://meetup.com/first-draft-berlin-writing-group-writing-meetup"
-                            target="_blank" rel="noopener noreferrer" className="btn-primary">Join the Next Meetup <span className="">→</span></Link>
+                    <div className="first-draft-image lg:col-span-7 flex items-center justify-center h-full">
+                        <OptimizedImage src={firstDraftImage} alt="First Draft" className="w-full h-full aspect-video object-cover rounded-xl" />
                     </div>
-                </div>
-                <div className="lg:col-span-7 flex items-center justify-center h-full">
-                    <OptimizedImage src={firstDraftImage} alt="First Draft" className="w-full h-full aspect-video object-cover rounded-xl" />
                 </div>
             </div>
             <hr className="border-secondary mx-20" />
@@ -108,7 +110,7 @@ const Home = () => {
             <hr className="border-secondary mx-20" />
 
             {/* Proof */}
-            <div className="lg:px-20 px-8 mt-20">
+            <div className="lg:px-20 px-8 mt-20 ">
                 <div className="flex flex-col p-4 gap-4 pt-20 border-b border-secondary bg-primary text-background rounded-3xl">
                     <h3 className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">{homeContent.experienceSection.title}</h3>
 

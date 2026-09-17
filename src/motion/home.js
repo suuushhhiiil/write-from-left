@@ -7,149 +7,328 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const homeMotion = () => {
   useLayoutEffect(() => {
-    const tl = gsap.timeline();
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
 
-    const heroCurtain = document.querySelectorAll(".hero-curtain");
+      const heroCurtain = document.querySelectorAll(".hero-curtain");
 
-    const heroGreet = document.querySelector(".hero-greet");
-    const heroNameSplit = SplitText.create(
-      document.querySelector(".hero-name"),
-      {
-        type: "words",
-      },
-    );
+      const heroGreet = document.querySelector(".hero-greet");
+      const heroNameSplit = SplitText.create(
+        document.querySelector(".hero-name"),
+        {
+          type: "words",
+          mask: "words",
+        },
+      );
 
-    const heroRole = document.querySelector(".hero-role");
+      const heroRoleSplit = SplitText.create(
+        document.querySelector(".hero-role"),
+        {
+          type: "words",
+          mask: "words",
+        },
+      );
 
-    const heroDescription = document.querySelector(".hero-description");
+      const heroRole = document.querySelector(".hero-role");
 
-    const heroQuestionSplit = SplitText.create(
-      document.querySelector(".hero-question"),
-      {
-        type: "words",
-      },
-    );
-    const heroImage = document.querySelector(".hero-image");
+      const heroDescriptionSplit = SplitText.create(
+        document.querySelector(".hero-description"),
+        {
+          type: "words",
+          mask: "words",
+        },
+      );
 
-    const heroCta = document.querySelector(".hero-cta");
+      const heroQuestionSplit = SplitText.create(
+        document.querySelector(".hero-question"),
+        {
+          type: "words",
+          mask: "words",
+        },
+      );
+      const heroImage = document.querySelector(".hero-image");
 
-    tl.fromTo(
-      heroCurtain[1],
-      {
-        height: "100%",
-      },
-      {
-        height: "0%",
-        duration: 0.8,
-        delay: 0.5,
-        ease: "power4.inOut",
-      },
-    );
+      const heroCta = document.querySelector(".hero-cta");
 
-    tl.fromTo(
-      heroCurtain[0],
-      {
-        height: "100%",
-      },
-      {
-        height: "0%",
-        duration: 0.8,
-        ease: "power4.inOut",
-      },
-      "-=0.6",
-    );
+      tl.fromTo(
+        heroCurtain[1],
+        {
+          height: "100%",
+        },
+        {
+          height: "0%",
+          duration: 0.8,
+          delay: 0.5,
+          ease: "power4.inOut",
+        },
+      );
 
-    tl.fromTo(
-      heroGreet,
-      {
+      tl.fromTo(
+        heroCurtain[0],
+        {
+          height: "100%",
+        },
+        {
+          height: "0%",
+          duration: 0.8,
+          ease: "power4.inOut",
+        },
+        "-=0.6",
+      );
+
+      tl.fromTo(
+        heroGreet,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.inOut",
+        },
+      );
+
+      tl.from(
+        heroNameSplit.words,
+        {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.inOut",
+          stagger: 0.08,
+        },
+        "-=0.6",
+      );
+
+      tl.fromTo(
+        heroImage,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.inOut",
+        },
+        "-=0.8",
+      );
+
+      tl.fromTo(
+        heroRole,
+        {
+          backgroundColor: "transparent",
+        },
+        {
+          backgroundColor: "var(--color-secondary)",
+          duration: 0.8,
+          ease: "power2.inOut",
+        },
+        "-=0.8",
+      );
+
+      tl.fromTo(
+        heroRoleSplit.words,
+        {
+          opacity: 0,
+          y: 100,
+          backgroundColor: "transparent",
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.inOut",
+          stagger: 0.05,
+        },
+        "-=0.8",
+      );
+
+      tl.fromTo(
+        heroDescriptionSplit.words,
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.inOut",
+          stagger: 0.05,
+        },
+        "-=0.8",
+      );
+
+      tl.from(
+        heroQuestionSplit.words,
+        {
+          opacity: 0,
+          x: 50,
+          ease: "power2.inOut",
+          stagger: 0.08,
+        },
+        "-=0.3",
+      );
+
+      tl.fromTo(
+        heroCta,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.inOut",
+        },
+        "-=0.8",
+      );
+
+      // First Draft Container
+      const fdSection = document.querySelector(".first-draft-section");
+      const fdContainer = document.querySelector(".first-draft-container");
+      const fdTitleSplit = SplitText.create(
+        document.querySelector(".first-draft-title"),
+        {
+          type: "words",
+          mask: "words",
+        },
+      );
+      const fdHeadingSplit = SplitText.create(
+        document.querySelector(".first-draft-heading"),
+        {
+          type: "words",
+          mask: "words",
+        },
+      );
+      const fdSubheadingSplit = SplitText.create(
+        document.querySelector(".first-draft-subheading"),
+        {
+          type: "words",
+          mask: "words",
+        },
+      );
+      const fdDescriptionSplit = SplitText.create(
+        document.querySelector(".first-draft-description"),
+        {
+          type: "words",
+          mask: "words",
+        },
+      );
+      const fdClosureSplit = SplitText.create(
+        document.querySelector(".first-draft-closure"),
+        {
+          type: "words",
+          mask: "words",
+        },
+      );
+      const fdButton = document.querySelector(".first-draft-button");
+      const fdImage = document.querySelector(".first-draft-image");
+
+      const fdTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: fdSection,
+          start: "top 50%",
+          end: "bottom 50%",
+          markers: true,
+          toggleActions: "play none none reverse",
+        },
+      });
+      ScrollTrigger.create({
+        trigger: fdSection,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        markers: true,
+        pin: true,
+      });
+
+      fdTl.from(fdTitleSplit.words, {
         opacity: 0,
         y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
         duration: 0.8,
         ease: "power2.inOut",
-      },
-    );
+        stagger: 0.05,
+      });
 
-    tl.from(
-      heroNameSplit.words,
-      {
+      fdTl.from(
+        fdHeadingSplit.words,
+        {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.inOut",
+          stagger: 0.05,
+        },
+        "-=0.5",
+      );
+
+      fdTl.from(
+        fdSubheadingSplit.words,
+        {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.inOut",
+          stagger: 0.05,
+        },
+        "-=0.5",
+      );
+
+      fdTl.fromTo(
+        fdImage,
+        {
+          opacity: 0,
+          y: 100,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.inOut",
+        },
+        "-=0.8",
+      );
+
+      fdTl.from(
+        fdDescriptionSplit.words,
+        {
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.inOut",
+          stagger: 0.03,
+        },
+        "-=0.8",
+      );
+
+      fdTl.from(fdClosureSplit.words, {
         opacity: 0,
         y: 50,
         duration: 0.8,
         ease: "power2.inOut",
-        stagger: 0.08,
+        stagger: 0.05,
       },
-      "-=0.6",
-    );
+      "-=0.5",
+      );
 
-    tl.fromTo(
-      heroImage,
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.inOut",
-      },
-      "-=0.8",
-    );
-
-    tl.fromTo(
-      heroRole,
-      {
-        opacity: 0,
-        y: 100,
-        backgroundColor: "transparent",
-      },
-      {
-        opacity: 1,
-        y: 0,
-        backgroundColor: "var(--color-secondary)",
-        duration: 0.8,
-        ease: "power2.inOut",
-      },
-      "-=0.8",
-    );
-
-    tl.fromTo(
-      heroDescription,
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.inOut",
-      },
-      "-=0.8",
-    );
-
-    tl.from(heroQuestionSplit.words, {
-      opacity: 0,
-      x: 50,
-      ease: "power2.inOut",
-      stagger: 0.08,
+      fdTl.fromTo(
+        fdButton,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.8,
+          ease: "back.out(2)",
+        },
+        "-=0.8",
+      );
     });
 
-    tl.fromTo(
-      heroCta,
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duration: 0.4,
-        ease: "power2.inOut",
-      },
-    );
+    return () => ctx.revert(); // Revert the animations when the component unmounts
   }, []);
 };
 

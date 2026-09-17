@@ -129,12 +129,3 @@ html.dialog-open body {
   background: rgb(21 21 21 / 45%);
   backdrop-filter: blur(8px);
 }
-
-.first-draft-section {
-  background: url("../src/images/home/first-draft.webp") no-repeat left center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100%;
-  width: 100%;
-}
