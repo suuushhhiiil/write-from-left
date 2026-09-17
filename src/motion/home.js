@@ -233,7 +233,6 @@ const homeMotion = () => {
           trigger: fdSection,
           start: "top 50%",
           end: "bottom 50%",
-          markers: true,
           toggleActions: "play none none reverse",
         },
       });
@@ -242,7 +241,6 @@ const homeMotion = () => {
         start: "top top",
         end: "bottom top",
         scrub: true,
-        markers: true,
         pin: true,
       });
 
