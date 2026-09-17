@@ -10,28 +10,36 @@ import OptimizedImage from './common/OptimizedImage';
 
 const Home = () => {
 
-    // homeMotion();
+    homeMotion();
 
     return (
         <section className="pb-8">
+            <div className="hero-curtain absolute top-0 left-0 h-full w-full bg-accent z-100">
+            </div>
+            <div className="hero-curtain absolute top-0 left-0 h-full w-full bg-primary z-100">
+            </div>
+            {/* <div className="hero-curtain absolute bottom-0 left-0 h-full w-full bg-dark z-00">
+            </div> */}
             <div className="hero-container lg:px-20 px-8 lg:grid lg:grid-cols-12 h-screen gap-8 flex flex-col items-center">
                 <div className="lg:col-span-6 flex flex-col lg:h-full justify-center gap-16 lg:py-20 pt-10">
                     <div className="">
-                        <h1 className="font-script text-primary text-2xl">Hi, I'm</h1>
-                        <div className="flex flex-col items-start gap-4 ">
-                            <h1 className="variable-hero-text hero-name text-6xl font-semibold font-display leading-none lg:text-nowrap">Khushboo Sangwan,</h1>
-                            <p className="hero-role text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md">Creative Project Manager & Content Strategist.</p>
+                        <p className="hero-greet font-script text-primary text-2xl">Hi, I'm</p>
+                        <div className="flex flex-col items-start gap-6 ">
+                            <div className="py-2 overflow-hidden">
+                                <h1 className="variable-hero-text hero-name text-6xl font-semibold font-display lg:text-nowrap">Khushboo Sangwan,</h1>
+                            </div>
+                            <p className="hero-role text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md overflow-hidden">Creative Project Manager & Content Strategist.</p>
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-2">
-                        <p className='hero-description text-xl font-light leading-none'>I believe your life is the <span className="italic text-primary font-medium">biggest</span> project you'll ever manage.</p>
-                        <p className='hero-description text-xl font-display mt-2 italic text-accent'>So, What are you building?</p>
-                        <Link to="/work-with-me" className="btn-primary mt-1">Work With Me</Link>
+                    <div className="flex flex-col gap-2 overflow-hidden">
+                        <p className='hero-description text-xl font-light overflow-hidden'>I believe your life is the <span className="hero-description italic text-primary font-medium">biggest</span> project you'll ever manage.</p>
+                        <p className='hero-question text-xl font-display mt-2 italic text-accent overflow-hidden'>So, What are you building?</p>
+                        <Link to="/work-with-me" className="hero-cta btn-primary mt-1 overflow-hidden">Work With Me</Link>
                     </div>
                 </div>
 
-                <div className="lg:col-span-6 border-b border-secondary">
+                <div className="lg:col-span-6 border-b border-secondary hero-image">
                     <OptimizedImage src={heroImage} alt="Hero" priority className="lg:w-full object-cover" />
                 </div>
             </div>

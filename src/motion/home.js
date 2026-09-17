@@ -7,6 +7,11 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const homeMotion = () => {
   useLayoutEffect(() => {
+    const tl = gsap.timeline();
+
+    const heroCurtain = document.querySelectorAll(".hero-curtain");
+
+    const heroGreet = document.querySelector(".hero-greet");
     const heroNameSplit = SplitText.create(
       document.querySelector(".hero-name"),
       {
@@ -14,43 +19,124 @@ const homeMotion = () => {
       },
     );
 
-    const heroRoleSplit = SplitText.create(
-      document.querySelector(".hero-role"),
-      {
-        type: "words",
-      },
-      );
-      
-    const heroDescriptionSplit = SplitText.create(
-      document.querySelectorAll(".hero-description"),
+    const heroRole = document.querySelector(".hero-role");
+
+    const heroDescription = document.querySelector(".hero-description");
+
+    const heroQuestionSplit = SplitText.create(
+      document.querySelector(".hero-question"),
       {
         type: "words",
       },
     );
+    const heroImage = document.querySelector(".hero-image");
 
-    gsap.from(heroNameSplit.chars, {
-      opacity: 0,
-      x: 20,
-      duration: 0.8,
-      ease: "back.out(1.7)",
-      stagger: 0.08,
-    });
+    const heroCta = document.querySelector(".hero-cta");
 
-    gsap.from(heroRoleSplit.words, {
+    tl.fromTo(
+      heroCurtain[1],
+      {
+        height: "100%",
+      },
+      {
+        height: "0%",
+        duration: 0.8,
+        delay: 0.5,
+        ease: "power4.inOut",
+      },
+    );
+
+    tl.fromTo(
+      heroCurtain[0],
+      {
+        height: "100%",
+      },
+      {
+        height: "0%",
+        duration: 0.8,
+        ease: "power4.inOut",
+      },
+      "-=0.6",
+    );
+
+    tl.fromTo(
+      heroGreet,
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.inOut",
+      }, "-=0.4",
+
+    );
+
+    tl.from(
+      heroNameSplit.words,
+      {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "power2.inOut",
+        stagger: 0.08,
+      },
+      "-=0.6",
+    );
+
+    tl.fromTo(
+      heroImage,
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.inOut",
+      },
+      "-=0.8",
+    );
+
+    tl.fromTo(
+      heroRole,
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.inOut",
+      },
+      "-=0.8",
+    );
+
+    tl.fromTo(
+      heroDescription,
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.inOut",
+      },
+      "-=0.8",
+    );
+
+    tl.from(heroQuestionSplit.words, {
       opacity: 0,
-      x: 50,
       duration: 0.8,
-      ease: "back.out(1.7)",
+      ease: "power2.inOut",
       stagger: 0.08,
-    });
-      
-    gsap.from(heroDescriptionSplit.words, {
-      opacity: 0,
-      x: 50,
-      duration: 0.8,
-      ease: "back.out(1.7)",
-      stagger: 0.08,
-    });
+    }, "+=0.5");
   }, []);
 };
 

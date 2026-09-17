@@ -12,6 +12,8 @@ const About = () => {
 
     return (
         <section className="">
+            <div className="hero-cover absolute bottom-0 left-0 h-full w-full bg-primary z-100">
+            </div>
             <div className="lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col lg:items-start px-8 lg:px-20 py-10">
                 <div className="lg:col-span-6 lg:row-span-2 lg:row-start-1 gap-2 flex flex-col">
                     <p className="hero-tagline text-xl text-primary leading-none">{aboutContent.hero.tagline}</p>
@@ -26,7 +28,7 @@ const About = () => {
                     <OptimizedImage src={aboutImage} alt="about" priority className="hero-image w-full aspect-video object-cover rounded-xl" />
                 </div>
 
-                <div className="lg:-col-start-5 lg:col-span-4 lg:row-start-6 lg:row-end-9 mt- flex flex-col gap-4 lg:mt-0 mt-8  ">
+                <div className="lg:-col-start-5 lg:col-span-4 lg:row-start-6 lg:row-end-9 mt- flex flex-col gap-4 lg:mt-0 mt-8 overflow-hidden philosophy-container">
                     <ul className="flex flex-col gap-2 bg-secondary p-8 rounded-2xl">
                         {aboutContent.hero.philosophy.map((item, index) => (
                             <li key={index} className="philosophy-item text-lg text-nowrap flex items-center gap-2 leading-tight text-dark font-medium"><span><item.Icon size={18} strokeWidth={2} className="text-primary" /></span>{item.title}</li>
