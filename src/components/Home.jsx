@@ -25,17 +25,19 @@ const Home = () => {
                     <div className="">
                         <p className="hero-greet font-script text-primary text-2xl">Hi, I'm</p>
                         <div className="flex flex-col items-start gap-6 ">
-                            <div className="py-2 overflow-hidden">
+                            <div className="pb-2 overflow-hidden">
                                 <h1 className="variable-hero-text hero-name text-6xl font-semibold font-display lg:text-nowrap">Khushboo Sangwan,</h1>
                             </div>
-                            <p className="hero-role text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md overflow-hidden">Creative Project Manager & Content Strategist.</p>
+                            <div className="overflow-hidden">
+                                <p className="hero-role text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md overflow-hidden">Creative Project Manager & Content Strategist.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-2 overflow-hidden">
+                    <div className="flex flex-col gap-2 ">
                         <p className='hero-description text-xl font-light overflow-hidden'>I believe your life is the <span className="hero-description italic text-primary font-medium">biggest</span> project you'll ever manage.</p>
                         <p className='hero-question text-xl font-display mt-2 italic text-accent overflow-hidden'>So, What are you building?</p>
-                        <Link to="/work-with-me" className="hero-cta btn-primary mt-1 overflow-hidden">Work With Me</Link>
+                        <Link to="/work-with-me" className="btn-primary hero-cta">Work With Me</Link>
                     </div>
                 </div>
 

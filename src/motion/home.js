@@ -70,8 +70,7 @@ const homeMotion = () => {
         y: 0,
         duration: 0.8,
         ease: "power2.inOut",
-      }, "-=0.4",
-
+      },
     );
 
     tl.from(
@@ -105,11 +104,13 @@ const homeMotion = () => {
       heroRole,
       {
         opacity: 0,
-        y: 50,
+        y: 100,
+        backgroundColor: "transparent",
       },
       {
         opacity: 1,
         y: 0,
+        backgroundColor: "var(--color-secondary)",
         duration: 0.8,
         ease: "power2.inOut",
       },
@@ -133,10 +134,22 @@ const homeMotion = () => {
 
     tl.from(heroQuestionSplit.words, {
       opacity: 0,
-      duration: 0.8,
+      x: 50,
       ease: "power2.inOut",
       stagger: 0.08,
-    }, "+=0.5");
+    });
+
+    tl.fromTo(
+      heroCta,
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.4,
+        ease: "power2.inOut",
+      },
+    );
   }, []);
 };
 
