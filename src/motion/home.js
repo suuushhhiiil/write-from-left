@@ -236,6 +236,7 @@ const homeMotion = () => {
           toggleActions: "play none none reverse",
         },
       });
+
       ScrollTrigger.create({
         trigger: fdSection,
         start: "top top",
@@ -261,7 +262,7 @@ const homeMotion = () => {
           ease: "power2.inOut",
           stagger: 0.05,
         },
-        "-=0.5",
+        "-=0.8",
       );
 
       fdTl.from(
@@ -273,18 +274,14 @@ const homeMotion = () => {
           ease: "power2.inOut",
           stagger: 0.05,
         },
-        "-=0.5",
+        "-=0.8",
       );
 
-      fdTl.fromTo(
+      fdTl.from(
         fdImage,
         {
           opacity: 0,
           y: 100,
-        },
-        {
-          opacity: 1,
-          y: 0,
           duration: 0.8,
           ease: "power2.inOut",
         },
@@ -302,14 +299,16 @@ const homeMotion = () => {
         "-=0.8",
       );
 
-      fdTl.from(fdClosureSplit.words, {
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: "power2.inOut",
-        stagger: 0.05,
-      },
-      "-=0.5",
+      fdTl.from(
+        fdClosureSplit.words,
+        {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.inOut",
+          stagger: 0.05,
+        },
+        "-=0.8",
       );
 
       fdTl.fromTo(
@@ -324,6 +323,126 @@ const homeMotion = () => {
         },
         "-=0.8",
       );
+
+      // What I Do Container
+      const wiSection = document.querySelector(".what-i-do-section");
+      const wiContainer = document.querySelector(".what-i-do-container");
+      const wiTitleSplit = SplitText.create(
+        document.querySelector(".what-i-do-title"),
+        {
+          type: "words",
+          mask: "words",
+        },
+      );
+      const wiHeadingSplit = SplitText.create(
+        document.querySelector(".what-i-do-heading"),
+        {
+          type: "words",
+          mask: "words",
+        },
+      );
+      const wiDescriptionSplit = SplitText.create(
+        document.querySelector(".what-i-do-description"),
+        {
+          type: "words",
+          mask: "words",
+        },
+      );
+      const wiCard = document.querySelector(".what-i-do-card");
+      const wiImage = document.querySelector(".what-i-do-image");
+      const wiExpertiseItems = document.querySelectorAll(
+        ".what-i-do-expertise-item",
+      );
+
+      const wiTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wiContainer,
+          start: "top 70%",
+          end: "bottom bottom",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      wiTl.from(wiTitleSplit.words, {
+        opacity: 0,
+        y: 50,
+        ease: "power2.inOut",
+        stagger: 0.02,
+      });
+
+      wiTl.from(
+        wiHeadingSplit.words,
+        {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.inOut",
+          stagger: 0.02,
+          toggleActions: "play none none reverse",
+        },
+        "-=0.8",
+      );
+
+      wiTl.from(
+        wiDescriptionSplit.words,
+        {
+          opacity: 0,
+          y: 50,
+          duration: 0.8,
+          ease: "power2.inOut",
+          stagger: 0.02,
+          toggleActions: "play none none reverse",
+        },
+        "-=0.8",
+      );
+
+      gsap.from(
+        wiCard,
+        {
+          opacity: 0,
+          y: 50,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: wiCard,
+            start: "top bottom",
+            end: "bottom 90%",
+            scrub: true,
+          },
+        },
+        "-=0.8",
+      );
+
+      gsap.from(
+        wiImage,
+        {
+          opacity: 0,
+          y: 50,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: wiImage,
+            start: "top bottom",
+            end: "bottom 80%",
+            scrub: true,
+          },
+        },
+        "-=0.6",
+      );
+
+      gsap.utils.toArray(wiExpertiseItems).forEach((item, index) => {
+        gsap.from(item, {
+          opacity: 0,
+          rotate: 15,
+          y: 50,
+          scale: 0.9,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: item,
+            start: "top bottom",
+            end: "bottom 80%",
+            scrub: true,
+          },
+        });
+      });
     });
 
     return () => ctx.revert(); // Revert the animations when the component unmounts

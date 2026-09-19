@@ -25,9 +25,7 @@ const Home = () => {
                     <div className="">
                         <p className="hero-greet font-script text-primary text-2xl">Hi, I'm</p>
                         <div className="flex flex-col items-start gap-6 ">
-                            <div className="pb-2">
-                                <h1 className="variable-hero-text hero-name text-6xl font-semibold font-display lg:text-nowrap">Khushboo Sangwan,</h1>
-                            </div>
+                            <h1 className="variable-hero-text hero-name text-6xl font-semibold font-display lg:text-nowrap">Khushboo Sangwan,</h1>
                             <div className="overflow-hidden">
                                 <p className="hero-role text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md">Creative Project Manager & Content Strategist.</p>
                             </div>
@@ -74,17 +72,17 @@ const Home = () => {
             <hr className="border-secondary mx-20" />
 
             {/* What I Do */}
-            <div className="lg:px-20 px-8 flex flex-col gap-2 py-20">
-                <h3 className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">{homeContent.whatIDoSection.title}</h3>
+            <div className="what-i-do-section lg:px-20 px-8 flex flex-col gap-2 py-20">
+                <h3 className="what-i-do-title text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">{homeContent.whatIDoSection.title}</h3>
 
-                <div className="lg:grid lg:grid-cols-12 flex flex-col gap-4 mt-4 items-start">
-                    <h1 className='lg:col-span-7 text-5xl font-semibold font-display capitalize '>{homeContent.whatIDoSection.hero.heading}<span className="italic text-primary"> {homeContent.whatIDoSection.hero.subheading}</span></h1>
+                <div className="what-i-do-container lg:grid lg:grid-cols-12 flex flex-col gap-4 mt-4 items-start">
+                    <h1 className='what-i-do-heading lg:col-span-7 text-5xl font-semibold font-display capitalize'>{homeContent.whatIDoSection.hero.heading}<span className="italic text-primary"> {homeContent.whatIDoSection.hero.subheading}</span></h1>
 
-                    <div className="lg:-col-start-5 lg:col-span-4 lg:text-right ">
-                        <p className="lg:text-2xl text-xl leading-tight font-light">{homeContent.whatIDoSection.hero.description}</p>
+                    <div className="what-i-do-description lg:-col-start-5 lg:col-span-4 lg:text-right ">
+                        <p className="what-i-do-description-text lg:text-2xl text-xl leading-tight font-light">{homeContent.whatIDoSection.hero.description}</p>
                     </div>
 
-                    <div className="lg:col-span-6 flex flex-col items-start justify-between gap-2 rounded-2xl p-6 lg:mt-16 mt-8 bg-accent/60 lg:h-64">
+                    <div className="what-i-do-card lg:col-span-6 flex flex-col items-start justify-between gap-2 rounded-2xl p-6 lg:mt-16 mt-8 bg-accent/60 lg:h-64">
                         <div className="flex flex-col gap-2">
                             <h2 className="text-4xl font-semibold">{homeContent.whatIDoSection.hero.intro}</h2>
                             <p className="text-lg leading-tight">{homeContent.whatIDoSection.hero.statement}</p>
@@ -92,11 +90,11 @@ const Home = () => {
                         <Link to="/projects" className="btn-primary mt-4">{homeContent.whatIDoSection.hero.buttonText}<span className="">→</span></Link>
                     </div>
 
-                    <div className="lg:col-span-3 rounded-2xl lg:mt-16 lg:h-64 h-128 w-full overflow-hidden">
+                    <div className="what-i-do-image lg:col-span-3 rounded-2xl lg:mt-16 lg:h-64 h-128 w-full overflow-hidden">
                         <OptimizedImage src={whatIDoCardImage} alt="" className="h-full w-full object-cover object-bottom-left" />
                     </div>
                     {homeContent.whatIDoSection.expertise.items.map((item, index) => (
-                        <div key={index} className={`lg:col-span-3 flex w-full flex-col gap-2 rounded-2xl p-6 bg-secondary h-64  ${index === 0 ? 'lg:mt-16' : ''}`}>
+                        <div key={index} className={`what-i-do-expertise-item lg:col-span-3 flex w-full flex-col gap-2 rounded-2xl p-6 bg-secondary h-64  ${index === 0 ? 'lg:mt-16' : ''}`}>
                             {item.icon && <div className="text-primary mb-2 w-fit p-1 rounded-md">
                                 <item.icon size={24} strokeWidth={1.5} />
                             </div>}
