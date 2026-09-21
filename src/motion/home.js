@@ -12,6 +12,8 @@ const homeMotion = () => {
 
       const heroCurtain = document.querySelectorAll(".hero-curtain");
 
+      const heroContainer = document.querySelector(".hero-container");
+
       const heroGreet = document.querySelector(".hero-greet");
       const heroNameSplit = SplitText.create(
         document.querySelector(".hero-name"),
@@ -49,6 +51,22 @@ const homeMotion = () => {
       const heroImage = document.querySelector(".hero-image");
 
       const heroCta = document.querySelector(".hero-cta");
+
+      gsap.to(heroContainer, {
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.8,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: heroContainer,
+          start: "bottom 100%",
+          end: "bottom 50%",
+          markers: true,
+          pin: true,
+          pinSpacing: false,
+          scrub: true,
+        },
+      });
 
       tl.fromTo(
         heroCurtain[1],
@@ -354,84 +372,73 @@ const homeMotion = () => {
         ".what-i-do-expertise-item",
       );
 
-      const wiTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: wiContainer,
-          start: "top 70%",
-          end: "bottom bottom",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      wiTl.from(wiTitleSplit.words, {
+      gsap.from(wiTitleSplit.words, {
         opacity: 0,
         y: 50,
         ease: "power2.inOut",
         stagger: 0.02,
+        scrollTrigger: {
+          trigger: wiContainer,
+          start: "top 50%",
+          end: "top 20%",
+          scrub: true,
+        },
       });
 
-      wiTl.from(
-        wiHeadingSplit.words,
-        {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          ease: "power2.inOut",
-          stagger: 0.02,
-          toggleActions: "play none none reverse",
+      gsap.from(wiHeadingSplit.words, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "power2.inOut",
+        stagger: 0.02,
+        scrollTrigger: {
+          trigger: wiContainer,
+          start: "top 70%",
+          end: "top 50%",
+          scrub: true,
         },
-        "-=0.8",
-      );
+      });
 
-      wiTl.from(
-        wiDescriptionSplit.words,
-        {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          ease: "power2.inOut",
-          stagger: 0.02,
-          toggleActions: "play none none reverse",
+      gsap.from(wiDescriptionSplit.words, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "power2.inOut",
+        stagger: 0.02,
+        scrollTrigger: {
+          trigger: wiContainer,
+          start: "top 70%",
+          end: "top 50%",
+          scrub: true,
         },
-        "-=0.8",
-      );
+      });
+      gsap.from(wiCard, {
+        opacity: 0,
+        y: 50,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: wiCard,
+          start: "top bottom",
+          end: "bottom 90%",
+          scrub: true,
+        },
+      });
 
-      gsap.from(
-        wiCard,
-        {
-          opacity: 0,
-          y: 50,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: wiCard,
-            start: "top bottom",
-            end: "bottom 90%",
-            scrub: true,
-          },
+      gsap.from(wiImage, {
+        opacity: 0,
+        y: 50,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: wiImage,
+          start: "top bottom",
+          end: "bottom 80%",
+          scrub: true,
         },
-        "-=0.8",
-      );
-
-      gsap.from(
-        wiImage,
-        {
-          opacity: 0,
-          y: 50,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: wiImage,
-            start: "top bottom",
-            end: "bottom 80%",
-            scrub: true,
-          },
-        },
-        "-=0.6",
-      );
+      });
 
       gsap.utils.toArray(wiExpertiseItems).forEach((item, index) => {
         gsap.from(item, {
           opacity: 0,
-          rotate: 15,
           y: 50,
           scale: 0.9,
           ease: "power2.inOut",

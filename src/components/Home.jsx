@@ -14,7 +14,9 @@ const Home = () => {
 
     return (
         <section className="pb-8">
-            <div className="hero-curtain absolute top-0 left-0 h-full w-full bg-accent z-100">
+            <div className="hero-curtain absolute top-0 left-0 h-screen w-full bg-accent z-100">
+                <div className="hero-curtain-inner flex justify-center items-center">
+                </div>
             </div>
             <div className="hero-curtain absolute top-0 left-0 h-full w-full bg-primary z-100">
             </div>
@@ -24,8 +26,10 @@ const Home = () => {
                 <div className="lg:col-span-6 flex flex-col lg:h-full justify-center gap-16 lg:py-20 pt-10">
                     <div className="">
                         <p className="hero-greet font-script text-primary text-2xl">Hi, I'm</p>
-                        <div className="flex flex-col items-start gap-6 ">
-                            <h1 className="variable-hero-text hero-name text-6xl font-semibold font-display lg:text-nowrap">Khushboo Sangwan,</h1>
+                        <div className="flex flex-col items-start gap-6">
+                            <div className="py-2">
+                                <h1 className="variable-hero-text hero-name text-6xl font-semibold font-display lg:text-nowrap leading-tight">Khushboo Sangwan<span>,</span></h1>
+                            </div>
                             <div className="overflow-hidden">
                                 <p className="hero-role text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md">Creative Project Manager & Content Strategist.</p>
                             </div>
@@ -43,9 +47,7 @@ const Home = () => {
                     <OptimizedImage src={heroImage} alt="Hero" priority className="lg:w-full object-cover" />
                 </div>
             </div>
-
-            <hr className="border-secondary mx-20" />
-
+            
             {/* What I am building */}
             <div className="first-draft-section lg:py-10">
                 <div className="first-draft-container h-screen lg:px-20 px-8 lg:grid lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6  py-20">
@@ -69,7 +71,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <hr className="border-secondary mx-20" />
 
             {/* What I Do */}
             <div className="what-i-do-section lg:px-20 px-8 flex flex-col gap-2 py-20">

@@ -4,9 +4,11 @@ import { Menu } from 'lucide-react'
 import { navItems } from '../assets/nav'
 import { Link, useLocation } from 'react-router-dom'
 import OptimizedImage from './common/OptimizedImage'
-
+import navbarMotion from '../motion/navbar'
 
 const Nav = () => {
+    navbarMotion();
+
     const [isOpen, setIsOpen] = useState(false)
     const location = useLocation()
     const isActive = (page) => (location.pathname.includes(page))
@@ -29,16 +31,16 @@ const Nav = () => {
     }, [])
 
     return (
-        <div ref={navRef} className="relative backdrop-blur-lg flex justify-between items-center py-4 px-8 lg:px-20">
+        <div ref={navRef} className="navbar-container relative backdrop-blur-lg flex justify-between items-center py-4 px-8 lg:px-20">
             <div className="flex flex-col items-center gap-2">
                 <Link to="/">
                     <OptimizedImage src={logo} alt="Write-from-left" priority className="w-20 lg:w-28 object-contain hover:scale-105 transition-all duration-300 cursor-pointer" />
                 </Link>
             </div>
             <ul className="items-center gap-4 hidden lg:flex text-sm">
-                <Link to="/" className={`text-sm cursor-pointer hover:text-primary transition-all duration-300 ${location.pathname === "/" ? 'text-primary font-bold' : 'text-dark'}`}>Home</Link>
+                <Link to="/" className={`navbar-item text-sm cursor-pointer hover:text-primary transition-all duration-300 ${location.pathname === "/" ? 'text-primary font-bold' : 'text-dark'}`}>Home</Link>
                 {navItems.map((item) => (
-                    <Link key={item.to} to={item.to} className={`text-sm cursor-pointer hover:text-primary transition-all duration-300 ${isActive(item.to) ? 'text-primary font-bold' : 'text-dark'}`}>{item.label}</Link>
+                    <Link key={item.to} to={item.to} className={`navbar-item text-sm cursor-pointer hover:text-primary transition-all duration-300 ${isActive(item.to) ? 'text-primary font-bold' : 'text-dark'}`}>{item.label}</Link>
                 ))}
 
             </ul>
