@@ -60,8 +60,7 @@ const homeMotion = () => {
         scrollTrigger: {
           trigger: heroContainer,
           start: "bottom 100%",
-          end: "bottom 50%",
-          markers: true,
+          end: "bottom top",
           pin: true,
           pinSpacing: false,
           scrub: true,
@@ -246,90 +245,111 @@ const homeMotion = () => {
       const fdButton = document.querySelector(".first-draft-button");
       const fdImage = document.querySelector(".first-draft-image");
 
-      const fdTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: fdSection,
-          start: "top 50%",
-          end: "bottom 50%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
       ScrollTrigger.create({
         trigger: fdSection,
         start: "top top",
         end: "bottom top",
         scrub: true,
         pin: true,
+        pinSpacing: false,
       });
 
-      fdTl.from(fdTitleSplit.words, {
+      gsap.to(fdContainer, {
+        opacity: 0,
+        duration: 0.8,
+        scale: 0.8,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: fdSection,
+          start: "top top",
+          end: "bottom 30%",
+          scrub: true,
+        },
+      });
+
+      gsap.from(fdTitleSplit.words, {
         opacity: 0,
         y: 50,
         duration: 0.8,
         ease: "power2.inOut",
         stagger: 0.05,
+        scrollTrigger: {
+          trigger: fdSection,
+          start: "top 50%",
+          end: "top 0%",
+          scrub: true,
+        },
       });
 
-      fdTl.from(
-        fdHeadingSplit.words,
-        {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          ease: "power2.inOut",
-          stagger: 0.05,
+      gsap.from(fdHeadingSplit.words, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "power2.inOut",
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: fdSection,
+          start: "top 60%",
+          end: "top 20%",
+          scrub: true,
         },
-        "-=0.8",
-      );
+      });
 
-      fdTl.from(
-        fdSubheadingSplit.words,
-        {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          ease: "power2.inOut",
-          stagger: 0.05,
+      gsap.from(fdSubheadingSplit.words, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "power2.inOut",
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: fdSection,
+          start: "top 40%",
+          end: "top 0%",
+          scrub: true,
         },
-        "-=0.8",
-      );
+      });
 
-      fdTl.from(
-        fdImage,
-        {
-          opacity: 0,
-          y: 100,
-          duration: 0.8,
-          ease: "power2.inOut",
+      gsap.from(fdImage, {
+        opacity: 0,
+        y: 100,
+        duration: 0.8,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: fdSection,
+          start: "top 40%",
+          end: "top 0%",
+          scrub: true,
         },
-        "-=0.8",
-      );
+      });
 
-      fdTl.from(
-        fdDescriptionSplit.words,
-        {
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.inOut",
-          stagger: 0.03,
+      gsap.from(fdDescriptionSplit.words, {
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.inOut",
+        stagger: 0.03,
+        scrollTrigger: {
+          trigger: fdSection,
+          start: "top 40%",
+          end: "top 0%",
+          scrub: true,
         },
-        "-=0.8",
-      );
+      });
 
-      fdTl.from(
-        fdClosureSplit.words,
-        {
-          opacity: 0,
-          y: 50,
-          duration: 0.8,
-          ease: "power2.inOut",
-          stagger: 0.05,
+      gsap.from(fdClosureSplit.words, {
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: "power2.inOut",
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: fdSection,
+          start: "top 40%",
+          end: "top 0%",
+          scrub: true,
         },
-        "-=0.8",
-      );
+      });
 
-      fdTl.fromTo(
+      gsap.fromTo(
         fdButton,
         {
           opacity: 0,
@@ -393,8 +413,8 @@ const homeMotion = () => {
         stagger: 0.02,
         scrollTrigger: {
           trigger: wiContainer,
-          start: "top 70%",
-          end: "top 50%",
+          start: "top 60%",
+          end: "top 10%",
           scrub: true,
         },
       });
@@ -450,6 +470,43 @@ const homeMotion = () => {
           },
         });
       });
+
+      //Experience Section
+      const experienceSection = document.querySelector(".experience-section");
+      const experienceContainer = document.querySelector(
+        ".experience-container",
+      );
+      const experienceHeading = document.querySelector(".experience-heading");
+      const experienceDescription = document.querySelector(
+        ".experience-description",
+      );
+      const experienceItemsContainer = document.querySelector(
+        ".experience-items-container",
+      );
+      const experienceItems = document.querySelectorAll(
+        ".experience-item-title",
+      );
+      const experienceItemsDescriptions = document.querySelectorAll(
+        ".experience-item-description",
+      );
+
+      // experienceItems.forEach((item, index) => {
+      //   let obj = { val: 0 };
+      //   gsap.to(obj, {
+      //     value: 100,
+      //     ease: "power2.inOut",
+      //     scrollTrigger: {
+      //       trigger: item,
+      //       start: "top 80%",
+      //       end: "bottom 60%",
+      //       markers: true,
+      //       once: true,
+      //       onUpdate: () => {
+      //         item.textContent = Math.round(obj.val).toLocaleString();
+      //       },
+      //     },
+      //   });
+      // });
     });
 
     return () => ctx.revert(); // Revert the animations when the component unmounts
