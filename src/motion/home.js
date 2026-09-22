@@ -115,7 +115,7 @@ const animateHero = (q, el) => {
     { autoAlpha: 1, scale: 1 },
     {
       autoAlpha: 0,
-      scale: 2,
+      scale: 5,
       ease: EASE,
       overwrite: "auto",
       scrollTrigger: {
@@ -132,6 +132,8 @@ const animateHero = (q, el) => {
 
 const animateFirstDraft = (el) => {
   const section = el(".first-draft-section");
+  const imageContainer = el(".first-draft-image-container");
+  const image = el(".first-draft-image");
   const container = el(".first-draft-container");
   if (!section || !container) return;
 
@@ -143,61 +145,47 @@ const animateFirstDraft = (el) => {
     pinSpacing: true,
   });
 
-  gsap.from(container, {
-    autoAlpha: 0,
+  gsap.from(imageContainer, {
     scale: 0.8,
-    ease: EASE,
-    overwrite: "auto",
+    rotate: -10,
     scrollTrigger: {
       trigger: section,
       start: "top top",
-      end: "bottom 50%",
+      end: "bottom 20%",
       scrub: true,
     },
   });
 
-  // .fromTo(
-  //   splitWords(el(".first-draft-heading")).words,
-  //   fadeUpFrom,
-  //   { ...fadeUpTo, stagger: 0.08 },
-  //   0,
-  // )
-  // .fromTo(
-  //   splitWords(el(".first-draft-title")).words,
-  //   fadeUpFrom,
-  //   { ...fadeUpTo, stagger: 0.08 },
-  //   0.12,
-  // )
-  // .fromTo(
-  //   splitWords(el(".first-draft-subheading")).words,
-  //   fadeUpFrom,
-  //   { ...fadeUpTo, stagger: 0.08 },
-  //   0.22,
-  // )
-  // .fromTo(
-  //   el(".first-draft-image"),
-  //   { autoAlpha: 0, y: 100 },
-  //   { autoAlpha: 1, y: 0 },
-  //   0.22,
-  // )
-  // .fromTo(
-  //   splitWords(el(".first-draft-description")).words,
-  //   { autoAlpha: 0 },
-  //   { autoAlpha: 1, stagger: 0.08 },
-  //   0.22,
-  // )
-  // .fromTo(
-  //   splitWords(el(".first-draft-closure")).words,
-  //   fadeUpFrom,
-  //   { ...fadeUpTo, stagger: 0.05 },
-  //   0.22,
-  // )
-  // .fromTo(
-  //   el(".first-draft-button"),
-  //   { autoAlpha: 0 },
-  //   { autoAlpha: 1, ease: "back.out(2)" },
-  //   0.35,
-  // );
+  scrubFromTo(
+    image,
+    {
+      scale: 2.5,
+      rotate: 10,
+    },
+    {
+      scale: 1,
+      rotate: 0,
+    },
+    {
+      trigger: section,
+      start: "top 10%",
+      end: "bottom 20%",
+      scrub: true,
+    },
+  );
+
+  gsap.from(container, {
+    autoAlpha: 0,
+    scale: 0.9,
+    ease: EASE,
+    overwrite: "auto",
+    scrollTrigger: {
+      trigger: section,
+      start: "top 10%",
+      end: "bottom 50%",
+      scrub: true,
+    },
+  });
 };
 
 const animateWhatIDo = (q, el) => {
@@ -226,16 +214,52 @@ const animateWhatIDo = (q, el) => {
   );
 
   const card = el(".what-i-do-card");
+  const imageContainer = el(".what-i-do-image-container");
   const image = el(".what-i-do-image");
+
+
+
+  scrubFromTo(
+    imageContainer,
+    {
+      scale: 0.8,
+      y: 50,
+      autoAlpha: 0,
+    },
+    {
+      scale: 1,
+      y: 0,
+      autoAlpha: 1,
+    },
+    {
+      trigger: imageContainer,
+      start: "top bottom",
+      end: "bottom 60%",
+      scrub: true,
+      markers: true,
+    },
+  );
+  
+  scrubFromTo(
+    image,
+    {
+      scale: 2.5,
+      rotate: 10,
+    },
+    {
+      scale: 1,
+      rotate: 0,
+    },
+    {
+      trigger: imageContainer,
+      start: "top bottom",
+      end: "bottom 60%",
+      scrub: true,
+    },
+  );
 
   scrubFromTo(card, fadeUpFrom, fadeUpTo, {
     trigger: card,
-    start: "top bottom",
-    end: "bottom 60%",
-  });
-
-  scrubFromTo(image, fadeUpFrom, fadeUpTo, {
-    trigger: image,
     start: "top bottom",
     end: "bottom 60%",
   });

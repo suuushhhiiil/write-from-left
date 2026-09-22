@@ -31,13 +31,13 @@ const Nav = () => {
     }, [])
 
     return (
-        <div ref={navRef} className="navbar-container relative backdrop-blur-lg flex justify-between items-center py-4 px-4 lg:px-20">
+        <div ref={navRef} className="navbar-container relative backdrop-blur-lg flex justify-between items-center py-4 px-4 lg:px-20 ">
             <div className="flex flex-col items-center gap-2">
                 <Link to="/">
                     <OptimizedImage src={logo} alt="Write-from-left" priority className="w-20 lg:w-28 object-contain hover:scale-105 transition-all duration-300 cursor-pointer" />
                 </Link>
             </div>
-            <ul className="items-center gap-4 hidden lg:flex text-sm">
+            <ul className="items-center gap-4 hidden lg:flex text-sm overflow-hidden">
                 <Link to="/" className={`navbar-item text-sm cursor-pointer hover:text-primary transition-all duration-300 ${location.pathname === "/" ? 'text-primary font-bold' : 'text-dark'}`}>Home</Link>
                 {navItems.map((item) => (
                     <Link key={item.to} to={item.to} className={`navbar-item text-sm cursor-pointer hover:text-primary transition-all duration-300 ${isActive(item.to) ? 'text-primary font-bold' : 'text-dark'}`}>{item.label}</Link>

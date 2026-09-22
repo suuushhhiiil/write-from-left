@@ -60,8 +60,8 @@ const Home = () => {
                                 target="_blank" rel="noopener noreferrer" className="first-draft-button btn-primary">Join the Next Meetup <span className="">→</span></Link>
                         </div>
                     </div>
-                    <div className="first-draft-image lg:col-span-7 flex items-center justify-center h-full">
-                        <OptimizedImage src={firstDraftImage} alt="First Draft" className="w-full h-full aspect-video object-cover rounded-xl" />
+                    <div className="first-draft-image-container lg:col-span-7 flex items-center justify-center relative overflow-hidden rounded-xl">
+                        <OptimizedImage src={firstDraftImage} alt="First Draft" className="first-draft-image rounded-xl aspect-video object-cover" />
                     </div>
                 </div>
             </div>
@@ -85,8 +85,8 @@ const Home = () => {
                         <Link to="/projects" className="btn-primary mt-4">{homeContent.whatIDoSection.hero.buttonText}<span className="">→</span></Link>
                     </div>
 
-                    <div className="what-i-do-image lg:col-span-3 rounded-2xl lg:mt-16 lg:h-64 h-128 w-full overflow-hidden">
-                        <OptimizedImage src={whatIDoCardImage} alt="" className="h-full w-full object-cover object-bottom-left" />
+                    <div className="what-i-do-image-container lg:col-span-3 rounded-2xl lg:mt-16 lg:h-64 h-128 w-full overflow-hidden">
+                        <OptimizedImage src={whatIDoCardImage} alt="" className="what-i-do-image h-full w-full object-cover object-bottom-left" />
                     </div>
                     {homeContent.whatIDoSection.expertise.items.map((item, index) => (
                         <div key={index} className={`what-i-do-expertise-item lg:col-span-3 flex w-full flex-col gap-2 rounded-2xl p-6 bg-secondary h-64  ${index === 0 ? 'lg:mt-16' : ''}`}>

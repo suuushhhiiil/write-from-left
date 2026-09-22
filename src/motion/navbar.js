@@ -10,16 +10,6 @@ const navbarMotion = () => {
     const ctx = gsap.context(() => {
       const navbarContainer = document.querySelector(".navbar-container");
       const navbarItems = document.querySelectorAll(".navbar-item");
-      const navbarLinks = document.querySelectorAll(".navbar-link");
-      const navbarIcons = document.querySelectorAll(".navbar-icon");
-      const navbarSocials = document.querySelectorAll(".navbar-social");
-      const navbarSocialsLinks = document.querySelectorAll(
-        ".navbar-social-link",
-      );
-      const navbarSocialsIcons = document.querySelectorAll(
-        ".navbar-social-icon",
-      );
-
       const tl = gsap.timeline();
 
       tl.fromTo(
@@ -33,25 +23,24 @@ const navbarMotion = () => {
           y: 0,
           opacity: 1,
           duration: 1,
-          delay: 2,
           ease: "power2.inOut",
         },
       );
 
       navbarItems.forEach((item, index) => {
-        tl.fromTo(
+        gsap.fromTo(
           item,
           {
+            y: -100,
             opacity: 0,
-            scale: 0.6,
           },
           {
             opacity: 1,
+            delay: index * 0.1,
             duration: 0.4,
-            scale: 1,
+            y: 0,
             ease: "power2.inOut",
           },
-          "<+=0.2",
         );
       });
     });
