@@ -8,7 +8,7 @@ import OptimizedImage from './common/OptimizedImage'
 const WorkWithMe = () => {
     return (
         <section>
-            <div className="lg:px-20 px-8 pt-10 pb-20 ">
+            <div className="lg:px-20 px-4 pt-10 pb-20 ">
                 <div className="lg:h-screen lg:grid lg:grid-cols-12 lg:grid-rows-10 flex flex-col gap-2">
                     <div className="lg:col-start-1 lg:col-span-7 lg:row-start-1 lg:row-span-3 relative">
                         <h2 className="lg:text-7xl font-semibold font-display text-5xl capitalize">{workWithMeContent.hero.title}</h2>
@@ -28,7 +28,7 @@ const WorkWithMe = () => {
             </div>
             <hr className="border-secondary mx-20" />
 
-            <div className='lg:px-20 px-8 py-20'>
+            <div className='lg:px-20 px-4 py-20'>
                 <div className="min-h-screen lg:grid lg:grid-cols-10 lg:grid-rows-9 flex flex-col gap-4">
                     <div className="col-span-4">
                         <h2 className='lg:text-5xl text-4xl font-bold capitalize '>{workWithMeContent.services.title}</h2>
@@ -72,7 +72,7 @@ const WorkWithMe = () => {
             </div>
             <hr className="border-secondary mx-20" />
 
-            <div className='lg:px-20 px-8 py-20 flex flex-col gap-16'>
+            <div className='lg:px-20 px-4 py-20 flex flex-col gap-16'>
                 <div className="lg:grid lg:grid-cols-10 lg:grid-rows-8 flex flex-col lg:gap-4 gap-16">
                     <div className="col-span-4">
                         <h2 className='lg:text-5xl text-4xl font-bold capitalize '>{workWithMeContent.process.title}</h2>
@@ -131,7 +131,7 @@ const WorkWithMe = () => {
             </div>
             <hr className="border-secondary mx-20" />
 
-            <div className='lg:px-20 px-8 py-20'>
+            <div className='lg:px-20 px-4 py-20'>
 
                 <div className="flex flex-col gap-8 bg-secondary rounded-xl p-4">
                     <div className="flex flex-col gap-2">
@@ -156,7 +156,7 @@ const WorkWithMe = () => {
             </div>
 
             <hr className="border-secondary mx-20" />
-            <div className='lg:px-20 px-8 py-20'>
+            <div className='lg:px-20 px-4 py-20'>
                 <div className="rounded-3xl bg-primary p-6 text-background lg:p-12">
                     <div className="flex flex-col gap-8">
                         <div className="flex flex-col gap-2">

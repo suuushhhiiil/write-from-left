@@ -1,59 +1,53 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import heroImage from '../images/home/hero.webp'
 import firstDraftImage from '../images/home/first-draft.webp'
 import letsTalkImage from '../images/home/talk-01.webp'
 import whatIDoCardImage from '../images/home/what-i-do-card.webp'
 import homeContent from '../assets/home';
 import { Link } from 'react-router-dom';
-import homeMotion from '../motion/home';
+import useHomeMotion from '../motion/home';
 import OptimizedImage from './common/OptimizedImage';
 
 const Home = () => {
-
-    homeMotion();
+    const rootRef = useRef(null);
+    useHomeMotion(rootRef);
 
     return (
-        <section className="pb-8">
-            <div className="hero-curtain absolute top-0 left-0 h-screen w-full bg-accent z-100">
-                <div className="hero-curtain-inner flex justify-center items-center">
-                </div>
-            </div>
-            <div className="hero-curtain absolute top-0 left-0 h-full w-full bg-primary z-100">
-            </div>
-            {/* <div className="hero-curtain absolute bottom-0 left-0 h-full w-full bg-dark z-00">
-            </div> */}
-            <div className="hero-container lg:px-20 px-8 lg:grid lg:grid-cols-12 h-screen gap-8 flex flex-col items-center">
-                <div className="lg:col-span-6 flex flex-col lg:h-full justify-center gap-16 lg:py-20 pt-10">
-                    <div className="">
-                        <p className="hero-greet font-script text-primary text-2xl">Hi, I'm</p>
-                        <div className="flex flex-col items-start gap-6">
-                            <div className="py-2">
-                                <h1 className="variable-hero-text hero-name text-6xl font-semibold font-display lg:text-nowrap leading-tight">Khushboo Sangwan<span>,</span></h1>
+        <section ref={rootRef} className="pb-8">
+            <div className="hero-pin relative overflow-hidden">
+                <div className="hero-container h-screen lg:px-20 px-4 lg:grid lg:grid-cols-12 gap-8 flex flex-col items-center">
+                    <div className="lg:col-span-6 flex flex-col lg:h-full justify-center gap-16 lg:py-20 pt-20">
+                        <div className="">
+                            <p className="hero-greet font-script text-primary text-2xl">Hi, I'm</p>
+                            <div className="flex flex-col items-start gap-6">
+                                <div className="py-2">
+                                    <h1 className="variable-hero-text hero-name text-6xl font-semibold font-display lg:text-nowrap leading-tight">Khushboo Sangwan<span>,</span></h1>
+                                </div>
+                                <div className="overflow-hidden">
+                                    <p className="hero-role text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md">Creative Project Manager & Content Strategist.</p>
+                                </div>
                             </div>
-                            <div className="overflow-hidden">
-                                <p className="hero-role text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md">Creative Project Manager & Content Strategist.</p>
-                            </div>
+                        </div>
+
+                        <div className="flex flex-col gap-2 ">
+                            <p className='hero-description text-xl font-light'>I believe your life is the <span className="hero-description italic text-primary font-medium">biggest</span> project you'll ever manage.</p>
+                            <p className='hero-question text-xl font-display mt-2 italic text-accent'>So, What are you building?</p>
+                            <Link to="/work-with-me" className="btn-primary hero-cta">Work With Me</Link>
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-2 ">
-                        <p className='hero-description text-xl font-light'>I believe your life is the <span className="hero-description italic text-primary font-medium">biggest</span> project you'll ever manage.</p>
-                        <p className='hero-question text-xl font-display mt-2 italic text-accent'>So, What are you building?</p>
-                        <Link to="/work-with-me" className="btn-primary hero-cta">Work With Me</Link>
+                    <div className="lg:col-span-6 border-b border-secondary hero-image">
+                        <OptimizedImage src={heroImage} alt="Hero" priority className="lg:w-full object-cover" />
                     </div>
-                </div>
-
-                <div className="lg:col-span-6 border-b border-secondary hero-image">
-                    <OptimizedImage src={heroImage} alt="Hero" priority className="lg:w-full object-cover" />
                 </div>
             </div>
 
             {/* What I am building */}
             <div className="first-draft-section lg:py-10">
-                <div className="first-draft-container h-screen lg:px-20 px-8 lg:grid lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6  py-20">
+                <div className="first-draft-container h-screen lg:px-20 px-4 lg:grid lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6  py-20">
                     <div className="lg:col-span-5 flex  flex-col lg:gap-24 items-start justify-center lg:h-full">
                         <div className="flex flex-col gap-4">
-                            <p className="first-draft-title text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">What I am building</p>
+                            <p className="first-draft-title text-xs font-medium text-accent uppercase tracking-wider">What I am building</p>
                             <div className="flex flex-col gap-2">
                                 <h1 className="first-draft-heading text-5xl font-semibold font-display capitalize">first draft</h1>
                                 <h2 className="first-draft-subheading font-semibold text-primary text-xs tracking-widest uppercase ">Founder · Creative Project Manager</h2>
@@ -73,10 +67,10 @@ const Home = () => {
             </div>
 
             {/* What I Do */}
-            <div className="what-i-do-section lg:px-20 px-8 flex flex-col gap-2 py-20 bg-background">
-                <h3 className="what-i-do-title text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">{homeContent.whatIDoSection.title}</h3>
+            <div className="what-i-do-section lg:px-20 px-4 flex flex-col gap-2 py-20 bg-background">
+                <h3 className="what-i-do-title text-xs font-medium text-accent uppercase tracking-wider">{homeContent.whatIDoSection.title}</h3>
 
-                <div className="what-i-do-container lg:grid lg:grid-cols-12 flex flex-col gap-4 mt-4 items-start">
+                <div className="what-i-do-container lg:grid lg:grid-cols-12 flex flex-col gap-4 mt-4 items-start bg-background">
                     <h1 className='what-i-do-heading lg:col-span-7 text-5xl font-semibold font-display capitalize'>{homeContent.whatIDoSection.hero.heading}<span className="italic text-primary"> {homeContent.whatIDoSection.hero.subheading}</span></h1>
 
                     <div className="what-i-do-description lg:-col-start-5 lg:col-span-4 lg:text-right ">
@@ -106,36 +100,40 @@ const Home = () => {
                 </div>
             </div>
 
-            <hr className="border-secondary mx-20" />
-
             {/* Proof */}
-            <div className="experience-section lg:px-20 px-8 mt-20 ">
-                <div className="experience-container flex flex-col p-4 gap-4 pt-20 border-b border-secondary bg-primary text-background rounded-3xl">
-                    <h3 className="text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider">{homeContent.experienceSection.title}</h3>
+            <div className="proof-section lg:px-20 px-4 mt-20 ">
+                <div className="proof-container flex flex-col p-4 gap-4 pt-20 border-b border-secondary bg-primary text-background rounded-3xl overflow-hidden">
+                    <h3 className="proof-title text-xs font-medium text-accent uppercase tracking-wider">{homeContent.experienceSection.title}</h3>
 
-                    <h1 className='experience-heading text-5xl font-semibold font-display capitalize '>{homeContent.experienceSection.heading}</h1>
-                    <div className="experience-description">
-                        <p className="text-xl leading-tight font-light text-secondary">{homeContent.experienceSection.description}</p>
+                    <h1 className='proof-heading text-5xl font-semibold font-display capitalize '>{homeContent.experienceSection.heading}</h1>
+                    <div className="proof-description">
+                        <p className="proof-description-text text-xl leading-tight font-light text-secondary">{homeContent.experienceSection.description}</p>
                     </div>
 
-                    <div className="experience-items-container grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
+                    <div className="proof-items-container grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
                         {homeContent.experienceSection.items.map((item, index) => (
-                            <div key={index} className="flex flex-col gap-2 rounded-xl p-6 bg-secondary h-64 relative overflow-hidden">
-                                <h3 className={`experience-item-title text-5xl font-semibold text-primary leading-none`}>{item.title}</h3>
-                                <p className={`experience-item-description text-lg text-dark-accent leading-tight`}>{item.description}</p>
+                            <div key={index} className="proof-item-container flex flex-col gap-2 rounded-xl p-6 bg-secondary h-64 relative overflow-hidden">
+                                <div className="flex items-center gap-1">
+                                    <h3 className={`proof-item-title text-5xl font-semibold text-primary leading-none`}>{item.title}
+                                    </h3>
+                                    {item.subheading && <h3 className="text-5xl font-semibold text-primary leading-none">{item.subheading}</h3>}
+                                </div>
+                                <p className={`proof-item-description text-lg text-dark-accent leading-tight`}>{item.description}</p>
 
-                                <OptimizedImage src={item.image} alt={item.title} className="object-cover w-full h-full rounded-2xl absolute -rotate-12 top-[45%] left-[30%] shadow-2xl shadow-dark z-0" />
+                                <OptimizedImage src={item.image} alt={item.title} className="proof-item-image object-cover w-full h-full rounded-2xl absolute -rotate-12 top-[45%] left-[30%] shadow-2xl shadow-dark z-0" />
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
+
+
             <hr className="border-secondary mx-20 mt-10" />
             {/* Let's Talk */}
-            <div className='lg:px-20 px-8 relative flex flex-col items-center justify-center gap-4 py-20'>
+            <div className='lg:px-20 px-4 relative flex flex-col items-center justify-center gap-4 py-20'>
                 <div className='lg:grid lg:grid-cols-12 flex flex-col gap-4 '>
                     <div className='lg:col-span-3'>
-                        <p className='text-xs font-medium text-accent uppercase underline underline-offset-4 tracking-wider'>Let's Talk</p>
+                        <p className='text-xs font-medium text-accent uppercase tracking-wider'>Let's Talk</p>
                     </div>
                     <div className='lg:col-span-6 lg:row-2'>
                         <h1 className='variable-hero-text text-5xl font-semibold font-display capitalize'>{homeContent.letsTalkSection.heading}</h1>

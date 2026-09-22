@@ -1,6 +1,10 @@
 import { useEffect, useLayoutEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const scrollToTop = (lenis) => {
     window.scrollTo(0, 0);
@@ -26,15 +30,13 @@ const SmoothScroll = ({ children }) => {
         });
 
         lenisRef.current = lenis;
+        lenis.on("scroll", ScrollTrigger.update);
 
-        let animationFrameId;
-
-        const raf = (time) => {
-            lenis.raf(time);
-            animationFrameId = requestAnimationFrame(raf);
+        const ticker = (time) => {
+            lenis.raf(time * 1000);
         };
-
-        animationFrameId = requestAnimationFrame(raf);
+        gsap.ticker.add(ticker);
+        gsap.ticker.lagSmoothing(0);
 
         const stopScroll = () => lenis.stop();
         const startScroll = (event) => {
@@ -50,7 +52,7 @@ const SmoothScroll = ({ children }) => {
         window.addEventListener("lenis:scrollToTop", resetScroll);
 
         return () => {
-            cancelAnimationFrame(animationFrameId);
+            gsap.ticker.remove(ticker);
             window.removeEventListener("lenis:stop", stopScroll);
             window.removeEventListener("lenis:start", startScroll);
             window.removeEventListener("lenis:scrollToTop", resetScroll);
@@ -69,11 +71,13 @@ const SmoothScroll = ({ children }) => {
             if (target) {
                 target.scrollIntoView();
                 lenisRef.current?.scrollTo(target, { immediate: true, force: true });
+                requestAnimationFrame(() => ScrollTrigger.refresh());
                 return;
             }
         }
 
         scrollToTop(lenisRef.current);
+        requestAnimationFrame(() => ScrollTrigger.refresh());
     }, [pathname, hash]);
 
     return children;

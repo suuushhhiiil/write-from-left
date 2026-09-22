@@ -10,7 +10,7 @@ const socialLinks = [
 
 const Footer = () => {
     return (
-        <footer className="border-t bg-primary px-8 py-4 lg:px-20">
+        <footer className="border-t bg-primary px-4 py-4 lg:px-20">
             <div className="grid grid-cols-1 items-center gap-6 lg:grid-cols-3">
                 <Link to="/" className="flex items-center justify-center gap-3 lg:justify-start">
                     <span className="text-lg font-medium text-light">Write From Left</span>

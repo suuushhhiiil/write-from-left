@@ -14,7 +14,7 @@ const About = () => {
         <section className="">
             <div className="hero-cover absolute bottom-0 left-0 h-full w-full bg-primary z-100">
             </div>
-            <div className="lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col lg:items-start px-8 lg:px-20 py-10">
+            <div className="lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col lg:items-start px-4 lg:px-20 py-10">
                 <div className="lg:col-span-6 lg:row-span-2 lg:row-start-1 gap-2 flex flex-col">
                     <p className="hero-tagline text-xl text-primary leading-none">{aboutContent.hero.tagline}</p>
                     <h1 className="hero-title variable-hero-text text-5xl font-medium font-display leading-none capitalize overflow-hidden">{aboutContent.hero.title}</h1>
@@ -40,7 +40,7 @@ const About = () => {
 
             <hr className="mt-10 border-secondary mx-20" />
 
-            <div className="lg:px-20 px-8 lg:py-0 py-20">
+            <div className="lg:px-20 px-4 lg:py-0 py-20">
                 <div className="lg:h-screen lg:grid lg:grid-cols-12 lg:grid-rows-10 flex flex-col lg:gap-4 gap-8">
                     <div className="lg:col-start-1 lg:col-span-5 lg:row-start-4 lg:row-span-2 gap-2 flex flex-col">
                         <h1 className="lg:text-5xl text-4xl font-semibold capitalize">{aboutContent.aboutMe.title}</h1>
@@ -64,7 +64,7 @@ const About = () => {
 
             <hr className="border-secondary mx-20" />
 
-            <div className="lg:px-20 px-8 py-20">
+            <div className="lg:px-20 px-4 py-20">
                 <div className="lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col gap-8 lg:gap-4">
                     <div className="lg:col-start-2 lg:col-span-4 lg:row-start-1 lg:row-end-9 flex flex-col gap-2">
                         <div className="w-full flex flex-col items-center justify-start gap-4">
@@ -81,7 +81,7 @@ const About = () => {
             </div>
 
             <hr className="border-secondary mx-20" />
-            <div className="lg:px-20 px-8 py-20">
+            <div className="lg:px-20 px-4 py-20">
                 <div className="flex flex-col gap-8  bg-primary text-white p-8 rounded-xl">
                     <h2 className="lg:text-6xl text-4xl font-semibold text-center capitalize">{aboutContent.footer.title}</h2>
                     <ul className="flex flex-col lg:flex-row justify-center items-center gap-4">

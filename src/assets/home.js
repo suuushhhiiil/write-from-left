@@ -79,17 +79,20 @@ const homeContent = {
 
     items: [
       {
-        title: "6+",
+        title: "6",
+        subheading: "+",
         description: "Years of Experience.",
         image: experience01,
       },
       {
-        title: "200+",
+        title: "200",
+        subheading: "+",
         description: "Projects Delivered.",
         image: experience02,
       },
       {
-        title: "5+",
+        title: "5",
+        subheading: "+",
         description: "Areas of Expertise.",
         image: experience03,
       },
@@ -106,7 +109,7 @@ const homeContent = {
     ],
 
     ctaText: "Let’s figure out where to start.",
-    
+
     buttonText: "Contact Me",
     buttonLink: "/contact",
 
