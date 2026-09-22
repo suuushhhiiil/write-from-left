@@ -236,7 +236,6 @@ const animateWhatIDo = (q, el) => {
       start: "top bottom",
       end: "bottom 60%",
       scrub: true,
-      markers: true,
     },
   );
   
