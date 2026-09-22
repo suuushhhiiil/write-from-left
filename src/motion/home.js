@@ -120,7 +120,7 @@ const animateHero = (q, el) => {
       overwrite: "auto",
       scrollTrigger: {
         trigger: heroPin,
-        start: "bottom 100%",
+        start: "bottom bottom",
         end: "bottom top",
         pin: true,
         pinSpacing: false,
