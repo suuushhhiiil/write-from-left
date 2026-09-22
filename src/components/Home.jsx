@@ -14,8 +14,8 @@ const Home = () => {
 
     return (
         <section ref={rootRef} className="pb-8">
-            <div className="hero-pin relative overflow-hidden">
-                <div className="hero-container h-screen lg:px-20 px-4 lg:grid lg:grid-cols-12 gap-8 flex flex-col items-center">
+            <div className="hero-pin relative h-screen">
+                <div className="hero-container h-full lg:px-20 px-4 lg:grid lg:grid-cols-12 gap-8 flex flex-col items-center">
                     <div className="lg:col-span-6 flex flex-col lg:h-full justify-center gap-16 lg:py-20 pt-20">
                         <div className="">
                             <p className="hero-greet font-script text-primary text-2xl">Hi, I'm</p>
