@@ -217,8 +217,6 @@ const animateWhatIDo = (q, el) => {
   const imageContainer = el(".what-i-do-image-container");
   const image = el(".what-i-do-image");
 
-
-
   scrubFromTo(
     imageContainer,
     {
@@ -238,7 +236,7 @@ const animateWhatIDo = (q, el) => {
       scrub: true,
     },
   );
-  
+
   scrubFromTo(
     image,
     {
