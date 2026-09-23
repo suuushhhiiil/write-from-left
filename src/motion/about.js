@@ -1,4 +1,3 @@
-import { useLayoutEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -41,6 +40,8 @@ const animateHero = (q, el) => {
   const imageContainer = el(".hero-image-container");
   const philosophyContainer = el(".philosophy-container");
   const philosophyItems = q(".philosophy-item");
+
+  if (!section || !container) return;
 
   const intro = gsap.timeline();
 
@@ -107,7 +108,6 @@ const animateHero = (q, el) => {
       },
       {
         opacity: 1,
-        color: "#151515",
         y: 0,
         duration: 0.8,
         ease: EASE,
@@ -128,11 +128,9 @@ const animateHero = (q, el) => {
         ease: "power2.inOut",
       },
       "-=0.3",
-    );
-
-  philosophyItems.forEach((item, index) => {
-    intro.fromTo(
-      item,
+    )
+    .fromTo(
+      philosophyItems,
       {
         opacity: 0,
         y: 20,
@@ -142,26 +140,10 @@ const animateHero = (q, el) => {
         y: 0,
         duration: 0.3,
         ease: "power2.inOut",
-        stagger: 0.01,
+        stagger: 0.05,
       },
       `-=0.2`,
     );
-  });
-
-  //Hero Exit
-  scrubFromTo(
-    container,
-    { autoAlpha: 1, scale: 1 },
-    { autoAlpha: 0, scale: 0.8 },
-    {
-      trigger: section,
-      start: "top top",
-      end: "bottom 30%",
-      scrub: true,
-      pin: true,
-      pinSpacing: false,
-    },
-  );
 };
 
 const animateAboutMe = (q, el) => {
@@ -179,7 +161,9 @@ const animateAboutMe = (q, el) => {
     delimiter: " ",
     mask: "lines",
   });
-  const closing = el(".about-me-closing");
+  const quote = SplitText.create(el(".about-me-quote"), {
+    type: "words",
+  });
 
   if (!section || !container) return;
 
@@ -187,24 +171,21 @@ const animateAboutMe = (q, el) => {
     defaults: { ease: "none" },
     scrollTrigger: {
       trigger: section,
-      start: "top 50%",
-      end: "top top",
-      scrub: true,
+      start: "top 40%",
+      end: "bottom bottom",
+      scrub: 1.5,
     },
   });
 
   intro
 
-    .from(
-      title.words,
-      {
-        opacity: 0,
-        x: 100,
-        duration: 0.8,
-        ease: EASE,
-        stagger: 0.08,
-      },
-    )
+    .from(title.words, {
+      opacity: 0,
+      x: 100,
+      duration: 0.8,
+      ease: EASE,
+      stagger: 0.08,
+    })
     .fromTo(
       imageContainer,
       {
@@ -251,40 +232,52 @@ const animateAboutMe = (q, el) => {
         ease: EASE,
         stagger: 0.08,
       },
+    )
+    .fromTo(
+      quote.words,
+      {
+        opacity: 0,
+        x: 50,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: EASE,
+        stagger: 0.08,
+      },
+      "-=0.2",
     );
 };
 
 const useAboutMotion = (scope) => {
-  useGSAP(
-    () => {
-      const q = gsap.utils.selector(scope);
-      const el = (selector) => q(selector)[0] ?? null;
+  useGSAP(() => {
+    const q = gsap.utils.selector(scope);
+    const el = (selector) => q(selector)[0] ?? null;
 
-      if (prefersReducedMotion()) {
-        gsap.set(q(".hero-curtain"), { autoAlpha: 0, pointerEvents: "none" });
-        return;
+    if (prefersReducedMotion()) {
+      gsap.set(q(".hero-curtain"), { autoAlpha: 0, pointerEvents: "none" });
+      return;
+    }
+
+    animateHero(q, el);
+    animateAboutMe(q, el);
+
+    const refresh = () => ScrollTrigger.refresh();
+    const images = q("img");
+    images.forEach((img) => {
+      if (!img.complete) {
+        img.addEventListener("load", refresh, { once: true });
       }
+    });
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(refresh);
+    }
 
-      animateHero(q, el);
-      animateAboutMe(q, el);
-
-      const refresh = () => ScrollTrigger.refresh();
-      const images = q("img");
-      images.forEach((img) => {
-        if (!img.complete) {
-          img.addEventListener("load", refresh, { once: true });
-        }
-      });
-      if (document.fonts?.ready) {
-        document.fonts.ready.then(refresh);
-      }
-
-      return () => {
-        images.forEach((img) => img.removeEventListener("load", refresh));
-      };
-    },
-    { scope },
-  );
+    return () => {
+      images.forEach((img) => img.removeEventListener("load", refresh));
+    };
+  });
 };
 
 export default useAboutMotion;

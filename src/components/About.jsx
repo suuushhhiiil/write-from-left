@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon, FileQuestionIcon } from 'lucide-react'
+import { ArrowUpRightIcon } from 'lucide-react'
 import aboutContent from '../assets/about.js'
 import aboutImage from '../images/about/hero.webp'
 import aboutMeImage from '../images/about/me.webp'
@@ -15,7 +15,7 @@ const About = () => {
     useAboutMotion(scopeRef);
 
     return (
-        <section className="about" ref={scopeRef}>
+        <section className="about-wrapper" ref={scopeRef}>
             <div className="hero-section">
                 <div className="hero-container h-screen lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col justify-center lg:items-start px-4 lg:px-20 lg:pt-28 pt-20 ">
                     <div className="lg:col-span-6 lg:row-span-2 lg:row-start-1 gap-2 flex flex-col">
@@ -51,30 +51,28 @@ const About = () => {
 
                     <div className="about-me-image-container relative lg:col-start-8 lg:col-span-5 lg:row-start-2 lg:row-end-10 gap-2 flex flex-col mt-4 lg:mt-0 overflow-hidden rounded-xl">
                         <OptimizedImage src={aboutMeImage} alt="about" className=" about-me-image w-full h-full object-cover rounded-xl" />
-
-                        {/* <p className="about-me-closing lg:block hidden absolute lg:top-[30%] top-[80%] lg:left-0 left-[75%] lg:text-sm text-xs leading-tight translate-[-50%] w-[40%] bg-secondary font-medium shadow-xl p-4 rounded-xl">{`"${aboutContent.aboutMe.closing}"`}</p> */}
                     </div>
 
                     <div className="about-me-paragraph-container lg:col-start-1 lg:col-span-5 lg:row-start-5 lg:row-span-6 gap-2 flex flex-col">
                         {aboutContent.aboutMe.paragraphs.map((paragraph, index) => (
                             <p key={index} className="about-me-paragraph text-lg font-light leading-tight">{paragraph}</p>
                         ))}
-                        <p className="text-lg italic font-bold leading-tight">{aboutContent.aboutMe.quote}</p>
+                        <p className="about-me-quote text-lg italic font-bold leading-tight">{aboutContent.aboutMe.quote}</p>
                     </div>
                 </div>
             </div>
             <hr className="border-secondary mx-20" />
 
-            <div className="lg:px-20 px-4 py-20">
+            <div className="childhood-container lg:px-20 px-4 py-20">
                 <div className="lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col gap-8 lg:gap-4">
                     <div className="lg:col-start-2 lg:col-span-4 lg:row-start-1 lg:row-end-9 flex flex-col gap-2">
-                        <div className="w-full flex flex-col items-center justify-start gap-4">
-                            <OptimizedImage src={childhoodImage} alt="childhood" className="object-cover rounded-xl" />
+                        <div className="childhood-image-container w-full flex flex-col items-center justify-start gap-4 overflow-hidden rounded-xl">
+                            <OptimizedImage src={childhoodImage} alt="childhood" className="childhood-image object-cover rounded-xl" />
                         </div>
                     </div>
                     <div className="lg:col-start-7 lg:col-span-5 lg:row-start-1 lg:row-end-9 flex flex-col justify-center gap-4">
                         {aboutContent.aboutMe.childhood.content.map((content, index) => (
-                            <p key={index} className="text-lg font-light leading-tight">{content}</p>
+                            <p key={index} className="childhood-paragraph text-lg font-light leading-tight">{content}</p>
                         ))}
                     </div>
 
