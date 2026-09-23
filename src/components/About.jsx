@@ -17,7 +17,7 @@ const About = () => {
     return (
         <section className="about" ref={scopeRef}>
             <div className="hero-section">
-                <div className="hero-container h-screen lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col lg:items-start px-4 lg:px-20 pt-28">
+                <div className="hero-container h-screen lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col justify-center lg:items-start px-4 lg:px-20 lg:pt-28 pt-20 ">
                     <div className="lg:col-span-6 lg:row-span-2 lg:row-start-1 gap-2 flex flex-col">
                         <p className="hero-tagline text-xl text-primary leading-none">{aboutContent.hero.tagline}</p>
                         <h1 className="hero-title variable-hero-text text-5xl font-medium font-display leading-none capitalize overflow-hidden">{aboutContent.hero.title}</h1>
@@ -44,18 +44,18 @@ const About = () => {
 
 
             <div className="about-me-section lg:py-10 py-20">
-                <div className="about-me-container lg:h-screen lg:grid lg:grid-cols-12 lg:grid-rows-10 flex flex-col lg:gap-4 gap-8 lg:px-20 px-4 ">
+                <div className="about-me-container lg:h-screen lg:grid lg:grid-cols-12 lg:grid-rows-10 flex flex-col gap-4 lg:px-20 px-4 ">
                     <div className="lg:col-start-1 lg:col-span-5 lg:row-start-4 lg:row-span-2 gap-2 flex flex-col">
                         <h1 className="about-me-title lg:text-5xl text-4xl font-semibold capitalize">{aboutContent.aboutMe.title}</h1>
                     </div>
 
-                    <div className="about-me-image-container relative lg:col-start-8 lg:col-span-5 lg:row-start-2 lg:row-end-10 gap-2 flex flex-col mt-4 lg:mt-0">
+                    <div className="about-me-image-container relative lg:col-start-8 lg:col-span-5 lg:row-start-2 lg:row-end-10 gap-2 flex flex-col mt-4 lg:mt-0 overflow-hidden rounded-xl">
                         <OptimizedImage src={aboutMeImage} alt="about" className=" about-me-image w-full h-full object-cover rounded-xl" />
 
-                        <p className="about-me-closing lg:block hidden absolute lg:top-[30%] top-[80%] lg:left-0 left-[75%] lg:text-sm text-xs leading-tight translate-[-50%] w-[40%] bg-secondary font-medium shadow-xl p-4 rounded-xl">{`"${aboutContent.aboutMe.closing}"`}</p>
+                        {/* <p className="about-me-closing lg:block hidden absolute lg:top-[30%] top-[80%] lg:left-0 left-[75%] lg:text-sm text-xs leading-tight translate-[-50%] w-[40%] bg-secondary font-medium shadow-xl p-4 rounded-xl">{`"${aboutContent.aboutMe.closing}"`}</p> */}
                     </div>
 
-                    <div className="about-me-paragraph-container lg:col-start-1 lg:col-span-5 lg:row-start-5 lg:row-span-6 gap-4 flex flex-col">
+                    <div className="about-me-paragraph-container lg:col-start-1 lg:col-span-5 lg:row-start-5 lg:row-span-6 gap-2 flex flex-col">
                         {aboutContent.aboutMe.paragraphs.map((paragraph, index) => (
                             <p key={index} className="about-me-paragraph text-lg font-light leading-tight">{paragraph}</p>
                         ))}

@@ -155,8 +155,8 @@ const animateHero = (q, el) => {
     { autoAlpha: 0, scale: 0.8 },
     {
       trigger: section,
-      start: "bottom bottom",
-      end: "bottom top",
+      start: "top top",
+      end: "bottom 30%",
       scrub: true,
       pin: true,
       pinSpacing: false,
@@ -167,35 +167,91 @@ const animateHero = (q, el) => {
 const animateAboutMe = (q, el) => {
   const section = el(".about-me-section");
   const container = el(".about-me-container");
-  const title = el(".about-me-title");
+  const title = SplitText.create(el(".about-me-title"), {
+    type: "words",
+    // mask: "words",
+  });
   const imageContainer = el(".about-me-image-container");
   const image = el(".about-me-image");
   const paragraphContainer = el(".about-me-paragraph-container");
-  const paragraphs = q(".about-me-paragraph");
+  const paragraphs = SplitText.create(q(".about-me-paragraph"), {
+    type: "lines",
+    delimiter: " ",
+    mask: "lines",
+  });
   const closing = el(".about-me-closing");
 
   if (!section || !container) return;
 
-  const timeline = gsap.timeline({
+  const intro = gsap.timeline({
     defaults: { ease: "none" },
     scrollTrigger: {
       trigger: section,
-      start: "top top",
-      end: "+=160%",
-      pin: true,
-      pinSpacing: true,
+      start: "top 50%",
+      end: "top top",
       scrub: true,
     },
   });
 
-  timeline
-    .fromTo(
-      container,
-      { autoAlpha: 0, scale: 2.5, transformOrigin: "center center" },
-      { autoAlpha: 1, scale: 1, duration: 0.8 },
+  intro
+
+    .from(
+      title.words,
+      {
+        opacity: 0,
+        x: 100,
+        duration: 0.8,
+        ease: EASE,
+        stagger: 0.08,
+      },
     )
-    .to(container, { duration: 3 })
-    .to(container, { autoAlpha: 0, scale: 0.8, duration: 1 });
+    .fromTo(
+      imageContainer,
+      {
+        scale: 0.6,
+        y: -100,
+        transformOrigin: "center center",
+      },
+      {
+        scale: 1,
+        y: 0,
+        autoAlpha: 1,
+        duration: 1,
+        ease: "power2.inOut",
+      },
+      "-=0.8",
+    )
+    .fromTo(
+      image,
+      {
+        scale: 2,
+        y: 100,
+        transformOrigin: "center center",
+        autoAlpha: 0,
+      },
+      {
+        scale: 1,
+        y: 0,
+        autoAlpha: 1,
+        duration: 1,
+        ease: "power2.inOut",
+      },
+      "-=0.8",
+    )
+    .fromTo(
+      paragraphs.lines,
+      {
+        opacity: 0,
+        x: 50,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: EASE,
+        stagger: 0.08,
+      },
+    );
 };
 
 const useAboutMotion = (scope) => {
