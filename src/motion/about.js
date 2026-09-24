@@ -12,20 +12,6 @@ const WORD_SPLIT = { type: "words", mask: "words" };
 const prefersReducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const scrubFromTo = (target, fromVars, toVars, scrollTrigger) => {
-  if (!target || target.length === 0) return;
-
-  gsap.fromTo(target, fromVars, {
-    ...toVars,
-    ease: EASE,
-    overwrite: "auto",
-    scrollTrigger: {
-      scrub: true,
-      ...scrollTrigger,
-    },
-  });
-};
-
 const animateHero = (q, el) => {
   const section = el(".hero-section");
   const container = el(".hero-container");
@@ -40,6 +26,7 @@ const animateHero = (q, el) => {
   const imageContainer = el(".hero-image-container");
   const philosophyContainer = el(".philosophy-container");
   const philosophyItems = q(".philosophy-item");
+  const closing = el(".hero-closing");
 
   if (!section || !container) return;
 
@@ -143,6 +130,20 @@ const animateHero = (q, el) => {
         stagger: 0.05,
       },
       `-=0.2`,
+    )
+    .fromTo(
+      closing,
+      {
+        opacity: 0,
+        y: 20,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        ease: "power2.inOut",
+      },
+      "-=0.2",
     );
 };
 
@@ -171,7 +172,7 @@ const animateAboutMe = (q, el) => {
     defaults: { ease: "none" },
     scrollTrigger: {
       trigger: section,
-      start: "top 40%",
+      start: "top 50%",
       end: "bottom bottom",
       scrub: 1.5,
     },
@@ -200,7 +201,7 @@ const animateAboutMe = (q, el) => {
         duration: 1,
         ease: "power2.inOut",
       },
-      "-=0.8",
+      "<+=0.8",
     )
     .fromTo(
       image,
@@ -250,6 +251,81 @@ const animateAboutMe = (q, el) => {
     );
 };
 
+const animateChildhood = (q, el) => {
+  const section = el(".childhood-section");
+  const container = el(".childhood-container");
+
+  if (!section || !container) return;
+
+  const imageContainer = el(".childhood-image-container");
+  const image = el(".childhood-image");
+  const paragraphs = SplitText.create(q(".childhood-paragraph"), {
+    type: "lines",
+    delimiter: " ",
+    mask: "lines",
+  });
+
+  const intro = gsap.timeline({
+    defaults: { ease: "none" },
+    scrollTrigger: {
+      trigger: section,
+      start: "top 50%",
+      end: "bottom bottom",
+      scrub: 1.5,
+    },
+  });
+
+  intro
+    .fromTo(
+      imageContainer,
+      {
+        scale: 0.6,
+        y: -100,
+        transformOrigin: "center center",
+      },
+      {
+        scale: 1,
+        y: 0,
+        autoAlpha: 1,
+        duration: 1,
+        ease: "power2.inOut",
+      },
+      "<+=0.8",
+    )
+    .fromTo(
+      image,
+      {
+        scale: 2,
+        y: 100,
+        transformOrigin: "center center",
+        autoAlpha: 0,
+      },
+      {
+        scale: 1,
+        y: 0,
+        autoAlpha: 1,
+        duration: 1,
+        ease: "power2.inOut",
+      },
+      "-=0.8",
+    )
+    .fromTo(
+      paragraphs.lines,
+      {
+        opacity: 0,
+        x: 50,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: EASE,
+        stagger: 0.08,
+      },
+      "-=0.8",
+    );
+};
+
 const useAboutMotion = (scope) => {
   useGSAP(() => {
     const q = gsap.utils.selector(scope);
@@ -262,6 +338,7 @@ const useAboutMotion = (scope) => {
 
     animateHero(q, el);
     animateAboutMe(q, el);
+    animateChildhood(q, el);
 
     const refresh = () => ScrollTrigger.refresh();
     const images = q("img");

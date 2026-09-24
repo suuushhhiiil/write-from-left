@@ -63,10 +63,10 @@ const About = () => {
             </div>
             <hr className="border-secondary mx-20" />
 
-            <div className="childhood-container lg:px-20 px-4 py-20">
-                <div className="lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col gap-8 lg:gap-4">
-                    <div className="lg:col-start-2 lg:col-span-4 lg:row-start-1 lg:row-end-9 flex flex-col gap-2">
-                        <div className="childhood-image-container w-full flex flex-col items-center justify-start gap-4 overflow-hidden rounded-xl">
+            <div className="childhood-section lg:px-20 px-4 py-20">
+                <div className="childhood-container lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col gap-8 lg:gap-4">
+                    <div className="lg:col-start-1 lg:col-span-5 lg:row-start-1 lg:row-end-9 flex flex-col gap-2">
+                        <div className="childhood-image-container aspect-square flex flex-col items-center justify-start gap-4 overflow-hidden rounded-xl">
                             <OptimizedImage src={childhoodImage} alt="childhood" className="childhood-image object-cover rounded-xl" />
                         </div>
                     </div>
