@@ -63,10 +63,10 @@ const About = () => {
             </div>
             <hr className="border-secondary mx-20" />
 
-            <div className="childhood-section lg:px-20 px-4 py-20">
-                <div className="childhood-container lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col gap-8 lg:gap-4">
-                    <div className="lg:col-start-1 lg:col-span-5 lg:row-start-1 lg:row-end-9 flex flex-col gap-2">
-                        <div className="childhood-image-container aspect-square flex flex-col items-center justify-start gap-4 overflow-hidden rounded-xl">
+            <div className="childhood-section lg:px-20 px-4 py-10">
+                <div className="childhood-container  lg:h-screen lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col gap-8 lg:gap-4">
+                    <div className="lg:col-start-1 lg:col-span-4 lg:row-start-2 lg:row-end-8 flex flex-col gap-2">
+                        <div className="childhood-image-container aspect- flex flex-col items-center justify-start gap-4 overflow-hidden rounded-xl">
                             <OptimizedImage src={childhoodImage} alt="childhood" className="childhood-image object-cover rounded-xl" />
                         </div>
                     </div>
@@ -80,12 +80,13 @@ const About = () => {
             </div>
 
             <hr className="border-secondary mx-20" />
-            <div className="lg:px-20 px-4 py-20">
-                <div className="flex flex-col gap-8  bg-primary text-white p-8 rounded-xl">
-                    <h2 className="lg:text-6xl text-4xl font-semibold text-center capitalize">{aboutContent.footer.title}</h2>
+            
+            <div className="contact-section lg:px-20 px-4 py-20">
+                <div className="contact-container flex flex-col gap-8  bg-primary text-white p-8 rounded-xl">
+                    <h2 className="contact-title lg:text-6xl text-4xl font-semibold text-center capitalize">{aboutContent.footer.title}</h2>
                     <ul className="flex flex-col lg:flex-row justify-center items-center gap-4">
                         {aboutContent.footer.links.map((link) => (
-                            <li key={link.label} ><Link className="text-sm hover:text-light hover:underline transition-all duration-300 text-secondary flex items-center gap-2" to={link.href}>{link.label} <ArrowUpRightIcon size={18} strokeWidth={2} /></Link></li>
+                            <li key={link.label} ><Link className="text-sm hover:text-light hover:underline transition-all duration-300 text-secondary flex items-center gap-2 contact-link" to={link.href}>{link.label} <ArrowUpRightIcon className="contact-link-icon" size={18} strokeWidth={2} /></Link></li>
                         ))}
                     </ul>
 
