@@ -24,12 +24,12 @@ function ScrollToTop() {
 
 function MainLayout() {
     return (
-        <div className="min-h-screen bg-background">
+        <div className="bg-background">
             <div className="fixed top-0 z-50 w-full">
                 <Nav />
             </div>
             <main className="overflow-x-hidden">
-                <Suspense fallback={<div className="min-h-screen" />}>
+                <Suspense fallback={<div className="min-h-screen" > Loading... </div >}>
                     <ScrollToTop />
                     <Outlet />
                 </Suspense>
