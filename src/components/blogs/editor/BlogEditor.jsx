@@ -12,7 +12,7 @@ const BlogEditor = () => {
 
         editorProps: {
             attributes: {
-                class: "tiptap bg-white border border-gray-300 rounded-lg p-18"
+                class: "tiptap bg-white border border-gray-300 rounded-lg p-4 lg:p-18"
             }
         }
     })
@@ -21,10 +21,10 @@ const BlogEditor = () => {
 
     return (
         <div className="flex flex-col gap-4 items-center justify-center overflow-hidden">
-            <div className="fixed top-[50%] right-20 translate-y-[-50%]">
+            <div className="fixed bottom-4 lg:bottom-12 left-[50%] translate-x-[-50%] z-100 w-full lg:w-fit  rounded-lg px-8 lg:px-0 ">
                 <EditorToolbar editor={editor} />
             </div>
-            <div className="w-3/4">
+            <div className="w-full lg:w-3/4">
                 <EditorContent editor={editor} />
             </div>
         </div>

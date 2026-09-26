@@ -1,7 +1,8 @@
 import { useEditorState } from "@tiptap/react"
-import { BoldIcon, CodeIcon, Heading1Icon, Heading2Icon, Heading3Icon, ItalicIcon, LinkIcon, ListIcon, ListOrderedIcon, Minus, RedoIcon, Strikethrough, Underline, UndoIcon } from "lucide-react";
+import { BoldIcon, CodeIcon, Heading1Icon, Heading2Icon, Heading3Icon, Image, ItalicIcon, LinkIcon, ListIcon, ListOrderedIcon, Minus, Quote, RedoIcon, Strikethrough, Underline, UndoIcon } from "lucide-react";
 
 import ToolbarButton from "./EditorToolbarButton";
+import ImageUploadButton from "./ImageUploadButton";
 
 
 const EditorToolbar = ({ editor }) => {
@@ -56,16 +57,31 @@ const EditorToolbar = ({ editor }) => {
         editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
     };
 
-    return (
-        <div className="flex flex-col flex-wrap items-center justify-center gap-1 bg-white p-1 rounded-md">
+    const setImage = () => {
+        const url = window.prompt("Enter the image URL");
 
+        if (url === null) {
+            return;
+        }
+
+        if (url === "") {
+            editor.chain().focus().unsetImage().run();
+            return;
+        }
+
+        editor.chain().focus().setImage({ src: url }).run();
+    };
+
+    return (
+        <div className="flex items-center justify-start gap-1 bg-white border border-gray-300 p-1 rounded-md shadow-lg overflow-x-auto lg:overflow-x-visible w-full">
             {/* Heading 1 */}
             <ToolbarButton
                 onClick={() => {
                     editor.chain().focus().toggleHeading({ level: 1 }).run()
                 }
                 }
-                icon={<Heading1Icon size={16} />}
+                title="Heading 1"
+                icon={<Heading1Icon />}
                 isActive={editorState.isHeading1}
             />
 
@@ -74,7 +90,8 @@ const EditorToolbar = ({ editor }) => {
                 onClick={() =>
                     editor.chain().focus().toggleHeading({ level: 2 }).run()
                 }
-                icon={<Heading2Icon size={16} />}
+                title="Heading 2"
+                icon={<Heading2Icon />}
                 isActive={editorState.isHeading2}
             />
 
@@ -83,13 +100,15 @@ const EditorToolbar = ({ editor }) => {
                 onClick={() =>
                     editor.chain().focus().toggleHeading({ level: 3 }).run()
                 }
-                icon={<Heading3Icon size={16} />}
+                title="Heading 3"
+                icon={<Heading3Icon />}
                 isActive={editorState.isHeading3}
             />
 
             {/* Bold */}
             <ToolbarButton
-                icon={<BoldIcon size={16} />}
+                title="Bold"
+                icon={<BoldIcon />}
                 isActive={editorState.isBold}
                 onClick={() =>
                     editor.chain().focus().toggleBold().run()
@@ -98,7 +117,8 @@ const EditorToolbar = ({ editor }) => {
 
             {/* Italic */}
             <ToolbarButton
-                icon={<ItalicIcon size={16} />}
+                title="Italic"
+                icon={<ItalicIcon />}
                 onClick={() =>
                     editor.chain().focus().toggleItalic().run()
                 }
@@ -107,7 +127,8 @@ const EditorToolbar = ({ editor }) => {
 
             {/* Underline */}
             <ToolbarButton
-                icon={<Underline size={16} />}
+                title="Underline"
+                icon={<Underline />}
                 onClick={() =>
                     editor.chain().focus().toggleUnderline().run()
                 }
@@ -116,7 +137,8 @@ const EditorToolbar = ({ editor }) => {
 
             {/* Strike */}
             <ToolbarButton
-                icon={<Strikethrough size={16} />}
+                title="Strikethrough"
+                icon={<Strikethrough />}
                 onClick={() =>
                     editor.chain().focus().toggleStrike().run()
                 }
@@ -125,7 +147,8 @@ const EditorToolbar = ({ editor }) => {
 
             {/* Bullet List */}
             <ToolbarButton
-                icon={<ListIcon size={16} />}
+                title="Bullet List"
+                icon={<ListIcon />}
                 onClick={() =>
                     editor.chain().focus().toggleBulletList().run()
                 }
@@ -134,7 +157,8 @@ const EditorToolbar = ({ editor }) => {
 
             {/* Ordered List */}
             <ToolbarButton
-                icon={<ListOrderedIcon size={16} />}
+                title="Ordered List"
+                icon={<ListOrderedIcon />}
                 onClick={() =>
                     editor.chain().focus().toggleOrderedList().run()
                 }
@@ -143,10 +167,14 @@ const EditorToolbar = ({ editor }) => {
 
             {/* Link */}
             <ToolbarButton
-                icon={<LinkIcon size={16} />}
+                icon={<LinkIcon />}
                 onClick={setLink}
                 isActive={editorState.isLink}
+                title="Link"
             />
+
+
+            <ImageUploadButton editor={editor} />
 
             {/* Blockquote */}
             <ToolbarButton
@@ -154,22 +182,25 @@ const EditorToolbar = ({ editor }) => {
                 onClick={() =>
                     editor.chain().focus().toggleBlockquote().run()
                 }
-                icon="“"
+                icon={<Quote />}
+                title="Blockquote"
                 isActive={editorState.isBlockquote}
             />
 
             {/* Code */}
             <ToolbarButton
-                icon={<CodeIcon size={16} />}
+                icon={<CodeIcon />}
                 onClick={() =>
                     editor.chain().focus().toggleCode().run()
                 }
+                title="Code"
                 isActive={editorState.isCode}
             />
 
             {/* Horizontal Rule */}
             <ToolbarButton
-                icon={<Minus size={16} />}
+                icon={<Minus />}
+                title="Horizontal Rule"
                 isActive={editorState.isHorizontalRule}
                 onClick={() =>
                     editor.chain().focus().setHorizontalRule().run()
@@ -178,7 +209,8 @@ const EditorToolbar = ({ editor }) => {
 
             {/* Undo */}
             <ToolbarButton
-                icon={<UndoIcon size={16} />}
+                icon={<UndoIcon />}
+                title="Undo"
                 onClick={() =>
                     editor.chain().focus().undo().run()
                 }
@@ -187,7 +219,8 @@ const EditorToolbar = ({ editor }) => {
 
             {/* Redo */}
             <ToolbarButton
-                icon={<RedoIcon size={16} />}
+                icon={<RedoIcon />}
+                title="Redo"
                 onClick={() =>
                     editor.chain().focus().redo().run()
                 }
