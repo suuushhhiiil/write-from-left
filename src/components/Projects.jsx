@@ -7,6 +7,7 @@ import project01 from '../images/projects/01.webp'
 import project02 from '../images/projects/02.webp'
 import project03 from '../images/projects/03.webp'
 import OptimizedImage from './common/OptimizedImage'
+import useProjectsMotion from '../motion/projects.js'
 
 const projectImages = {
     current: firstDraftImage,
@@ -302,23 +303,26 @@ const ProjectDialog = ({ project, onClose }) => {
 const Projects = () => {
     const [selectedProject, setSelectedProject] = useState(null)
     const closeDialog = useCallback(() => setSelectedProject(null), [])
+    const projectsRef = useRef(null)
+
+    useProjectsMotion(projectsRef)
 
     return (
-        <section className="projects pb-20 lg:px-20 px-4">
-            <div className="lg:grid lg:grid-cols-12 flex flex-col items-start gap-6 pt-10 lg:pt-16 lg:gap-8">
-                <div className="lg:col-span-6 flex flex-col gap-2">
-                    <h1 className="variable-hero-text text-5xl font-semibold font-display leading-none">
+        <section className="projects lg:px-20 px-4 pt-20" ref={projectsRef}>
+            <div className="projects-hero-container lg:grid lg:grid-cols-12 flex flex-col items-start gap-6 pt-10 lg:pt-16 lg:gap-8">
+                <div className="lg:col-span-6 flex flex-col gap-2 overflow-hidden"> 
+                    <h1 className="variable-hero-text projects-hero-title text-5xl font-semibold font-display leading-none">
                         {projects.hero.title}
                     </h1>
                 </div>
                 <div className="lg:col-span-5 lg:col-start-8 flex flex-col lg:pt-3">
-                    <p className="text-2xl ">
+                    <p className="text-2xl projects-hero-heading">
                         {projects.hero.heading}
                     </p>
-                    <p className="text-2xl font-display italic text-accent leading-tight font-light">
+                    <p className="text-2xl font-display italic text-accent leading-tight font-light projects-hero-description">
                         {projects.hero.description}
                     </p>
-                    <p className="leading-tight font-light mt-4">
+                    <p className="leading-tight font-light mt-4 projects-hero-intro">
                         {projects.hero.intro}
                     </p>
                 </div>
@@ -351,7 +355,7 @@ const Projects = () => {
                 </div>
             </div>
 
-            <div className="mt-20 rounded-3xl bg-primary p-6 text-background lg:p-12">
+            <div className="my-20 rounded-3xl bg-primary p-6 text-background lg:p-12">
                 <div className="lg:grid lg:grid-cols-12 lg:items-end lg:gap-8">
                     <div className="lg:col-span-7 flex flex-col gap-2">
                         <h2 className="text-4xl font-bold lg:text-5xl capitalize">

@@ -423,7 +423,7 @@ const useAboutMotion = (scope) => {
     const el = (selector) => q(selector)[0] ?? null;
 
     if (prefersReducedMotion()) {
-      gsap.set(q(".hero-curtain"), { autoAlpha: 0, pointerEvents: "none" });
+      gsap.set(q("section"), { autoAlpha: 1, pointerEvents: "auto" });
       return;
     }
 
