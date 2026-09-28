@@ -27,8 +27,8 @@ createRoot(document.getElementById('root')).render(
             <Route path="/about" element={<About />} />
             <Route path="/work-with-me" element={<WorkWithMe />} />
           </Route>
-          <Route element={<AdminLayout />} >
-            <Route path="/admin/blog-editor" element={<BlogEditorPage />} />
+          <Route path="/admin" element={<AdminLayout />} >
+            <Route path="blog-editor" element={<BlogEditorPage />} />
           </Route>
         </Routes>
       </SmoothScroll>
