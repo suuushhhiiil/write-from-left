@@ -201,3 +201,10 @@ html.dialog-open body {
   float: left;
   height: 0;
 }
+
+.blog-content.tiptap {
+  min-height: 0;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}

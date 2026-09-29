@@ -1,29 +1,25 @@
-const BLOGS_KEY = "wfl-admin-blogs";
-const COMMENTS_KEY = "wfl-admin-comments";
+import {
+  createBlog as createBlogRequest,
+  deleteBlog as deleteBlogRequest,
+  getBlog as getBlogRequest,
+  getPublishedBlog as getPublishedBlogRequest,
+  listBlogs as listBlogsRequest,
+  listPublishedBlogs as listPublishedBlogsRequest,
+  updateBlog as updateBlogRequest,
+} from "@/services/blog/blog.api";
 
-const seedBlogs = [
-  {
-    id: "blog-1",
-    title: "How I plan a writing project",
-    status: "published",
-    createdAt: "2026-07-12T10:00:00.000Z",
-    updatedAt: "2026-08-02T14:20:00.000Z",
-  },
-  {
-    id: "blog-2",
-    title: "Notes from First Draft Berlin",
-    status: "draft",
-    createdAt: "2026-08-20T09:00:00.000Z",
-    updatedAt: "2026-09-01T11:15:00.000Z",
-  },
-  {
-    id: "blog-3",
-    title: "Content strategy without the noise",
-    status: "published",
-    createdAt: "2026-09-10T16:40:00.000Z",
-    updatedAt: "2026-09-18T08:05:00.000Z",
-  },
-];
+export const listBlogs = listBlogsRequest;
+export const listPublishedBlogs = listPublishedBlogsRequest;
+export const getBlog = getBlogRequest;
+export const getPublishedBlog = getPublishedBlogRequest;
+export const createBlog = createBlogRequest;
+export const updateBlog = updateBlogRequest;
+export const deleteBlog = deleteBlogRequest;
+
+export const setPublishState = async (id, status) =>
+  updateBlogRequest(id, { status });
+
+const COMMENTS_KEY = "wfl-admin-comments";
 
 const seedComments = [
   {
@@ -64,85 +60,50 @@ const seedComments = [
   },
 ];
 
-const readCollection = (key, seed) => {
-  const raw = localStorage.getItem(key);
+const readComments = () => {
+  const raw = localStorage.getItem(COMMENTS_KEY);
   if (!raw) {
-    localStorage.setItem(key, JSON.stringify(seed));
-    return [...seed];
+    localStorage.setItem(COMMENTS_KEY, JSON.stringify(seedComments));
+    return [...seedComments];
   }
 
   try {
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [...seed];
+    return Array.isArray(parsed) ? parsed : [...seedComments];
   } catch {
-    localStorage.setItem(key, JSON.stringify(seed));
-    return [...seed];
+    localStorage.setItem(COMMENTS_KEY, JSON.stringify(seedComments));
+    return [...seedComments];
   }
 };
 
-const writeCollection = (key, items) => {
-  localStorage.setItem(key, JSON.stringify(items));
+const writeComments = (items) => {
+  localStorage.setItem(COMMENTS_KEY, JSON.stringify(items));
   return items;
 };
 
-const delay = (value) =>
-  new Promise((resolve) => {
-    window.setTimeout(() => resolve(value), 80);
-  });
-
-export const listBlogs = async () => delay(readCollection(BLOGS_KEY, seedBlogs));
-
-export const getBlog = async (id) => {
-  const blogs = readCollection(BLOGS_KEY, seedBlogs);
-  return delay(blogs.find((blog) => blog.id === id) ?? null);
-};
-
-export const deleteBlog = async (id) => {
-  const blogs = readCollection(BLOGS_KEY, seedBlogs).filter((blog) => blog.id !== id);
-  writeCollection(BLOGS_KEY, blogs);
-  const comments = readCollection(COMMENTS_KEY, seedComments).filter(
-    (comment) => comment.blogId !== id,
-  );
-  writeCollection(COMMENTS_KEY, comments);
-  return delay({ id });
-};
-
-export const setPublishState = async (id, status) => {
-  const blogs = readCollection(BLOGS_KEY, seedBlogs).map((blog) =>
-    blog.id === id
-      ? { ...blog, status, updatedAt: new Date().toISOString() }
-      : blog,
-  );
-  writeCollection(BLOGS_KEY, blogs);
-  return delay(blogs.find((blog) => blog.id === id));
-};
-
-export const listComments = async () => delay(readCollection(COMMENTS_KEY, seedComments));
+export const listComments = async () => readComments();
 
 export const setCommentStatus = async (id, status) => {
-  const comments = readCollection(COMMENTS_KEY, seedComments).map((comment) =>
+  const comments = readComments().map((comment) =>
     comment.id === id ? { ...comment, status } : comment,
   );
-  writeCollection(COMMENTS_KEY, comments);
-  return delay(comments.find((comment) => comment.id === id));
+  writeComments(comments);
+  return comments.find((comment) => comment.id === id);
 };
 
 export const deleteComment = async (id) => {
-  const comments = readCollection(COMMENTS_KEY, seedComments).filter(
-    (comment) => comment.id !== id,
-  );
-  writeCollection(COMMENTS_KEY, comments);
-  return delay({ id });
+  const comments = readComments().filter((comment) => comment.id !== id);
+  writeComments(comments);
+  return { id };
 };
 
 export const getAdminStats = async () => {
-  const blogs = readCollection(BLOGS_KEY, seedBlogs);
-  const comments = readCollection(COMMENTS_KEY, seedComments);
+  const [blogs, comments] = await Promise.all([listBlogsRequest(), listComments()]);
 
-  return delay({
+  return {
     published: blogs.filter((blog) => blog.status === "published").length,
     drafts: blogs.filter((blog) => blog.status === "draft").length,
     pendingComments: comments.filter((comment) => comment.status === "pending").length,
     totalComments: comments.length,
-  });
+  };
 };

@@ -12,6 +12,8 @@ const Contact = lazy(() => import("@/features/contact/views/Contact"));
 const Products = lazy(() => import("@/features/products/views/Products"));
 const About = lazy(() => import("@/features/about/views/About"));
 const WorkWithMe = lazy(() => import("@/features/work-with-me/views/WorkWithMe"));
+const BlogsPage = lazy(() => import("@/features/blog/views/BlogsPage"));
+const BlogPostPage = lazy(() => import("@/features/blog/views/BlogPostPage"));
 const Login = lazy(() => import("@/features/auth/views/Login"));
 const AdminDashboard = lazy(() => import("@/features/blog/views/AdminDashboard"));
 const AdminBlogList = lazy(() => import("@/features/blog/views/AdminBlogList"));
@@ -29,6 +31,8 @@ const AppRoutes = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/about" element={<About />} />
           <Route path="/work-with-me" element={<WorkWithMe />} />
+          <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/blogs/:slug" element={<BlogPostPage />} />
         </Route>
 
         <Route element={<AuthLayout />}>

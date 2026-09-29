@@ -16,8 +16,12 @@ const AdminDashboard = () => {
     let cancelled = false;
 
     const load = async () => {
-      const nextStats = await getAdminStats();
-      if (!cancelled) setStats(nextStats);
+      try {
+        const nextStats = await getAdminStats();
+        if (!cancelled) setStats(nextStats);
+      } catch {
+        if (!cancelled) setStats({ published: 0, drafts: 0, pendingComments: 0, totalComments: 0 });
+      }
     };
 
     void load();

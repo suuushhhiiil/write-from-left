@@ -35,3 +35,9 @@ export const uploadSignedImage = async (file, signaturePayload, onProgress) => {
     height: data.height,
   };
 };
+
+export const destroyCloudinaryAsset = async (publicId) => {
+  if (!publicId) return;
+  await api.post("/media/destroy", { publicId });
+};
+

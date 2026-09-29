@@ -1,9 +1,14 @@
-import { useCallback, useEffect, useState } from "react";
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { EditorContent, useEditor } from "@tiptap/react";
 import { editorExtensions } from "@/lib/tiptap";
 import EditorToolbar from "./EditorToolbar";
 import ImageUploadModel from "./ImageUploadModel";
-import { getUploadSignature, uploadSignedImage } from "@/services/media/media.api";
+import { collectImagePublicIds } from "../../utils/blog.utils";
+import {
+  destroyCloudinaryAsset,
+  getUploadSignature,
+  uploadSignedImage,
+} from "@/services/media/media.api";
 
 const readFileDetails = (file) =>
   new Promise((resolve, reject) => {
@@ -26,19 +31,62 @@ const readFileDetails = (file) =>
     image.src = previewUrl;
   });
 
-const BlogEditor = () => {
+const BlogEditor = forwardRef(({ initialContent, contentKey }, ref) => {
   const [upload, setUpload] = useState(null);
+  const sessionPublicIds = useRef(new Set());
+  const lastDocIds = useRef([]);
 
   const editor = useEditor({
     extensions: editorExtensions,
-    content: "",
+    content: initialContent || "",
     editorProps: {
       attributes: {
-        class:
-          "tiptap bg-white border border-gray-300 rounded-lg p-4 lg:p-18",
+        class: "tiptap bg-white border border-gray-300 rounded-lg p-4 lg:p-18",
       },
     },
   });
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      getJSON: () => editor?.getJSON() ?? { type: "doc", content: [] },
+      getHTML: () => editor?.getHTML() ?? "",
+      markSaved: () => {
+        if (!editor) return;
+        sessionPublicIds.current.clear();
+        lastDocIds.current = collectImagePublicIds(editor.getJSON());
+      },
+    }),
+    [editor],
+  );
+
+  useEffect(() => {
+    if (!editor) return;
+    editor.commands.setContent(initialContent || "");
+    lastDocIds.current = collectImagePublicIds(initialContent);
+    sessionPublicIds.current.clear();
+  }, [editor, contentKey, initialContent]);
+
+  useEffect(() => {
+    if (!editor) return undefined;
+
+    const onUpdate = () => {
+      const currentIds = collectImagePublicIds(editor.getJSON());
+      const removed = lastDocIds.current.filter((id) => !currentIds.includes(id));
+      lastDocIds.current = currentIds;
+
+      removed.forEach((publicId) => {
+        if (!sessionPublicIds.current.has(publicId)) return;
+        sessionPublicIds.current.delete(publicId);
+        void destroyCloudinaryAsset(publicId).catch((error) => {
+          console.error("Failed to destroy unsaved image", error);
+        });
+      });
+    };
+
+    editor.on("update", onUpdate);
+    return () => editor.off("update", onUpdate);
+  }, [editor]);
 
   const clearUpload = useCallback(() => {
     setUpload((current) => {
@@ -86,22 +134,16 @@ const BlogEditor = () => {
     if (!upload?.file || !editor) return;
 
     setUpload((current) =>
-      current
-        ? { ...current, isUploading: true, progress: 0, error: "" }
-        : current,
+      current ? { ...current, isUploading: true, progress: 0, error: "" } : current,
     );
 
     try {
       const signature = await getUploadSignature();
-      const uploaded = await uploadSignedImage(
-        upload.file,
-        signature,
-        (progress) => {
-          setUpload((current) =>
-            current ? { ...current, progress } : current,
-          );
-        },
-      );
+      const uploaded = await uploadSignedImage(upload.file, signature, (progress) => {
+        setUpload((current) => (current ? { ...current, progress } : current));
+      });
+
+      sessionPublicIds.current.add(uploaded.publicId);
 
       editor
         .chain()
@@ -111,6 +153,7 @@ const BlogEditor = () => {
           alt: upload.alt || upload.file.name,
           width: uploaded.width,
           height: uploaded.height,
+          publicId: uploaded.publicId,
         })
         .run();
 
@@ -134,11 +177,8 @@ const BlogEditor = () => {
   if (!editor) return null;
 
   return (
-    <div className="relative flex flex-col items-center justify-center gap-4 overflow-hidden">
-      <div className="fixed bottom-4 left-[50%] z-100 w-full translate-x-[-50%] rounded-lg px-8 lg:bottom-12 lg:w-fit lg:px-0">
-        <EditorToolbar editor={editor} onFileSelected={handleFileSelected} />
-      </div>
-      <div className="relative w-full">
+    <div className="relative w-full">
+      <div className="relative pb-20">
         <EditorContent editor={editor} />
         {upload && (
           <ImageUploadModel
@@ -158,8 +198,15 @@ const BlogEditor = () => {
           />
         )}
       </div>
+      <div className="sticky bottom-4 z-100 -mt-16 flex justify-center px-4">
+        <div className="w-full lg:w-fit">
+          <EditorToolbar editor={editor} onFileSelected={handleFileSelected} />
+        </div>
+      </div>
     </div>
   );
-};
+});
+
+BlogEditor.displayName = "BlogEditor";
 
 export default BlogEditor;

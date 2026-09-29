@@ -11,6 +11,7 @@ const EditorImage = Image.extend({
       alt: { default: null },
       width: { default: null },
       height: { default: null },
+      publicId: { default: null },
     };
   },
 });

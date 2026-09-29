@@ -3,6 +3,7 @@ import { Coffee } from 'lucide-react'
 import contactContent from '../content/contact'
 import heroImage from '@/assets/images/contact/hero.png'
 import OptimizedImage from '@/components/common/OptimizedImage'
+import { sendContactMessage } from '@/services/contact/contact.api'
 
 const { hero, coffee, form, email } = contactContent
 
@@ -17,26 +18,30 @@ const labelClassName = 'text-xs font-medium tracking-wider text-dark-accent uppe
 
 const Contact = () => {
     const [values, setValues] = useState(initialValues)
+    const [status, setStatus] = useState('')
+    const [error, setError] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false)
 
     const handleChange = (event) => {
         const { name, value } = event.target
         setValues((current) => ({ ...current, [name]: value }))
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
+        setError('')
+        setStatus('')
+        setIsSubmitting(true)
 
-        const body = [
-            `Name: ${values.name}`,
-            `Email: ${values.email}`,
-            `Reaching out about: ${values.outreachReason}`,
-            `Timeline: ${values.timeline}`,
-            '',
-            values.message,
-        ].join('\n')
-
-        const subject = encodeURIComponent(`Message from ${values.name || 'the website'}`)
-        window.location.href = `${email.href}?subject=${subject}&body=${encodeURIComponent(body)}`
+        try {
+            await sendContactMessage(values)
+            setStatus('Message sent. I will get back to you soon.')
+            setValues(initialValues)
+        } catch (err) {
+            setError(err.response?.data?.message || 'Could not send your message. Please try again.')
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     return (
@@ -163,10 +168,13 @@ const Contact = () => {
 
                             <button
                                 type="submit"
-                                className="mt-2 w-full rounded-md bg-primary px-4 py-3 text-sm text-white transition-all duration-300 hover:bg-primary-dark"
+                                disabled={isSubmitting}
+                                className="mt-2 w-full rounded-md bg-primary px-4 py-3 text-sm text-white transition-all duration-300 hover:bg-primary-dark disabled:opacity-60"
                             >
-                                {form.submit.label}
+                                {isSubmitting ? 'Sending...' : form.submit.label}
                             </button>
+                            {status && <p className="text-sm text-primary">{status}</p>}
+                            {error && <p className="text-sm text-primary">{error}</p>}
                         </form>
 
                         <p className="text-sm text-dark-accent">
