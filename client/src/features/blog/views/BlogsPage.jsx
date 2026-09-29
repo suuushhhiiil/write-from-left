@@ -58,10 +58,10 @@ const BlogsPage = () => {
   };
 
   return (
-    <section className="blogs lg:px-20 px-4 page-hero-offset pb-20" ref={blogsRef}>
+    <section className="blogs lg:px-20 px-4 page-hero-offset pb-20 min-h-screen" ref={blogsRef}>
       <div className="blogs-hero-container lg:grid lg:grid-cols-12 flex flex-col items-start gap-6 lg:gap-8">
         <div className="lg:col-span-6 flex flex-col gap-2 overflow-hidden">
-          <h1 className="variable-hero-text blogs-hero-title text-5xl font-semibold font-display leading-none">
+          <h1 className="variable-hero-text blogs-hero-title text-5xl font-semibold font-display py-2">
             {blogsContent.hero.title}
           </h1>
         </div>

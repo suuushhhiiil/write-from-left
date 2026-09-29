@@ -1,6 +1,6 @@
 const blogsContent = {
   hero: {
-    title: "BLOGS",
+    title: "Blogs",
     heading: "Writing is how ideas take shape.",
     description: "Notes on making, managing, and moving work forward.",
     intro:
