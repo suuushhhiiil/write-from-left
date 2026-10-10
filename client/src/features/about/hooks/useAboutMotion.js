@@ -1,4 +1,5 @@
 import { useGSAP } from "@gsap/react";
+import { useRouteImagesReady } from "@/components/common/Loader";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
@@ -416,7 +417,11 @@ const animateContact = (q, el) => {
 };
 
 const useAboutMotion = (scope) => {
+  const imagesReady = useRouteImagesReady();
+
   useGSAP(() => {
+    if (!imagesReady) return;
+
     const q = gsap.utils.selector(scope);
     const el = (selector) => q(selector)[0] ?? null;
 
@@ -444,7 +449,7 @@ const useAboutMotion = (scope) => {
     return () => {
       images.forEach((img) => img.removeEventListener("load", refresh));
     };
-  });
+  }, { dependencies: [imagesReady], revertOnUpdate: true });
 };
 
 export default useAboutMotion;

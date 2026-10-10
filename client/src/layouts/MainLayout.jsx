@@ -2,7 +2,7 @@ import { Suspense, useLayoutEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/navigation/Footer";
-import Loader from "@/components/common/Loader";
+import Loader, { RouteImageLoadProvider } from "@/components/common/Loader";
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -32,7 +32,9 @@ function MainLayout() {
       <main className="overflow-x-hidden">
         <Suspense fallback={<Loader />}>
           <ScrollToTop />
-          <Outlet />
+          <RouteImageLoadProvider>
+            <Outlet />
+          </RouteImageLoadProvider>
         </Suspense>
       </main>
       <Footer />

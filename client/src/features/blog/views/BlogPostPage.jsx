@@ -5,19 +5,26 @@ import { getPublishedBlog } from "../services/blog.service";
 import { formatBlogDate } from "../utils/blog.utils";
 import BlogCover from "../components/public/BlogCover";
 import BlogTags from "../components/public/BlogTags";
+import { useHoldRouteLoader } from "@/components/common/Loader";
 
 const BlogPostPage = () => {
   const { slug } = useParams();
   const [blog, setBlog] = useState(null);
   const [status, setStatus] = useState("loading");
+  const [loadedSlug, setLoadedSlug] = useState(slug);
+
+  if (loadedSlug !== slug) {
+    setLoadedSlug(slug);
+    setBlog(null);
+    setStatus("loading");
+  }
+
+  useHoldRouteLoader(status === "loading");
 
   useEffect(() => {
     let cancelled = false;
 
     const load = async () => {
-      setStatus("loading");
-      setBlog(null);
-
       try {
         const post = await getPublishedBlog(slug);
         if (!cancelled) {

@@ -1,4 +1,5 @@
 import { useGSAP } from "@gsap/react";
+import { useRouteImagesReady } from "@/components/common/Loader";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
@@ -391,15 +392,14 @@ const animateProof = (q, el) => {
 };
 
 const useHomeMotion = (scope) => {
+  const imagesReady = useRouteImagesReady();
+
   useGSAP(
     () => {
+      if (!imagesReady) return;
+
       const q = gsap.utils.selector(scope);
       const el = (selector) => q(selector)[0] ?? null;
-
-      if (prefersReducedMotion()) {
-        gsap.set(q(".hero-curtain"), { autoAlpha: 0, pointerEvents: "none" });
-        return;
-      }
 
       animateHero(q, el);
       animateFirstDraft(el);
@@ -423,7 +423,7 @@ const useHomeMotion = (scope) => {
         images.forEach((img) => img.removeEventListener("load", refresh));
       };
     },
-    { scope },
+    { scope, dependencies: [imagesReady], revertOnUpdate: true },
   );
 };
 

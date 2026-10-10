@@ -33,6 +33,9 @@ const AppRoutes = () => {
           <Route path="/work-with-me" element={<WorkWithMe />} />
           <Route path="/blogs" element={<BlogsPage />} />
           <Route path="/blogs/:slug" element={<BlogPostPage />} />
+          <Route path="/loader" element={<Loader />} />
+
+
         </Route>
 
         <Route element={<AuthLayout />}>

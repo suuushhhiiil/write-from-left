@@ -1,5 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useRouteImagesReady } from "@/components/common/Loader";
 
 gsap.registerPlugin(useGSAP);
 
@@ -7,8 +8,12 @@ const prefersReducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const useBlogsMotion = (scope) => {
+  const imagesReady = useRouteImagesReady();
+
   useGSAP(
     () => {
+      if (!imagesReady) return;
+
       const q = gsap.utils.selector(scope);
       const hero = q(".blogs-hero-container")[0];
       const title = q(".blogs-hero-title")[0];
@@ -31,7 +36,7 @@ const useBlogsMotion = (scope) => {
           "<",
         );
     },
-    { scope },
+    { scope, dependencies: [imagesReady], revertOnUpdate: true },
   );
 };
 

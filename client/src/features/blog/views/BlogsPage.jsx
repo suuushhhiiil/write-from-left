@@ -9,6 +9,7 @@ import BlogCard from "../components/public/BlogCard";
 import BlogFilters from "../components/public/BlogFilters";
 import FeaturedBlogCard from "../components/public/FeaturedBlogCard";
 import useBlogsMotion from "../hooks/useBlogsMotion";
+import { useHoldRouteLoader } from "@/components/common/Loader";
 
 const BlogsPage = () => {
   const blogsRef = useRef(null);
@@ -18,6 +19,7 @@ const BlogsPage = () => {
   const [error, setError] = useState("");
   const [loaded, setLoaded] = useState(false);
 
+  useHoldRouteLoader(!loaded);
   useBlogsMotion(blogsRef);
 
   useEffect(() => {

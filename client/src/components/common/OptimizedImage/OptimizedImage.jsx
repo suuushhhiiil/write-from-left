@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import defaultFallbackImage from '@/assets/images/fallback.png'
+import { useRouteImagesReady } from '@/components/common/Loader'
 
 const OptimizedImage = ({
     src,
@@ -17,8 +18,10 @@ const OptimizedImage = ({
     ...props
 }) => {
     const [failedSrc, setFailedSrc] = useState(null)
+    const routeImagesReady = useRouteImagesReady()
     const hasFailed = failedSrc === src
     const resolvedSrc = hasFailed ? fallbackImage : src
+    const eager = priority || !routeImagesReady
 
     const handleError = useCallback((event) => {
         if (failedSrc !== src) {
@@ -35,7 +38,7 @@ const OptimizedImage = ({
             src={resolvedSrc}
             srcSet={hasFailed ? undefined : srcSet}
             sizes={sizes}
-            loading={loading ?? (priority ? 'eager' : 'lazy')}
+            loading={loading ?? (eager ? 'eager' : 'lazy')}
             fetchPriority={fetchPriority ?? (priority ? 'high' : 'auto')}
             decoding={decoding ?? (priority ? 'sync' : 'async')}
             onError={handleError}
