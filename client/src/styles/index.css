@@ -208,3 +208,86 @@ html.dialog-open body {
   border: 0;
   padding: 0;
 }
+
+.blog-article {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.blog-article > :first-child {
+  margin-top: 0;
+}
+
+.blog-article p {
+  @apply my-5;
+}
+
+.blog-article h1,
+.blog-article h2,
+.blog-article h3,
+.blog-article h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.blog-article h1 {
+  @apply mt-10 mb-4 text-4xl;
+}
+
+.blog-article h2 {
+  @apply mt-9 mb-3 text-3xl;
+}
+
+.blog-article h3 {
+  @apply mt-8 mb-3 text-2xl;
+}
+
+.blog-article h4 {
+  @apply mt-6 mb-2 text-xl;
+}
+
+.blog-article ul {
+  @apply my-5 list-disc pl-6;
+}
+
+.blog-article ol {
+  @apply my-5 list-decimal pl-6;
+}
+
+.blog-article li {
+  @apply my-1.5;
+}
+
+.blog-article li p {
+  @apply my-1;
+}
+
+.blog-article blockquote {
+  @apply my-7 border-l-[3px] border-accent pl-5 font-display text-xl italic font-normal;
+}
+
+.blog-article a {
+  @apply font-medium text-primary underline decoration-primary/40 underline-offset-4 hover:text-primary-dark;
+}
+
+.blog-article img {
+  @apply my-7 h-auto max-w-full rounded-2xl;
+}
+
+.blog-article code {
+  @apply rounded-md bg-secondary px-1.5 py-0.5 font-mono text-[0.9em];
+}
+
+.blog-article pre {
+  @apply my-7 overflow-x-auto rounded-xl bg-dark p-4 text-sm leading-relaxed text-background;
+}
+
+.blog-article pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+
+.blog-article hr {
+  @apply my-10 border-0 border-t border-secondary;
+}

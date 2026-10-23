@@ -46,28 +46,6 @@ const animateHero = (q, el) => {
   });
 
   intro
-    // .fromTo(
-    //   el(".hero-curtain-primary"),
-    //   { scaleY: 1 },
-    //   {
-    //     scaleY: 0,
-    //     transformOrigin: "bottom center",
-    //     ease: "power4.inOut",
-    //   },
-    // )
-    // .fromTo(
-    //   el(".hero-curtain-accent"),
-    //   { scaleY: 1 },
-    //   {
-    //     scaleY: 0,
-    //     transformOrigin: "bottom center",
-    //     ease: "power4.inOut",
-    //     onComplete: () => {
-    //       gsap.set(q(".hero-curtain"), { pointerEvents: "none" });
-    //     },
-    //   },
-    //   "-=0.6",
-    // )
     .fromTo(el(".hero-greet"), fadeUpFrom, fadeUpTo)
     .fromTo(
       nameSplit.words,
@@ -116,7 +94,7 @@ const animateHero = (q, el) => {
     { autoAlpha: 1, scale: 1 },
     {
       autoAlpha: 0,
-      scale: 5,
+      scale: 0.9,
       ease: EASE,
       overwrite: "auto",
       scrollTrigger: {
@@ -136,89 +114,125 @@ const animateFirstDraft = (el) => {
   const imageContainer = el(".first-draft-image-container");
   const image = el(".first-draft-image");
   const container = el(".first-draft-container");
-  if (!section || !container) return;
-
-  ScrollTrigger.create({
-    trigger: section,
-    start: "top top",
-    end: "bottom top",
-    pin: true,
-    pinSpacing: true,
-  });
+  const content = el(".first-draft-content");
+  if (!section || !container || !content) return;
 
   gsap.from(imageContainer, {
+    duration: 1,
     scale: 0.8,
     rotate: -10,
     scrollTrigger: {
       trigger: section,
-      start: "top top",
-      end: "bottom 20%",
-      scrub: true,
+      start: "top 40%",
+      toggleActions: "play none none reverse",
     },
   });
 
-  scrubFromTo(
+  gsap.fromTo(
     image,
     {
       scale: 2.5,
       rotate: 10,
+      autoAlpha: 0,
+      duration: 1,
     },
     {
       scale: 1,
       rotate: 0,
-    },
-    {
-      trigger: section,
-      start: "top 10%",
-      end: "bottom 20%",
-      scrub: true,
+      duration: 1,
+      autoAlpha: 1,
+      scrollTrigger: {
+        trigger: section,
+        start: "top 40%",
+        toggleActions: "play none none reverse",
+      },
     },
   );
 
-  gsap.from(container, {
-    autoAlpha: 0,
-    scale: 0.9,
-    ease: EASE,
-    overwrite: "auto",
-    scrollTrigger: {
-      trigger: section,
-      start: "top 10%",
-      end: "bottom 50%",
-      scrub: true,
+  gsap.fromTo(
+    content,
+    { autoAlpha: 0, y: 50 },
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 1,
+      ease: EASE,
+      overwrite: "auto",
+      scrollTrigger: {
+        trigger: content,
+        start: "top 40%",
+        toggleActions: "play none none reverse",
+      },
     },
-  });
+  );
 };
 
 const animateWhatIDo = (q, el) => {
   const container = el(".what-i-do-container");
   if (!container) return;
 
-  scrubFromTo(
+  gsap.fromTo(
     splitWords(el(".what-i-do-title")).words,
-    fadeUpFrom,
-    { ...fadeUpTo, stagger: 0.02 },
-    { trigger: container, start: "top 50%", end: "top 20%" },
+    {
+      autoAlpha: 0,
+      y: 50,
+    },
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 1,
+      ease: EASE,
+      overwrite: "auto",
+      scrollTrigger: {
+        trigger: container,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    },
   );
 
-  scrubFromTo(
+  gsap.fromTo(
     splitWords(el(".what-i-do-heading")).words,
-    fadeUpFrom,
-    { ...fadeUpTo, stagger: 0.02 },
-    { trigger: container, start: "top 60%", end: "top 10%" },
+    {
+      autoAlpha: 0,
+      y: 50,
+    },
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 1,
+      ease: EASE,
+      overwrite: "auto",
+      scrollTrigger: {
+        trigger: container,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    },
   );
 
-  scrubFromTo(
+  gsap.fromTo(
     splitWords(el(".what-i-do-description-text")).words,
-    fadeUpFrom,
-    { ...fadeUpTo, stagger: 0.02 },
-    { trigger: container, start: "top 50%", end: "top 20%" },
+    { autoAlpha: 0, y: 50 },
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 1,
+      ease: EASE,
+      overwrite: "auto",
+      scrollTrigger: {
+        trigger: container,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    },
   );
 
   const card = el(".what-i-do-card");
   const imageContainer = el(".what-i-do-image-container");
   const image = el(".what-i-do-image");
 
-  scrubFromTo(
+  gsap.fromTo(
     imageContainer,
     {
       scale: 0.8,
@@ -229,12 +243,13 @@ const animateWhatIDo = (q, el) => {
       scale: 1,
       y: 0,
       autoAlpha: 1,
-    },
-    {
-      trigger: imageContainer,
-      start: "top bottom",
-      end: "bottom 60%",
-      scrub: true,
+      scrollTrigger: {
+        trigger: imageContainer,
+        start: "top bottom",
+        end: "bottom 60%",
+        scrub: true,
+        toggleActions: "play none none reverse",
+      },
     },
   );
 

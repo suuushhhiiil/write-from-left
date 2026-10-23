@@ -15,7 +15,7 @@ const Home = () => {
     return (
         <section ref={rootRef} className="pb-8">
             <div className="hero-pin">
-                <div className="hero-container lg:h-screen lg:px-20 px-4 lg:grid lg:grid-cols-12 gap-2 flex flex-col items-center">
+                <div className="hero-container lg:h-screen lg:px-20 px-4 lg:grid lg:grid-cols-12 gap-2 flex flex-col items-end ">
                     <div className="lg:col-span-6 flex flex-col lg:h-full justify-center gap-16 lg:py-20 pt-20">
                         <div className="">
                             <p className="hero-greet font-script text-primary text-2xl">Hi, I'm</p>
@@ -36,16 +36,16 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="lg:col-span-6 border-b border-secondary hero-image">
-                        <OptimizedImage src={heroImage} alt="Hero" priority className="w-full  object-cover" />
+                    <div className="lg:col-span-full lg:-col-start-7 hero-image">
+                        <OptimizedImage src={heroImage} alt="Hero" priority className="h-full aspect-square object-cover overflow-visible" />
                     </div>
                 </div>
             </div>
 
             {/* What I am building */}
             <div className="first-draft-section lg:py-10">
-                <div className="first-draft-container h-screen lg:px-20 px-4 lg:grid lg:grid-cols-12 flex flex-col items-center justify-between lg:gap-16 gap-6  py-20">
-                    <div className="lg:col-span-5 flex  flex-col lg:gap-24 items-start justify-center lg:h-full">
+                <div className="first-draft-container lg:h-screen lg:px-20 px-4 lg:grid lg:grid-cols-12 flex flex-col items-center justify-btween lg:gap-16 gap-6  py-20">
+                    <div className="first-draft-content lg:col-span-5 flex  flex-col lg:gap-24 items-start justify-center lg:h-full">
                         <div className="flex flex-col gap-4">
                             <p className="first-draft-title text-xs font-medium text-accent uppercase tracking-wider">What I am building</p>
                             <div className="flex flex-col gap-2">

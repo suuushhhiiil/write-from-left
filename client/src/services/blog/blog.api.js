@@ -16,7 +16,9 @@ export const getBlog = async (id) => {
 };
 
 export const getPublishedBlog = async (slug) => {
-  const { data } = await api.get(`/blogs/published/${encodeURIComponent(slug)}`);
+  const { data } = await api.get(
+    `/blogs/published/${encodeURIComponent(slug)}`,
+  );
   return data.data;
 };
 
@@ -32,5 +34,35 @@ export const updateBlog = async (id, payload) => {
 
 export const deleteBlog = async (id) => {
   const { data } = await api.delete(`/blogs/${id}`);
+  return data.data;
+};
+
+export const listPostComments = async (slug) => {
+  const { data } = await api.get(
+    `/blogs/published/${encodeURIComponent(slug)}/comments`,
+  );
+  return data.data;
+};
+
+export const createPostComment = async (slug, payload) => {
+  const { data } = await api.post(
+    `/blogs/published/${encodeURIComponent(slug)}/comments`,
+    payload,
+  );
+  return data.data;
+};
+
+export const listComments = async () => {
+  const { data } = await api.get("/comments");
+  return data.data;
+};
+
+export const setCommentStatus = async (id, status) => {
+  const { data } = await api.patch(`/comments/${id}`, { status });
+  return data.data;
+};
+
+export const deleteComment = async (id) => {
+  const { data } = await api.delete(`/comments/${id}`);
   return data.data;
 };

@@ -31,10 +31,13 @@ const readFileDetails = (file) =>
     image.src = previewUrl;
   });
 
-const BlogEditor = forwardRef(({ initialContent, contentKey }, ref) => {
+const BlogEditor = forwardRef(({ initialContent, contentKey, onChange }, ref) => {
   const [upload, setUpload] = useState(null);
   const sessionPublicIds = useRef(new Set());
   const lastDocIds = useRef([]);
+  const applyingContent = useRef(false);
+  const onChangeRef = useRef(onChange);
+  onChangeRef.current = onChange;
 
   const editor = useEditor({
     extensions: editorExtensions,
@@ -62,7 +65,9 @@ const BlogEditor = forwardRef(({ initialContent, contentKey }, ref) => {
 
   useEffect(() => {
     if (!editor) return;
+    applyingContent.current = true;
     editor.commands.setContent(initialContent || "");
+    applyingContent.current = false;
     lastDocIds.current = collectImagePublicIds(initialContent);
     sessionPublicIds.current.clear();
   }, [editor, contentKey, initialContent]);
@@ -71,6 +76,8 @@ const BlogEditor = forwardRef(({ initialContent, contentKey }, ref) => {
     if (!editor) return undefined;
 
     const onUpdate = () => {
+      if (applyingContent.current) return;
+
       const currentIds = collectImagePublicIds(editor.getJSON());
       const removed = lastDocIds.current.filter((id) => !currentIds.includes(id));
       lastDocIds.current = currentIds;
@@ -82,6 +89,8 @@ const BlogEditor = forwardRef(({ initialContent, contentKey }, ref) => {
           console.error("Failed to destroy unsaved image", error);
         });
       });
+
+      onChangeRef.current?.();
     };
 
     editor.on("update", onUpdate);
@@ -162,13 +171,13 @@ const BlogEditor = forwardRef(({ initialContent, contentKey }, ref) => {
       setUpload((current) =>
         current
           ? {
-              ...current,
-              isUploading: false,
-              error:
-                error.response?.data?.message ||
-                error.message ||
-                "Upload failed. Try again.",
-            }
+            ...current,
+            isUploading: false,
+            error:
+              error.response?.data?.message ||
+              error.message ||
+              "Upload failed. Try again.",
+          }
           : current,
       );
     }

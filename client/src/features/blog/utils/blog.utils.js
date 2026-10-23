@@ -35,7 +35,9 @@ export const collectPublishedTags = (blogs) => {
 };
 
 export const filterPublishedBlogs = (blogs, { query, selectedTags } = {}) => {
-  const needle = String(query || "").trim().toLowerCase();
+  const needle = String(query || "")
+    .trim()
+    .toLowerCase();
   const tags = Array.isArray(selectedTags) ? selectedTags : [];
 
   return blogs.filter((blog) => {
@@ -53,6 +55,31 @@ export const filterPublishedBlogs = (blogs, { query, selectedTags } = {}) => {
 
     return matchesQuery && matchesTags;
   });
+};
+
+export const readingTimeLabel = (html) => {
+  const text = String(html || "")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!text) return "";
+
+  const words = text.split(" ").length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  return `${minutes} min read`;
+};
+
+export const relatedBlogs = (blogs, current, limit = 3) => {
+  const tags = new Set(current?.tags || []);
+  const others = (blogs || []).filter(
+    (blog) => blog.slug && blog.slug !== current?.slug,
+  );
+  const shared = others.filter((blog) =>
+    (blog.tags || []).some((tag) => tags.has(tag)),
+  );
+  return (shared.length ? shared : others).slice(0, limit);
 };
 
 export const slugify = (value) => {

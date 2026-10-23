@@ -10,9 +10,9 @@ const Loader = ({ label = "Loading...", progress = null }) => {
         aria-label="Loading page images"
       >
         <p className="font-display text-5xl font-semibold tabular-nums">{progress.percent}%</p>
-        <p className="tabular-nums">
+        {/* <p className="tabular-nums">
           {progress.loaded} / {progress.total}
-        </p>
+        </p> */}
       </div>
     );
   }

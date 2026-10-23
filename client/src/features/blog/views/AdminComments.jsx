@@ -10,17 +10,27 @@ const formatDate = (value) =>
 
 const AdminComments = () => {
   const [comments, setComments] = useState([]);
+  const [error, setError] = useState("");
+  const [loaded, setLoaded] = useState(false);
 
   const loadComments = async () => {
-    setComments(await listComments());
+    const items = await listComments();
+    setComments(items);
+    setLoaded(true);
   };
 
   useEffect(() => {
     let cancelled = false;
 
     const load = async () => {
-      const items = await listComments();
-      if (!cancelled) setComments(items);
+      try {
+        const items = await listComments();
+        if (!cancelled) setComments(items);
+      } catch {
+        if (!cancelled) setError("Could not load comments.");
+      } finally {
+        if (!cancelled) setLoaded(true);
+      }
     };
 
     void load();
@@ -31,21 +41,32 @@ const AdminComments = () => {
   }, []);
 
   const updateStatus = async (id, status) => {
-    await setCommentStatus(id, status);
-    await loadComments();
+    try {
+      setError("");
+      await setCommentStatus(id, status);
+      await loadComments();
+    } catch {
+      setError("Could not update this comment.");
+    }
   };
 
   const handleDelete = async (comment) => {
-    const confirmed = window.confirm(`Delete comment from ${comment.author}?`);
+    const confirmed = window.confirm(`Delete comment from ${comment.authorName}?`);
     if (!confirmed) return;
-    await deleteComment(comment.id);
-    await loadComments();
+    try {
+      setError("");
+      await deleteComment(comment.id);
+      await loadComments();
+    } catch {
+      setError("Could not delete this comment.");
+    }
   };
 
   return (
     <section className="p-6 lg:p-10">
       <h1 className="font-display text-3xl font-semibold">Comments</h1>
       <p className="mt-2 text-dark-accent">Approve, reject, or remove comments.</p>
+      {error && <p className="mt-4 text-sm text-primary">{error}</p>}
 
       <div className="mt-8 overflow-x-auto rounded-2xl border border-secondary bg-light">
         <table className="w-full min-w-[860px] text-left text-sm">
@@ -62,8 +83,13 @@ const AdminComments = () => {
           <tbody>
             {comments.map((comment) => (
               <tr key={comment.id} className="border-b border-secondary last:border-b-0">
-                <td className="px-4 py-4 font-medium">{comment.author}</td>
-                <td className="max-w-xs px-4 py-4 text-dark-accent">{comment.snippet}</td>
+                <td className="px-4 py-4">
+                  <p className="font-medium">{comment.authorName}</p>
+                  <p className="text-xs text-dark-accent">{comment.email}</p>
+                </td>
+                <td className="max-w-xs px-4 py-4 text-dark-accent">
+                  <p className="line-clamp-3">{comment.body}</p>
+                </td>
                 <td className="px-4 py-4">{comment.blogTitle}</td>
                 <td className="px-4 py-4 text-dark-accent">{formatDate(comment.createdAt)}</td>
                 <td className="px-4 py-4 capitalize">{comment.status}</td>
@@ -107,7 +133,7 @@ const AdminComments = () => {
                 </td>
               </tr>
             ))}
-            {comments.length === 0 && (
+            {loaded && comments.length === 0 && (
               <tr>
                 <td colSpan={6} className="px-4 py-8 text-center text-dark-accent">
                   No comments yet.

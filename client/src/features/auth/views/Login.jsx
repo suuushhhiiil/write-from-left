@@ -30,7 +30,11 @@ const Login = () => {
       await login({ email, password });
       navigate(from, { replace: true });
     } catch (err) {
-      setError(err.response?.data?.message || "Unable to sign in. Check your credentials.");
+      if (!err.response) {
+        setError("The API is not running. Start the server, then try again.");
+      } else {
+        setError(err.response?.data?.message || "Unable to sign in. Check your credentials.");
+      }
     } finally {
       setIsSubmitting(false);
     }

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import BlogEditor from "../components/editor/BlogEditor";
+import useUnsavedChanges from "../hooks/useUnsavedChanges";
 import { createBlog, getBlog, updateBlog } from "../services/blog.service";
 import { slugify } from "../utils/blog.utils";
 import {
@@ -28,8 +29,13 @@ const BlogEditorPage = () => {
   const [isLoading, setIsLoading] = useState(Boolean(id));
   const [isSaving, setIsSaving] = useState(false);
   const [isUploadingCover, setIsUploadingCover] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
+  const [liveSlug, setLiveSlug] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+
+  const location = useLocation();
+  useUnsavedChanges(isDirty);
 
   useEffect(() => {
     if (!id) return undefined;
@@ -49,6 +55,8 @@ const BlogEditorPage = () => {
         setCover(blog.cover || { url: "", publicId: "" });
         setSavedCoverPublicId(blog.cover?.publicId || "");
         setInitialContent(blog.content || emptyDoc);
+        setLiveSlug(blog.status === "published" ? blog.slug || "" : "");
+        setIsDirty(false);
       } catch {
         if (!cancelled) setError("Could not load this post.");
       } finally {
@@ -63,9 +71,21 @@ const BlogEditorPage = () => {
     };
   }, [id]);
 
+  useEffect(() => {
+    if (!location.state?.justSaved) return;
+    setMessage(
+      location.state.slugAdjusted
+        ? "Saved. The slug was adjusted so it stays unique."
+        : "Post saved.",
+    );
+  }, [location.state]);
+
+  const markDirty = () => setIsDirty(true);
+
   const handleTitleChange = (value) => {
     setTitle(value);
     if (!slugTouched) setSlug(slugify(value));
+    markDirty();
   };
 
   const handleCoverUpload = async (event) => {
@@ -80,9 +100,10 @@ const BlogEditorPage = () => {
       const signature = await getUploadSignature();
       const uploaded = await uploadSignedImage(file, signature);
       if (cover.publicId && cover.publicId !== savedCoverPublicId) {
-        await destroyCloudinaryAsset(cover.publicId).catch(() => {});
+        await destroyCloudinaryAsset(cover.publicId).catch(() => { });
       }
       setCover({ url: uploaded.url, publicId: uploaded.publicId });
+      markDirty();
     } catch {
       setError("Cover upload failed.");
     } finally {
@@ -92,9 +113,10 @@ const BlogEditorPage = () => {
 
   const handleRemoveCover = async () => {
     if (cover.publicId && cover.publicId !== savedCoverPublicId) {
-      await destroyCloudinaryAsset(cover.publicId).catch(() => {});
+      await destroyCloudinaryAsset(cover.publicId).catch(() => { });
     }
     setCover({ url: "", publicId: "" });
+    markDirty();
   };
 
   const handleSave = async () => {
@@ -107,6 +129,7 @@ const BlogEditorPage = () => {
     setError("");
     setMessage("");
 
+    const requestedSlug = slug;
     const payload = {
       title: title.trim(),
       slug,
@@ -121,14 +144,28 @@ const BlogEditorPage = () => {
     try {
       if (id) {
         const saved = await updateBlog(id, payload);
+        const slugAdjusted = saved.slug !== slugify(requestedSlug || saved.title);
         setSavedCoverPublicId(saved.cover?.publicId || "");
         setSlug(saved.slug);
+        setExcerpt(saved.excerpt || "");
+        setStatus(saved.status || "draft");
+        setLiveSlug(saved.status === "published" ? saved.slug : "");
         editorRef.current?.markSaved();
-        setMessage("Post saved.");
+        setIsDirty(false);
+        setMessage(
+          slugAdjusted
+            ? "Saved. The slug was adjusted so it stays unique."
+            : "Post saved.",
+        );
       } else {
         const saved = await createBlog(payload);
+        const slugAdjusted = saved.slug !== slugify(requestedSlug || saved.title);
         editorRef.current?.markSaved();
-        navigate(`/admin/blogs/${saved.id}/edit`, { replace: true });
+        setIsDirty(false);
+        navigate(`/admin/blogs/${saved.id}/edit`, {
+          replace: true,
+          state: { justSaved: true, slugAdjusted },
+        });
       }
     } catch (err) {
       setError(err.response?.data?.message || "Could not save this post.");
@@ -161,6 +198,7 @@ const BlogEditorPage = () => {
               onChange={(event) => {
                 setSlugTouched(true);
                 setSlug(event.target.value);
+                markDirty();
               }}
               placeholder="post-url-slug"
               className="rounded-lg border border-secondary bg-background px-4 py-3 text-sm font-normal tracking-normal text-dark outline-none focus:border-primary"
@@ -170,7 +208,10 @@ const BlogEditorPage = () => {
             Status
             <select
               value={status}
-              onChange={(event) => setStatus(event.target.value)}
+              onChange={(event) => {
+                setStatus(event.target.value);
+                markDirty();
+              }}
               className="rounded-lg border border-secondary bg-background px-4 py-3 text-sm font-normal tracking-normal text-dark outline-none focus:border-primary"
             >
               <option value="draft">Draft</option>
@@ -183,18 +224,27 @@ const BlogEditorPage = () => {
           Excerpt
           <textarea
             value={excerpt}
-            onChange={(event) => setExcerpt(event.target.value)}
+            onChange={(event) => {
+              setExcerpt(event.target.value);
+              markDirty();
+            }}
             rows={3}
             placeholder="Short summary"
-            className="rounded-lg border border-secondary bg-background px-4 py-3 text-sm font-normal tracking-normal text-dark outline-none focus:border-primary"
+            className="rounded-lg border border-secondary bg-background px-4 py-3 text-sm font-normal tracking-normal text-dark outline-none focus:border-primary normal-case"
           />
+          <span className="text-xs font-normal tracking-normal text-dark-accent normal-case">
+            Leave this blank to use the first paragraph.
+          </span>
         </label>
 
         <label className="flex flex-col gap-2 text-xs font-medium tracking-wider text-dark-accent uppercase">
           Tags
           <input
             value={tags}
-            onChange={(event) => setTags(event.target.value)}
+            onChange={(event) => {
+              setTags(event.target.value);
+              markDirty();
+            }}
             placeholder="writing, projects, strategy"
             className="rounded-lg border border-secondary bg-background px-4 py-3 text-sm font-normal tracking-normal text-dark outline-none focus:border-primary"
           />
@@ -243,13 +293,28 @@ const BlogEditorPage = () => {
           >
             {isSaving ? "Saving..." : "Save"}
           </button>
+          {liveSlug && (
+            <Link
+              to={`/blogs/${liveSlug}`}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm text-primary underline underline-offset-4"
+            >
+              View post
+            </Link>
+          )}
           {message && <p className="text-sm text-dark-accent">{message}</p>}
           {error && <p className="text-sm text-primary">{error}</p>}
         </div>
       </div>
 
       <div className="mx-auto w-full max-w-5xl">
-        <BlogEditor ref={editorRef} contentKey={id || "new"} initialContent={initialContent} />
+        <BlogEditor
+          ref={editorRef}
+          contentKey={id || "new"}
+          initialContent={initialContent}
+          onChange={markDirty}
+        />
       </div>
     </section>
   );

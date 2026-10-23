@@ -12,18 +12,26 @@ const formatDate = (value) =>
 const AdminBlogList = () => {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState("");
+  const [loaded, setLoaded] = useState(false);
 
   const loadBlogs = async () => {
     const items = await listBlogs();
     setBlogs(items);
+    setLoaded(true);
   };
 
   useEffect(() => {
     let cancelled = false;
 
     const load = async () => {
-      const items = await listBlogs();
-      if (!cancelled) setBlogs(items);
+      try {
+        const items = await listBlogs();
+        if (!cancelled) setBlogs(items);
+      } catch {
+        if (!cancelled) setError("Could not load posts.");
+      } finally {
+        if (!cancelled) setLoaded(true);
+      }
     };
 
     void load();
@@ -35,8 +43,13 @@ const AdminBlogList = () => {
 
   const handlePublishToggle = async (blog) => {
     const nextStatus = blog.status === "published" ? "draft" : "published";
-    await setPublishState(blog.id, nextStatus);
-    await loadBlogs();
+    try {
+      setError("");
+      await setPublishState(blog.id, nextStatus);
+      await loadBlogs();
+    } catch {
+      setError("Could not update this post.");
+    }
   };
 
   const handleDelete = async (blog) => {
@@ -44,6 +57,7 @@ const AdminBlogList = () => {
     if (!confirmed) return;
 
     try {
+      setError("");
       await deleteBlog(blog.id);
       await loadBlogs();
     } catch {
@@ -91,6 +105,16 @@ const AdminBlogList = () => {
                     >
                       Edit
                     </Link>
+                    {blog.status === "published" && (
+                      <Link
+                        to={`/blogs/${blog.slug}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-md border border-secondary px-3 py-1 text-xs hover:bg-secondary"
+                      >
+                        Open
+                      </Link>
+                    )}
                     <button
                       type="button"
                       onClick={() => handlePublishToggle(blog)}
@@ -109,7 +133,7 @@ const AdminBlogList = () => {
                 </td>
               </tr>
             ))}
-            {blogs.length === 0 && (
+            {loaded && blogs.length === 0 && (
               <tr>
                 <td colSpan={5} className="px-4 py-8 text-center text-dark-accent">
                   No posts yet.

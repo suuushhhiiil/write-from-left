@@ -2,7 +2,12 @@ import mongoose from "mongoose";
 import Blog from "./blog.model.js";
 import APIError from "../../utils/APIError.js";
 import { APIResponse } from "../../utils/APIResponse.js";
-import { collectImagePublicIds, destroyImages } from "../media/media.service.js";
+import {
+  collectImagePublicIds,
+  destroyImages,
+} from "../media/media.service.js";
+import Comment from "../comment/comment.model.js";
+import { resolveExcerpt, sanitizeContentHtml } from "./blog.content.js";
 import {
   ensureUniqueSlug,
   parseTags,
@@ -24,7 +29,9 @@ export const listBlogs = async (req, res) => {
   const blogs = await Blog.find().sort({ updatedAt: -1 });
   return res
     .status(200)
-    .json(new APIResponse(200, "Blogs fetched", blogs.map(serializeBlogListItem)));
+    .json(
+      new APIResponse(200, "Blogs fetched", blogs.map(serializeBlogListItem)),
+    );
 };
 
 export const listPublishedBlogs = async (req, res) => {
@@ -36,7 +43,11 @@ export const listPublishedBlogs = async (req, res) => {
   return res
     .status(200)
     .json(
-      new APIResponse(200, "Published blogs fetched", blogs.map(serializeBlogListItem)),
+      new APIResponse(
+        200,
+        "Published blogs fetched",
+        blogs.map(serializeBlogListItem),
+      ),
     );
 };
 
@@ -69,7 +80,9 @@ export const getBlog = async (req, res) => {
     throw new APIError(404, "Blog not found");
   }
 
-  return res.status(200).json(new APIResponse(200, "Blog fetched", serializeBlog(blog)));
+  return res
+    .status(200)
+    .json(new APIResponse(200, "Blog fetched", serializeBlog(blog)));
 };
 
 export const createBlog = async (req, res) => {
@@ -86,19 +99,21 @@ export const createBlog = async (req, res) => {
     title,
     slug,
     status,
-    excerpt: String(req.body?.excerpt || "").trim(),
+    excerpt: resolveExcerpt(req.body?.excerpt, content),
     tags: parseTags(req.body?.tags),
     cover: {
       url: req.body?.cover?.url || "",
       publicId: req.body?.cover?.publicId || "",
     },
     content,
-    contentHtml: String(req.body?.contentHtml || ""),
+    contentHtml: sanitizeContentHtml(req.body?.contentHtml || ""),
     author: req.user._id,
     publishedAt: status === "published" ? new Date() : null,
   });
 
-  return res.status(201).json(new APIResponse(201, "Blog created", serializeBlog(blog)));
+  return res
+    .status(201)
+    .json(new APIResponse(201, "Blog created", serializeBlog(blog)));
 };
 
 export const updateBlog = async (req, res) => {
@@ -112,7 +127,8 @@ export const updateBlog = async (req, res) => {
     throw new APIError(404, "Blog not found");
   }
 
-  const title = req.body?.title !== undefined ? String(req.body.title).trim() : blog.title;
+  const title =
+    req.body?.title !== undefined ? String(req.body.title).trim() : blog.title;
   if (!title) {
     throw new APIError(400, "Title is required");
   }
@@ -130,7 +146,8 @@ export const updateBlog = async (req, res) => {
       ? blog.slug
       : await ensureUniqueSlug(slugSource, blog._id);
 
-  const nextContent = req.body?.content !== undefined ? req.body.content : blog.content;
+  const nextContent =
+    req.body?.content !== undefined ? req.body.content : blog.content;
   const nextCover = {
     url: req.body?.cover?.url ?? blog.cover?.url ?? "",
     publicId: req.body?.cover?.publicId ?? blog.cover?.publicId ?? "",
@@ -152,20 +169,25 @@ export const updateBlog = async (req, res) => {
   blog.slug = slug;
   blog.status = nextStatus;
   blog.excerpt =
-    req.body?.excerpt !== undefined ? String(req.body.excerpt).trim() : blog.excerpt;
-  blog.tags = req.body?.tags !== undefined ? parseTags(req.body.tags) : blog.tags;
+    req.body?.excerpt !== undefined
+      ? resolveExcerpt(req.body.excerpt, nextContent)
+      : blog.excerpt;
+  blog.tags =
+    req.body?.tags !== undefined ? parseTags(req.body.tags) : blog.tags;
   blog.cover = nextCover;
   blog.content = nextContent;
   blog.contentHtml =
     req.body?.contentHtml !== undefined
-      ? String(req.body.contentHtml)
+      ? sanitizeContentHtml(req.body.contentHtml)
       : blog.contentHtml;
   blog.publishedAt = resolvePublishedAt(blog, nextStatus);
 
   await blog.save();
   await destroyImages(staleImageIds);
 
-  return res.status(200).json(new APIResponse(200, "Blog updated", serializeBlog(blog)));
+  return res
+    .status(200)
+    .json(new APIResponse(200, "Blog updated", serializeBlog(blog)));
 };
 
 export const deleteBlog = async (req, res) => {
@@ -184,6 +206,7 @@ export const deleteBlog = async (req, res) => {
     ...collectImagePublicIds(blog.content),
   ];
 
+  await Comment.deleteMany({ blog: blog._id });
   await blog.deleteOne();
   await destroyImages(publicIds);
 

@@ -6,3 +6,8 @@ Fix about hero animation - remove the zoom in and zoom out animation
 Add morph kind of animation for the about hero section
 Add similar animation for the all the sections
 Inspiration from : https://www.lusion.co/ - check the homepage animation
+
+
+
+Trigger and play instead of scrub.
+Don't scrub every element. Instead use toggleActions.
