@@ -392,7 +392,6 @@ const animateProof = (q, el) => {
         trigger: container,
         start: "top 70%",
         toggleActions: "play none none reverse",
-        markers: true,
       },
     });
 
