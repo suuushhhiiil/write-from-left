@@ -54,7 +54,7 @@ const Home = () => {
                                 <p className="first-draft-description text-xl leading-tight font-light mt-2">A focused writing meetup built around time, accountability and making real progress on the thing you’ve been meaning to write.</p>
                             </div>
                         </div>
-                        <div className="flex flex-col gap-2 mt-16">
+                        <div className="flex flex-col gap-2 lg:mt-0 mt-16">
                             <p className="first-draft-closure text-xl font-display italic text-accent">Write your book & make your author dreams come true! </p>
                             <Link to="https://meetup.com/first-draft-berlin-writing-group-writing-meetup"
                                 target="_blank" rel="noopener noreferrer" className="first-draft-button btn-primary">Join the Next Meetup <span className="">→</span></Link>
@@ -67,7 +67,7 @@ const Home = () => {
             </div>
 
             {/* What I Do */}
-            <div className="what-i-do-section lg:px-20 px-4 flex flex-col gap-2 py-20 bg-background">
+            <div className="what-i-do-section lg:px-20 px-4 flex flex-col gap-2 bg-background">
                 <h3 className="what-i-do-title text-xs font-medium text-accent uppercase tracking-wider">{homeContent.whatIDoSection.title}</h3>
 
                 <div className="what-i-do-container lg:grid lg:grid-cols-12 flex flex-col gap-4 mt-4 items-start bg-background">

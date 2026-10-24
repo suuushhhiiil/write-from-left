@@ -160,7 +160,7 @@ const animateFirstDraft = (el) => {
       overwrite: "auto",
       scrollTrigger: {
         trigger: content,
-        start: "top 40%",
+        start: "top 60%",
         toggleActions: "play none none reverse",
       },
     },
@@ -243,17 +243,16 @@ const animateWhatIDo = (q, el) => {
       scale: 1,
       y: 0,
       autoAlpha: 1,
+      duration: 1,
       scrollTrigger: {
         trigger: imageContainer,
-        start: "top bottom",
-        end: "bottom 60%",
-        scrub: true,
+        start: "top 80%",
         toggleActions: "play none none reverse",
       },
     },
   );
 
-  scrubFromTo(
+  gsap.fromTo(
     image,
     {
       scale: 2.5,
@@ -262,27 +261,48 @@ const animateWhatIDo = (q, el) => {
     {
       scale: 1,
       rotate: 0,
-    },
-    {
-      trigger: imageContainer,
-      start: "top bottom",
-      end: "bottom 60%",
-      scrub: true,
+      duration: 1,
+      scrollTrigger: {
+        trigger: imageContainer,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
     },
   );
 
-  scrubFromTo(card, fadeUpFrom, fadeUpTo, {
-    trigger: card,
-    start: "top bottom",
-    end: "bottom 60%",
-  });
+  gsap.fromTo(
+    card,
+    {
+      autoAlpha: 0,
+      y: 50,
+    },
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 1,
+      ease: EASE,
+      overwrite: "auto",
+      scrollTrigger: {
+        trigger: card,
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    },
+  );
 
   q(".what-i-do-expertise-item").forEach((item) => {
-    scrubFromTo(
+    gsap.fromTo(
       item,
-      { autoAlpha: 0, y: 50, scale: 0.9 },
-      { autoAlpha: 1, y: 0, scale: 1 },
-      { trigger: item, start: "top bottom", end: "bottom 60%" },
+      { autoAlpha: 0, y: 50 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: item,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      },
     );
   });
 };
@@ -316,7 +336,7 @@ const animateCount = (title, trigger) => {
 
   ScrollTrigger.create({
     trigger: trigger ?? title,
-    start: "top 85%",
+    start: "top 60%",
     once: true,
     onEnter: () => tween.play(),
   });
@@ -327,12 +347,11 @@ const animateProof = (q, el) => {
   if (!container) return;
 
   const intro = gsap.timeline({
-    defaults: { duration: DURATION, ease: EASE, overwrite: "auto" },
+    defaults: { duration: 1, ease: EASE, overwrite: "auto" },
     scrollTrigger: {
       trigger: container,
       start: "top 70%",
-      end: "top 30%",
-      scrub: true,
+      toggleActions: "play none none reverse",
     },
   });
 
@@ -370,10 +389,10 @@ const animateProof = (q, el) => {
     const card = gsap.timeline({
       defaults: { duration: DURATION, ease: EASE, overwrite: "auto" },
       scrollTrigger: {
-        trigger: item,
-        start: "top 90%",
-        end: "top 60%",
-        scrub: true,
+        trigger: container,
+        start: "top 70%",
+        toggleActions: "play none none reverse",
+        markers: true,
       },
     });
 
@@ -387,21 +406,10 @@ const animateProof = (q, el) => {
       );
     }
     if (title) {
-      card.fromTo(
-        title,
-        { autoAlpha: 0, y: 100 },
-        { autoAlpha: 1, y: 0 },
-        0.08,
-      );
-      animateCount(title, item);
+      animateCount(title, container);
     }
     if (description) {
-      card.fromTo(
-        description,
-        { autoAlpha: 0, y: 80 },
-        { autoAlpha: 1, y: 0 },
-        0.12,
-      );
+      card.fromTo(description, { autoAlpha: 0, y: 80 }, { autoAlpha: 1, y: 0 });
     }
   });
 };

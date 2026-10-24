@@ -27,15 +27,15 @@ const ComingSoon = (product) => {
 const Products = () => {
     return (
         <section className="page-hero-offset pb-4 flex flex-col gap-8 ">
-            <div className="relative h-[80vh] overflow-hidden rounded-3xl lg:mx-20 mx-4 flex flex-col justify-end items-center p-4">
+            <div className="relative h-[80vh] overflow-hidden rounded-3xl lg:mx-20 mx-4 flex flex-col justify-between items-start p-4">
                 <OptimizedImage
                     src={productsHeroImage}
                     alt={productsContent.hero.title}
                     priority
                     className="absolute inset-0 h-full w-full object-cover object-left"
                 />
-                <div className="relative z-10 backdrop-blur-xs flex flex-col justify-center items-center gap-8 p-4 rounded-2xl bg-light/50">
-                    <h1 className="lg:text-7xl text-5xl text-center font-semibold font-display">{productsContent.hero.title}</h1>
+                <div className="relative z-10 backdrop-blur-xs flex flex-col justify-center lg:w-1/2 h-full gap-8 p-8 rounded-2xl bg-light/80">
+                    <h1 className="lg:text-7xl text-5xl text-er font-semibold font-display">{productsContent.hero.title}</h1>
                     <Link to={productsContent.hero.cta.href} className="btn-primary">
                         {productsContent.hero.cta.label}
                     </Link>
@@ -43,7 +43,7 @@ const Products = () => {
             </div>
 
 
-            <div className="lg:px-20 px-4 h-scren">
+            <div className="lg:px-20 px-4">
                 <div className="bg-primary-dark overflow-hidden rounded-2xl relative h-full p-4 flex flex-col justify-between gap-8 mt-4 lg:mt-0">
                     <div className="flex flex-col justify-between gap-6 lg:w-[70%]">
                         <h1 className="text-4xl text-light font-semibold">{productsContent.digitalProducts.title}</h1>
