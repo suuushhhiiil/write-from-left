@@ -21,7 +21,7 @@ const Home = () => {
                             <p className="hero-greet font-script text-primary text-2xl">Hi, I'm</p>
                             <div className="flex flex-col items-start gap-6">
                                 <div className="py-2">
-                                    <h1 className="variable-hero-text hero-name text-6xl font-semibold font-display lg:text-nowrap leading-tight">Khushboo Sangwan<span>,</span></h1>
+                                    <h1 className="variable-hero-text hero-name text-6xl font-semibold font-display lg:text-nowrap leading-tight">Khushboo Sangwan</h1>
                                 </div>
                                 <div className="overflow-hidden">
                                     <p className="hero-role text-primary-dark w-fit font-medium bg-secondary px-2 py-1 rounded-md">Creative Project Manager & Content Strategist.</p>
