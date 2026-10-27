@@ -7,3 +7,9 @@ Don't scrub every element. Instead use toggleActions.
 
 Next: 
 Fix about page animation
+
+Search bar in blog page
+Projects page mein link - join the meetup
+Dark Mode button and theme
+Editable project pages
+
