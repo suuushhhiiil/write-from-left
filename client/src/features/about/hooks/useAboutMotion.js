@@ -30,9 +30,11 @@ const animateHero = (q, el) => {
   const container = el(".hero-container");
   const titleSplit = SplitText.create(el(".hero-title"), {
     type: "words",
+    mask: "words",
   });
   const taglineSplit = SplitText.create(el(".hero-tagline"), {
     type: "words",
+    mask: "words",
   });
   const paragraph = el(".hero-paragraph");
   const image = el(".hero-image");
@@ -160,11 +162,10 @@ const animateHero = (q, el) => {
     );
 };
 
-const ANIMATION_TRIGGER = (section) => ({
+const animationTrigger = (section) => ({
   trigger: section,
-  start: "top 40%",
-  end: "bottom bottom",
-  scrub: true,
+  start: "top 70%",
+  toggleActions: "play none none reverse",
 });
 
 const animateAboutMe = (q, el) => {
@@ -187,7 +188,7 @@ const animateAboutMe = (q, el) => {
 
   if (!section || !container) return;
 
-  scrubFromTo(
+  gsap.fromTo(
     title.words,
     {
       opacity: 0,
@@ -197,16 +198,27 @@ const animateAboutMe = (q, el) => {
       opacity: 1,
       x: 0,
       stagger: 0.08,
+      ease: EASE,
+      duration: 0.8,
+      scrollTrigger: animationTrigger(section),
     },
-    ANIMATION_TRIGGER(section),
   );
-  scrubFromTo(
+
+  gsap.fromTo(
     imageContainer,
     { scale: 0.6, y: -100, transformOrigin: "center center" },
-    { scale: 1, y: 0, autoAlpha: 1, duration: 1, ease: "power2.inOut" },
-    ANIMATION_TRIGGER(section),
+    {
+      scale: 1,
+      y: 0,
+      autoAlpha: 1,
+      duration: 1,
+      ease: "power2.inOut",
+      ease: EASE,
+      duration: 0.8,
+      scrollTrigger: animationTrigger(section),
+    },
   );
-  scrubFromTo(
+  gsap.fromTo(
     image,
     {
       scale: 2,
@@ -220,11 +232,11 @@ const animateAboutMe = (q, el) => {
       autoAlpha: 1,
       duration: 1,
       ease: "power2.inOut",
+      scrollTrigger: animationTrigger(section),
     },
-    ANIMATION_TRIGGER(section),
   );
 
-  scrubFromTo(
+  gsap.fromTo(
     paragraphs.lines,
     {
       opacity: 0,
@@ -236,11 +248,11 @@ const animateAboutMe = (q, el) => {
       duration: 0.8,
       ease: EASE,
       stagger: 0.08,
+      scrollTrigger: animationTrigger(section),
     },
-    ANIMATION_TRIGGER(section),
   );
 
-  scrubFromTo(
+  gsap.fromTo(
     quote.words,
     {
       opacity: 0,
@@ -252,8 +264,8 @@ const animateAboutMe = (q, el) => {
       duration: 0.8,
       ease: EASE,
       stagger: 0.08,
+      scrollTrigger: animationTrigger(section),
     },
-    ANIMATION_TRIGGER(section),
   );
 };
 
@@ -271,7 +283,7 @@ const animateChildhood = (q, el) => {
     mask: "lines",
   });
 
-  scrubFromTo(
+  gsap.fromTo(
     imageContainer,
     {
       scale: 0.6,
@@ -284,11 +296,11 @@ const animateChildhood = (q, el) => {
       autoAlpha: 1,
       duration: 1,
       ease: "power2.inOut",
+      scrollTrigger: animationTrigger(section),
     },
-    ANIMATION_TRIGGER(section),
   );
 
-  scrubFromTo(
+  gsap.fromTo(
     image,
     {
       scale: 2,
@@ -302,11 +314,11 @@ const animateChildhood = (q, el) => {
       autoAlpha: 1,
       duration: 1,
       ease: "power2.inOut",
+      scrollTrigger: animationTrigger(section),
     },
-    ANIMATION_TRIGGER(section),
   );
 
-  scrubFromTo(
+  gsap.fromTo(
     paragraphs.lines,
     {
       opacity: 0,
@@ -318,8 +330,8 @@ const animateChildhood = (q, el) => {
       duration: 0.8,
       ease: EASE,
       stagger: 0.08,
+      scrollTrigger: animationTrigger(paragraphs.lines),
     },
-    ANIMATION_TRIGGER(section),
   );
 };
 
@@ -337,7 +349,13 @@ const animateContact = (q, el) => {
 
   if (!section || !container) return;
 
-  scrubFromTo(
+  const contactAnimationTrigger = (section) => ({
+    trigger: section,
+    start: "50% bottom",
+    toggleActions: "play none none reverse",
+  });
+
+  gsap.fromTo(
     section,
     {
       x: 60,
@@ -346,15 +364,10 @@ const animateContact = (q, el) => {
     {
       x: 0,
       autoAlpha: 1,
-    },
-    {
-      trigger: section,
-      start: "50% bottom",
-      end: "bottom bottom",
-      scrub: true,
+      scrollTrigger: contactAnimationTrigger(section),
     },
   );
-  scrubFromTo(
+  gsap.fromTo(
     title.words,
     {
       opacity: 0,
@@ -366,16 +379,11 @@ const animateContact = (q, el) => {
       duration: 0.8,
       ease: EASE,
       stagger: 0.08,
-    },
-    {
-      trigger: section,
-      start: "50% bottom",
-      end: "bottom bottom",
-      scrub: true,
+      scrollTrigger: contactAnimationTrigger(section),
     },
   );
 
-  scrubFromTo(
+  gsap.fromTo(
     links.words,
     {
       opacity: 0,
@@ -387,15 +395,10 @@ const animateContact = (q, el) => {
       duration: 0.8,
       ease: EASE,
       stagger: 0.08,
-    },
-    {
-      trigger: section,
-      start: "50% bottom",
-      end: "bottom bottom",
-      scrub: true,
+      scrollTrigger: contactAnimationTrigger(section),
     },
   );
-  scrubFromTo(
+  gsap.fromTo(
     linkIcons,
     {
       opacity: 0,
@@ -406,12 +409,7 @@ const animateContact = (q, el) => {
       x: 0,
       ease: EASE,
       stagger: 0.08,
-    },
-    {
-      trigger: section,
-      start: "50% bottom",
-      end: "bottom bottom",
-      scrub: true,
+      scrollTrigger: contactAnimationTrigger(section),
     },
   );
 };
@@ -419,37 +417,40 @@ const animateContact = (q, el) => {
 const useAboutMotion = (scope) => {
   const imagesReady = useRouteImagesReady();
 
-  useGSAP(() => {
-    if (!imagesReady) return;
+  useGSAP(
+    () => {
+      if (!imagesReady) return;
 
-    const q = gsap.utils.selector(scope);
-    const el = (selector) => q(selector)[0] ?? null;
+      const q = gsap.utils.selector(scope);
+      const el = (selector) => q(selector)[0] ?? null;
 
-    if (prefersReducedMotion()) {
-      gsap.set(q("section"), { autoAlpha: 1, pointerEvents: "auto" });
-      return;
-    }
-
-    animateHero(q, el);
-    animateAboutMe(q, el);
-    animateChildhood(q, el);
-    animateContact(q, el);
-
-    const refresh = () => ScrollTrigger.refresh();
-    const images = q("img");
-    images.forEach((img) => {
-      if (!img.complete) {
-        img.addEventListener("load", refresh, { once: true });
+      if (prefersReducedMotion()) {
+        gsap.set(q("section"), { autoAlpha: 1, pointerEvents: "auto" });
+        return;
       }
-    });
-    if (document.fonts?.ready) {
-      document.fonts.ready.then(refresh);
-    }
 
-    return () => {
-      images.forEach((img) => img.removeEventListener("load", refresh));
-    };
-  }, { dependencies: [imagesReady], revertOnUpdate: true });
+      animateHero(q, el);
+      animateAboutMe(q, el);
+      animateChildhood(q, el);
+      animateContact(q, el);
+
+      const refresh = () => ScrollTrigger.refresh();
+      const images = q("img");
+      images.forEach((img) => {
+        if (!img.complete) {
+          img.addEventListener("load", refresh, { once: true });
+        }
+      });
+      if (document.fonts?.ready) {
+        document.fonts.ready.then(refresh);
+      }
+
+      return () => {
+        images.forEach((img) => img.removeEventListener("load", refresh));
+      };
+    },
+    { dependencies: [imagesReady], revertOnUpdate: true },
+  );
 };
 
 export default useAboutMotion;

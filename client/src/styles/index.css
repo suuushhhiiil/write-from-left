@@ -86,11 +86,11 @@ html {
   @apply bg-primary text-light w-fit px-4 py-2 text-sm rounded-md hover:bg-primary-dark cursor-pointer transition-all duration-300;
 }
 .btn-primary-invert {
-  @apply bg-light text-dark w-fit px-4 py-2 text-lg rounded-md hover:bg-secondary cursor-pointer transition-all duration-300;
+  @apply bg-light text-dark w-fit px-4 py-2 text-sm rounded-md hover:bg-secondary cursor-pointer transition-all duration-300;
 }
 
 .btn-secondary {
-  @apply text-primary border w-fit px-4 py-2 text-lg border-primary hover:bg-primary hover:text-white rounded-md cursor-pointer transition-all duration-300;
+  @apply text-primary border w-fit px-4 py-2 text-sm border-primary hover:bg-primary hover:text-white rounded-md cursor-pointer transition-all duration-300;
 }
 
 .page-hero-offset {

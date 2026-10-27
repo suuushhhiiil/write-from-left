@@ -20,18 +20,18 @@ const About = () => {
                 <div className="hero-container h-screen lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col justify-center lg:items-start px-4 lg:px-20 lg:pt-28 pt-20 ">
                     <div className="lg:col-span-6 lg:row-span-2 lg:row-start-1 gap-2 flex flex-col">
                         <p className="hero-tagline text-xl text-primary leading-none">{aboutContent.hero.tagline}</p>
-                        <h1 className="hero-title variable-hero-text text-5xl font-medium font-display leading-none capitalize overflow-hidden">{aboutContent.hero.title}</h1>
+                        <h1 className="hero-title variable-hero-text text-5xl font-medium font-display leading-none capitalize">{aboutContent.hero.title}</h1>
                     </div>
 
-                    <div className="lg:-col-start-5 lg:col-span-5 lg:row-end-6 lg:row-start-3 flex flex-col gap-2 lg:mt-0 mt-4 overflow-hidden">
+                    <div className="lg:-col-start-5 lg:col-span-5 lg:row-end-6 lg:row-start-3 flex flex-col gap-2 lg:mt-0 mt-4">
                         <p className="hero-paragraph text-lg font-light leading-tight">{aboutContent.hero.paragraph}</p>
                     </div>
 
-                    <div className="hero-image-container lg:col-span-7 lg:col-start-1 lg:row-end-9 lg:row-start-3 gap-2 flex flex-col rounded-xl overflow-hidden lg:mt-0 mt-8">
+                    <div className="hero-image-container lg:col-span-7 lg:col-start-1 lg:row-end-9 lg:row-start-3 gap-2 flex flex-col rounded-xl lg:mt-0 mt-8">
                         <OptimizedImage src={aboutImage} alt="about" priority className="hero-image w-full aspect-video object-cover rounded-xl" />
                     </div>
 
-                    <div className="lg:-col-start-5 lg:col-span-4 lg:row-start-6 lg:row-end-9 mt- flex flex-col gap-4 lg:mt-0 mt-8 overflow-hidden philosophy-container">
+                    <div className="lg:-col-start-5 lg:col-span-4 lg:row-start-6 lg:row-end-9 mt- flex flex-col gap-4 lg:mt-0 mt-8 philosophy-container">
                         <ul className="flex flex-col gap-2 bg-secondary p-8 rounded-2xl">
                             {aboutContent.hero.philosophy.map((item, index) => (
                                 <li key={index} className="philosophy-item text-lg text-nowrap flex items-center gap-2 leading-tight text-dark font-medium"><span><item.Icon size={18} strokeWidth={2} className="text-primary" /></span>{item.title}</li>
