@@ -16,8 +16,8 @@ const About = () => {
 
     return (
         <section className="about-wrapper" ref={scopeRef}>
-            <div className="hero-section">
-                <div className="hero-container h-screen lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col justify-center lg:items-start px-4 lg:px-20 lg:pt-28 pt-20 ">
+            <div className="page-hero-offset hero-section">
+                <div className="hero-container lg:grid lg:grid-cols-12 lg:grid-rows-8 flex flex-col justify-center lg:items-start px-4 lg:px-20 ">
                     <div className="lg:col-span-6 lg:row-span-2 lg:row-start-1 gap-2 flex flex-col">
                         <p className="hero-tagline text-xl text-primary leading-none">{aboutContent.hero.tagline}</p>
                         <h1 className="hero-title variable-hero-text text-5xl font-medium font-display leading-none capitalize">{aboutContent.hero.title}</h1>
